@@ -18,7 +18,7 @@ export class AccountPage implements OnInit {
   /*  this.users.push({title:'Obi Wan Kenobi',subtitle:'Yedi Master',description:'Anakin Advisor', avatar:'https://i.pinimg.com/originals/7b/99/e5/7b99e5e44c3ce7bfb79c8d9094ee63d8.jpg'});
     this.users.push({title:'Darth Vader',subtitle:'Sid Master',description:'Anakin Skywalker', avatar:'https://www.denofgeek.com/wp-content/uploads/2017/03/darth-vader-1_0.jpg'});*/
     this.userService.getUsers().subscribe((users) => {
-      this.users = <any[]>users;
+      this.users = <any[]>users['users_dabase'];
       console.log(users);
     });
   }
