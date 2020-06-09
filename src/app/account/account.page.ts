@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActionSheetController, AlertController, ToastController } from '@ionic/angular';
 import { Users } from '../models/users';
 import { UsersService } from '../services/users.service';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-account',
@@ -10,9 +11,10 @@ import { UsersService } from '../services/users.service';
 })
 export class AccountPage implements OnInit {
 
-  constructor(private instancia:ActionSheetController, private alert:AlertController, private toast:ToastController, private userService:UsersService) {}
+  constructor(private instancia:ActionSheetController, private alert:AlertController, private toast:ToastController, private userService:UsersService, private storage:Storage) {}
 
   users: any[] = [];
+  currentUser : string ;
 
   ngOnInit(){
   /*  this.users.push({title:'Obi Wan Kenobi',subtitle:'Yedi Master',description:'Anakin Advisor', avatar:'https://i.pinimg.com/originals/7b/99/e5/7b99e5e44c3ce7bfb79c8d9094ee63d8.jpg'});
@@ -23,8 +25,9 @@ export class AccountPage implements OnInit {
     });
   }
 
-  async userSelected(user){
-    const toast = await this.toast.create({
+   userSelected(user:any){
+    this.storage.set(user.id,user);
+  /* const toast = await this.toast.create({
         duration:3000,
         header:'Se ha elegido a '+ user.title,
         position:'bottom',
@@ -38,7 +41,7 @@ export class AccountPage implements OnInit {
         icon:'trash',
         }],
     });
-    toast.present();
+    toast.present();*/
   }
 
   async confirmarBorrado(){

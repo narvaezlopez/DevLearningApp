@@ -3,6 +3,15 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
+/**App Module
+ *Importar modulo 
+ Paso 0: Agregarlo
+ App Component
+ Paso 1: Import
+ Paso 2: Ctor
+ Paso 3: Usar
+ */
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
