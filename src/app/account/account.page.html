@@ -1,0 +1,49 @@
+<ion-content [fullscreen]="true">
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-list>
+      <ion-item>
+        <ion-avatar slot="start">
+          <img src="https://image.flaticon.com/icons/svg/2328/2328666.svg">
+        </ion-avatar>
+        <ion-label id="main-title">
+          Account
+        </ion-label>
+      </ion-item>
+      </ion-list>
+      
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list>
+    <ion-item *ngFor="let user of users" (click)="userSelected(user)">
+      <ion-label>
+        <h1>{{user.name}}</h1>
+        <h3>{{user.id}}</h3>
+        <p>{{user.email}}</p>
+        <p>{{user.phoneNumber}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-button (click)="mostrarHoja()">Mostrar hoja</ion-button>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-label>
+        users
+      </ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-select placeholder="Elige un usuario">
+        <ion-select-option *ngFor="let user of users" value="user.title">
+          {{user.title}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
