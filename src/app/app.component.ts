@@ -26,7 +26,7 @@ export class AppComponent {
       icon: 'https://image.flaticon.com/icons/svg/2328/2328666.svg'
     },
     {
-      title: 'Challenges',
+      title: 'Challenges ',
       url: '/challenges',
       icon: 'https://image.flaticon.com/icons/svg/1693/1693487.svg'
     },

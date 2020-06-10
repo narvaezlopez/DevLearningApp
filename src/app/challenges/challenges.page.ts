@@ -14,7 +14,11 @@ export class ChallengesPage implements OnInit {
   constructor(private consoleService:ConsoleService) { }
 
   ngOnInit() {
-   this.consoleService.postExecuteR();
+   
+  }
+
+  compile(){
+    this.consoleService.postExecuteR();
   }
 
 }
