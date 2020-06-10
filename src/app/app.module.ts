@@ -10,8 +10,6 @@ import { HttpClientModule } from '@angular/common/http';
 import {IonicStorageModule} from '@ionic/storage';
 import { LoginComponent } from './component/login/login.component';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
