@@ -17,8 +17,8 @@
 
     <ion-list>
       <ion-item id="Console-Settings">
-        <ion-item id="Color-Selector">
-          <ion-select placeholder="Color Theme" (ionChange)="onChangeColor($event)">
+        <ion-button id="Color-Selector">
+          <ion-select id="CS" placeholder="Color Theme" (ionChange)="onChangeColor($event)">
             <ion-select-option value="Dark" >
               Dark
             </ion-select-option>
@@ -26,9 +26,9 @@
               Light
             </ion-select-option>
           </ion-select>
-        </ion-item>
-        <ion-item id="Language-Selector">
-          <ion-select placeholder="Select Language" (ionChange)="SelectLanguage($event)">
+        </ion-button>
+        <ion-button id="Language-Selector">
+          <ion-select id="LS" placeholder="Select Language" (ionChange)="SelectLanguage($event)">
             <ion-select-option value="php" >
               PHP
             </ion-select-option>
@@ -36,10 +36,10 @@
               C#
             </ion-select-option>
           </ion-select>
-        </ion-item>
+        </ion-button>
       </ion-item>
 
-        <ion-textarea rows="20" cols="20"  spellcheck="false" [(ngModel)]="inputCode" id ="{{color}}">
+        <ion-textarea rows="15" cols="20"  spellcheck="false" [(ngModel)]="inputCode" id ="{{color}}">
         </ion-textarea>
 
     </ion-list>
