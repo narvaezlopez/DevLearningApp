@@ -3,6 +3,14 @@ ion-label#main-title{
     color:#0b7375;
     font-family: 'Russo One', sans-serif;
     font-size: 20px;
+    
+}
+ion-item#main{
+    --background:var(--ion-color-warning);
+}
+
+div#Dev-content{
+    padding-top: 20px;
 }
 
 ion-item#Console-Settings{
@@ -35,6 +43,12 @@ ion-item#Color-Selector{
     width: 350px;
 }
 
+ion-item#Language-Selector{
+    --background: var(#000000);
+    --min-height: 40px;
+    width: 400px;
+}
+
 ion-textarea#Dark{
         width: 1000px;
         height: 400px;
@@ -48,4 +62,9 @@ ion-textarea#Light{
     margin: auto;
     --color:var(--ion-color-light);
     --background: var(--ion-color-dark);
+}
+div#button{
+    padding-top: 10px;
+    padding-right: 150px;
+    text-align:right;
 }
