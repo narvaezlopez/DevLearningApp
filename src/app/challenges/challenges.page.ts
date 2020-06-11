@@ -10,6 +10,7 @@ import { Output } from '../models/output';
 export class ChallengesPage implements OnInit {
 
   out:Output;
+  color:string = 'Dark';
 
   constructor(private consoleService:ConsoleService) { }
 
@@ -19,6 +20,11 @@ export class ChallengesPage implements OnInit {
 
   compile(){
     this.consoleService.postExecuteR();
+  }
+
+  onChangeColor($event){
+    this.color = $event.target.value;
+    console.log($event.target.value);
   }
 
 }

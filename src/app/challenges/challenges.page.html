@@ -16,6 +16,34 @@
     
   </ion-toolbar>
 </ion-header>
+<ion-content>
 
-<ion-button (click)="compile()" color="warning">Compilar</ion-button>
+  <div id ="Dev-content">
+
+    <ion-list>
+      <ion-item id="Console-Settings">
+        <ion-item id="Color-Selector">
+          <ion-select placeholder="Color Theme" (ionChange)="onChangeColor($event)">
+            <ion-select-option value="Dark" >
+              Dark
+            </ion-select-option>
+            <ion-select-option value="Light">
+              Light
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-item>
+
+        <ion-textarea id ="{{color}}">
+        </ion-textarea>
+
+    </ion-list>
+
+    <ion-button id="Compile-Button" (click)="compile()" color="warning">Compile</ion-button>
+  </div>
+
+
+</ion-content>
+
+
 

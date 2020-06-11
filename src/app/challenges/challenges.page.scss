@@ -4,3 +4,48 @@ ion-label#main-title{
     font-family: 'Russo One', sans-serif;
     font-size: 20px;
 }
+
+ion-item#Console-Settings{
+    --background: var(--ion-color-warning);
+    --min-height: 50px;
+    width: 1000px;
+    margin:auto;
+}
+ion-select{
+
+    color:#ffffff;
+    --placeholder-color: #ffffff;
+    font-family: 'Russo One', sans-serif;
+    --placeholder-opacity: 10;
+    font-size: 15px;
+}
+ion-item#Console{
+    --min-height: 305px;
+    width: 1010px;
+    margin:auto;
+}
+
+ion-button#Compile-Button{
+    font-family: 'Russo One', sans-serif;
+}
+
+ion-item#Color-Selector{
+    --background: var(#000000);
+    --min-height: 40px;
+    width: 350px;
+}
+
+ion-textarea#Dark{
+        width: 1000px;
+        height: 400px;
+        margin: auto;
+        --background: var(--ion-color-light);
+}
+
+ion-textarea#Light{
+    width: 1000px;
+    height: 400px;
+    margin: auto;
+    --color:var(--ion-color-light);
+    --background: var(--ion-color-dark);
+}
