@@ -8,3 +8,10 @@ ion-label#main-title{
 ion-item#main{
     --background:var(--ion-color-warning);
 }
+ion-content{
+    --background: var(--ion-color-dark);
+}
+ion-item{
+    --background: var(--ion-color-dark);
+    --color:var(--ion-color-light);
+}
