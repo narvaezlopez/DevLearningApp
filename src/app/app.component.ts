@@ -42,7 +42,7 @@ export class AppComponent {
     },
     {
       title: 'Badges',
-      url: '/folder/Archived',
+      url: '/badges',
       icon: 'https://www.flaticon.es/premium-icon/icons/svg/2378/2378384.svg'
     },
     {
