@@ -1,0 +1,78 @@
+
+div#main-title{
+    color:#0b7375;
+    font-family: 'Russo One', sans-serif;
+    text-align: center;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+ion-title#login{
+    font-size: 30px;
+}
+ion-header{
+    padding-bottom: 5px;
+    padding-top: 30px;
+    text-align: center;
+}
+
+div#heading-colum-lr{
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+h1#big-heading{
+    font-family: 'Russo One', sans-serif;
+    font-size: 30px !important;
+    margin: auto;
+}
+
+h2#small-heading{
+    font-family: 'Russo One', sans-serif;
+    font-size: 30px !important;
+    margin-left: auto; padding-right: 0px;
+}
+
+.img_session{
+
+height: 200px;
+width: 200px;
+border: 1px solid #000000;
+border-radius: 30%;
+box-shadow: 0 0 10px #000000;
+background-color: #f8b607;
+margin: auto;
+padding-top: 30px;
+}
+
+ion-img#logo{
+    height: 80px;
+    width: 80px;
+    margin:auto;
+}
+
+ion-label#title-app{
+    color:rgba(155, 13, 168, 0.808);
+    font-family: 'Russo One', sans-serif;
+    font-size: 35px;
+}
+
+div#center{
+    padding-bottom: 20px;
+    padding-top: 40px;
+    text-align: center;
+}
+
+div#button{
+    padding-top: 20px;
+    text-align: center;
+}
+
+ion-item{
+    margin: auto;
+    width: 300px;
+}
+
+ion-button{
+    font-family: 'Russo One', sans-serif;
+}

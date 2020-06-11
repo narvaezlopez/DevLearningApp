@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar id="tool">
+    <ion-img id="logo" src="https://image.flaticon.com/icons/svg/478/478939.svg"></ion-img>
+
+    <ion-label id = "title-app">
+      DEVLEARNING
+    </ion-label>
+  </ion-toolbar>
+</ion-header>
+<div id="main-title">
+  <ion-title id="login">LOGIN</ion-title>
+</div>
+
+<ion-img class="img_session" src="https://image.flaticon.com/icons/png/512/2922/2922518.png"></ion-img>
+
+<div id="center">
+        <ion-item>
+          <ion-input [(ngModel)]="Email" placeholder="Username" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input [(ngModel)]="Password" placeholder="Password" type="Password"></ion-input>
+        </ion-item>
+</div>
+
+<div id="button">
+  <ion-button color="warning" (click)="doLogin()">LOGIN</ion-button>
+</div>
+

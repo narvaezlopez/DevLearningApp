@@ -1,16 +1,59 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Challenges</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-  <ion-list>
-    <ion-item *ngFor="let user of users" (click)="userSelected(user)">
-      <ion-label>
-
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-item id="main">
+      <ion-avatar slot="start">
+        <img src="https://image.flaticon.com/icons/svg/1693/1693487.svg">
+      </ion-avatar>
+      <ion-label id="main-title">
+        Challenges
       </ion-label>
     </ion-item>
-  </ion-list>
+</ion-header>
+<ion-content>
+
+  <div id ="Dev-content">
+
+    <ion-list>
+      <ion-item id="Console-Settings">
+        <ion-item id="Color-Selector">
+          <ion-select placeholder="Color Theme" (ionChange)="onChangeColor($event)">
+            <ion-select-option value="Dark" >
+              Dark
+            </ion-select-option>
+            <ion-select-option value="Light">
+              Light
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item id="Language-Selector">
+          <ion-select placeholder="Select Language" (ionChange)="SelectLanguage($event)">
+            <ion-select-option value="php" >
+              PHP
+            </ion-select-option>
+            <ion-select-option value="csharp">
+              C#
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-item>
+
+        <ion-textarea rows="20" cols="20"  spellcheck="false" [(ngModel)]="inputCode" id ="{{color}}">
+        </ion-textarea>
+
+    </ion-list>
+
+    <div id="button">
+      <ion-button id="Compile-Button" (click)="compile()" color="warning">&nbsp;Compile
+        <ion-icon slot="icon-only" name="star"></ion-icon>
+      </ion-button>
+    </div>
+
+  </div>
+
+
 </ion-content>
+
+
 

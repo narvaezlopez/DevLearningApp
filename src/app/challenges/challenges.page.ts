@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ConsoleService } from '../services/console.service';
 import { Output } from '../models/output';
+import { ToastController, AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-challenges',
@@ -10,11 +11,56 @@ import { Output } from '../models/output';
 export class ChallengesPage implements OnInit {
 
   out:Output;
+  color:string = 'Dark';
+  inputCode:string= null;
+  language:string = null;
 
-  constructor(private consoleService:ConsoleService) { }
+  constructor(private consoleService:ConsoleService,private alert:AlertController, private toast:ToastController) { }
 
   ngOnInit() {
-   this.consoleService.postExecuteR();
+   
+  }
+
+  async compile(){
+    if(this.language==null){
+      const toast = await this.toast.create({
+        duration:3000,
+        header:'Ooop! you forget something!',
+        position:'bottom',
+        message: 'Please select a programing language.',
+      });
+      toast.present();
+    }else{
+      if(this.inputCode==''){
+        const toast = await this.toast.create({
+          duration:3000,
+          header:'Ooop! you forget something!',
+          position:'bottom',
+          message: 'Please typing your code.',
+        });
+        toast.present();
+      }else{
+        const toast = await this.toast.create({
+          duration:3000,
+          header:'Compiled successfully!',
+          position:'bottom',
+          message: ':D',
+        });
+        toast.present();
+      this.consoleService.postExecuteR(this.inputCode, this.language);
+      }
+    }
+    
+  }
+
+  onChangeColor($event){
+    this.color = $event.target.value;
+    console.log($event.target.value);
+  }
+
+  SelectLanguage($event){
+    this.language=$event.target.value;
+    console.log($event.target.value);
   }
 
 }
