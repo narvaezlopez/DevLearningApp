@@ -11,12 +11,19 @@ import { Storage } from '@ionic/storage';
 })
 export class AccountPage implements OnInit {
 
-  constructor(private instancia:ActionSheetController, private alert:AlertController, private toast:ToastController, private userService:UsersService, private storage:Storage) {}
+  constructor(private instancia:ActionSheetController, private alert:AlertController, 
+              private toast:ToastController, private userService:UsersService, private storage:Storage) {}
 
   users: any[] = [];
-  currentUser : string ;
+  currentUser : string = '' ;
 
   ngOnInit(){
+    this.storage.get('currentUser')
+    .then((data)=>{
+      this.currentUser=data.name;
+    }).catch((data)=>{
+      this.currentUser="No se pudo encontrar el usuario";
+    });
   /*  this.users.push({title:'Obi Wan Kenobi',subtitle:'Yedi Master',description:'Anakin Advisor', avatar:'https://i.pinimg.com/originals/7b/99/e5/7b99e5e44c3ce7bfb79c8d9094ee63d8.jpg'});
     this.users.push({title:'Darth Vader',subtitle:'Sid Master',description:'Anakin Skywalker', avatar:'https://www.denofgeek.com/wp-content/uploads/2017/03/darth-vader-1_0.jpg'});*/
     this.userService.getUsers().subscribe((users) => {
@@ -26,7 +33,7 @@ export class AccountPage implements OnInit {
   }
 
    userSelected(user:any){
-    this.storage.set(user.id,user);
+    this.storage.set('currentUser',user);
   /* const toast = await this.toast.create({
         duration:3000,
         header:'Se ha elegido a '+ user.title,

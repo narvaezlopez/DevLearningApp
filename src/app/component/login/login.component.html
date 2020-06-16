@@ -15,14 +15,24 @@
 
 <div id="center">
         <ion-item>
-          <ion-input [(ngModel)]="Email" placeholder="Username" type="text"></ion-input>
+          <ion-input placeholder="Username" type="text"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-input [(ngModel)]="Password" placeholder="Password" type="Password"></ion-input>
+          <ion-input placeholder="Password" type="Password"></ion-input>
         </ion-item>
 </div>
 
+<div *ngIf="auth.user | async as user; else showLogin">
+  <h1>Hello {{ user.displayName }}!</h1>
+  <button (click)="logout()">Logout</button>
+</div>
+<ng-template #showLogin>
+  <p>Please login.</p>
+  <button (click)="login()">Login with Google</button>
+  <button (click)="loginPhone()">Login with Phone</button>
+</ng-template>
+
 <div id="button">
-  <ion-button color="warning" (click)="doLogin()">LOGIN</ion-button>
+  <ion-button color="warning" >LOGIN</ion-button>
 </div>
 

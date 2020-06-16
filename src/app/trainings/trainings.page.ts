@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-trainings',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TrainingsPage implements OnInit {
 
-  constructor() { }
+  //heroes: Observable<any[]>;
+  heroes: any[]=[];
+
+  constructor(public firestore: AngularFirestore) { 
+    //this.heroes = firestore.collection('heroes').valueChanges();
+
+  }
 
   ngOnInit() {
+        this.firestore.collection('heroes').valueChanges()
+    .subscribe((heroes)=>{
+      this.heroes=<any[]>heroes;
+    })  
   }
+  
+
 
 }

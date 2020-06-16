@@ -3,6 +3,10 @@ import { ConsoleService } from '../services/console.service';
 import { Output } from '../models/output';
 import { ToastController, AlertController } from '@ionic/angular';
 
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { auth } from 'firebase/app';
+
 @Component({
   selector: 'app-challenges',
   templateUrl: './challenges.page.html',
@@ -15,10 +19,17 @@ export class ChallengesPage implements OnInit {
   inputCode:string= null;
   language:string = null;
 
-  constructor(private consoleService:ConsoleService,private alert:AlertController, private toast:ToastController) { }
+  challenges: any[]=[];
+
+  constructor(private consoleService:ConsoleService,private alert:AlertController, 
+              private toast:ToastController, private firestore: AngularFirestore,
+              public auth:AngularFireAuth) { }
 
   ngOnInit() {
-   
+    this.firestore.collection('challenge').valueChanges()
+    .subscribe((challenges)=>{
+      this.challenges=<any[]>challenges;
+    })
   }
 
   async compile(){

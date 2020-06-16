@@ -10,6 +10,9 @@ import { HttpClientModule } from '@angular/common/http';
 import {IonicStorageModule} from '@ionic/storage';
 import { LoginComponent } from './component/login/login.component';
 
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,6 +20,7 @@ import { LoginComponent } from './component/login/login.component';
   ],
   entryComponents: [],
   imports: [
+    AngularFireModule.initializeApp(environment.firebase),// propiedades de la base de datos en firebase
     BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule, 

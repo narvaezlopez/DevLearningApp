@@ -1,10 +1,8 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
+<ion-header>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-list>
-    <ion-item>
+    <ion-item id="main">
       <ion-avatar slot="start">
         <img src="https://image.flaticon.com/icons/svg/2646/2646823.svg">
       </ion-avatar>
@@ -12,12 +10,18 @@
         Trainings
       </ion-label>
     </ion-item>
-    </ion-list>
-    
-  </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-list>
+    <ion-item *ngFor="let hero of heroes "><!--| async  para observable-->
+      <ion-label>
+        <h3>{{hero.name}}</h3>
+        <h4>{{hero.power}}</h4>
+      </ion-label>
+
+    </ion-item>
+  </ion-list>
   
 
 </ion-content>

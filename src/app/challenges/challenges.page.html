@@ -13,6 +13,20 @@
 </ion-header>
 <ion-content>
 
+  <ion-list id="challenges-list">
+    <ion-item *ngFor="let challenge of challenges "><!--| async  para observable-->
+      <ion-avatar slot="start">
+        <img [src]="challenge.icon">
+      </ion-avatar>
+      <ion-label>
+        <h3>{{challenge.language}}</h3>
+        <h4>{{challenge.level}}</h4>
+        <h4>{{challenge.title}}</h4>
+        <p>{{challenge.content}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
   <div id ="Dev-content">
 
     <ion-list>

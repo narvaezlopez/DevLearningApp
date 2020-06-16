@@ -11,6 +11,9 @@ ion-item#main{
 ion-content{
     --background: var(--ion-color-dark);
 }
+ion-avatar{
+    --border-radius: 0%;
+}
 
 div#Dev-content{
     padding-top: 20px;
