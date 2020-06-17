@@ -1,5 +1,5 @@
 export const environment = {
-    firebase:{
+    key:{
         apiKey: "AIzaSyBp5BaKNTwZvZOSPfCeFfNJrKVY3cQfznA",
         authDomain: "devlearning-2c9c9.firebaseapp.com",
         databaseURL: "https://devlearning-2c9c9.firebaseio.com",
