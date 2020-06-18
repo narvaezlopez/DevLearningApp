@@ -14,7 +14,8 @@ export class BadgesPage implements OnInit {
 
   //RDdHIsiP5ChIUiipTEYPyL4wuuH2
   ngOnInit() {
-    this.badgeUserService.getBadgeUserByIdUser('RDdHIsiP5ChIUiipTEYPyL4wuuH2').subscribe((badges_users) => {
+    this.badgeUserService.getBadgeUserByIdUser('RDdHIsiP5ChIUiipTEYPyL4wuuH2')
+    .subscribe((badges_users) => {
       this.badges_users = <any[]>badges_users;
       console.log(badges_users);
 
