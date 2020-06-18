@@ -1,0 +1,87 @@
+ion-header{
+    padding-bottom: 5px;
+    padding-top: 30px;
+    text-align: center;
+    ion-img#logo{
+        height: 50px;
+        width: 50px;
+        margin:auto;
+    }
+    ion-label#title-app{
+        color:rgba(155, 13, 168, 0.808);
+        font-family: 'Russo One', sans-serif;
+        font-size: 35px;
+    }
+}
+
+div#main-title{
+    color:#0b7375;
+    font-family: 'Russo One', sans-serif;
+    text-align: center;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    ion-title#login{
+        font-size: 30px;
+    }
+    .img_session{
+
+        height: 150px;
+        width: 150px;
+        border: 1px solid #000000;
+        border-radius: 30%;
+        box-shadow: 0 0 10px #000000;
+        background-color: #f8b607;
+        margin: auto;
+        padding-top: 30px;
+        }
+}
+
+div#center{
+    padding-top: 20px;
+    text-align: center;
+    ion-label{
+        color:#0b7375;
+        font-family: 'Russo One', sans-serif;
+
+        padding-bottom: 20px;
+        padding-top: 20px;
+    }
+    div#Google-EP{
+        padding-top: 20px;
+        text-align: center;
+        ion-button{
+            font-family: 'Russo One', sans-serif;
+        }
+    }
+    ion-list#center{
+        text-align: center;
+        width: 320px;
+        margin: auto;
+        background-color:rgba(155, 13, 168, 0.808);
+        ion-item{
+            margin: auto;
+            width: 300px;
+            padding-bottom: 10px;
+            ion-input{
+                height: 40px;
+            }
+            ion-label{
+                padding-bottom: 5px;
+            }
+        }
+        
+    }
+    div#login{
+        padding-top: 20px;
+        text-align: center;
+        ion-button{
+            font-family: 'Russo One', sans-serif;
+        }
+    }
+}
+
+
+
+
+
+
