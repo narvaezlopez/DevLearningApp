@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-buttons slot="start">
+    <ion-menu-button></ion-menu-button>
+  </ion-buttons>
+  <ion-item id="main">
+    <ion-avatar slot="start">
+      <img src="https://www.flaticon.es/premium-icon/icons/svg/2378/2378384.svg">
+    </ion-avatar>
+    <ion-label id="main-title">
+      My Challenges
+    </ion-label>
+  </ion-item>
+</ion-header>
+
+<ion-content>
+  <ion-list id="challenges-list">
+    <ion-item *ngFor="let challenge of challenges "><!--| async  para observable-->
+      <ion-avatar slot="start">
+        <img [src]="challenge.icon">
+      </ion-avatar>
+      <ion-label>
+        <h3>{{challenge.language}}</h3>
+        <h4>{{challenge.level}}</h4>
+        <h4>{{challenge.title}}</h4>
+        <p>{{challenge.content}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
