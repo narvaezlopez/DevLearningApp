@@ -1,10 +1,12 @@
+
 ion-header{
+
     padding-bottom: 5px;
-    padding-top: 30px;
+    padding-top: 10px;
     text-align: center;
     ion-img#logo{
-        height: 50px;
-        width: 50px;
+        height: 70px;
+        width: 70px;
         margin:auto;
     }
     ion-label#title-app{
@@ -15,15 +17,16 @@ ion-header{
 }
 
 div#main-title{
-    color:#0b7375;
+    color:#10a2a5;
     font-family: 'Russo One', sans-serif;
     text-align: center;
     padding-bottom: 20px;
     padding-top: 20px;
     ion-title#login{
         font-size: 30px;
+        padding-bottom: 20px;
     }
-    .img_session{
+ .img_session{
 
         height: 150px;
         width: 150px;
@@ -36,49 +39,64 @@ div#main-title{
         }
 }
 
-div#center{
-    padding-top: 20px;
-    text-align: center;
-    ion-label{
-        color:#0b7375;
-        font-family: 'Russo One', sans-serif;
-
+ion-grid{
+    background-image: url("https://images.dexerto.es/uploads/2020/03/27141454/actualizacion-call-of-duty-modern-warfare.jpg");
+    div#center{
+        padding-top: 20px;
         padding-bottom: 20px;
-        padding-top: 20px;
-    }
-    div#Google-EP{
-        padding-top: 20px;
         text-align: center;
-        ion-button{
-            font-family: 'Russo One', sans-serif;
-        }
-    }
-    ion-list#center{
-        text-align: center;
-        width: 320px;
-        margin: auto;
-        background-color:rgba(155, 13, 168, 0.808);
-        ion-item{
-            margin: auto;
-            width: 300px;
-            padding-bottom: 10px;
-            ion-input{
-                height: 40px;
-            }
-            ion-label{
-                padding-bottom: 5px;
-            }
-        }
         
-    }
-    div#login{
-        padding-top: 20px;
-        text-align: center;
-        ion-button{
+        ion-label{
+            color:rgba(155, 13, 168, 0.808);
             font-family: 'Russo One', sans-serif;
+    
+            padding-bottom: 20px;
+            padding-top: 20px;
         }
+        div#Google-EP{
+            padding-top: 20px;
+            text-align: center;
+            ion-button{
+                font-family: 'Russo One', sans-serif;
+                ion-avatar{
+                    padding-right: 10px;
+                    img{
+                        height: 50px;
+                        width: 50px;
+                    }
+                }
+            }
+        }
+        ion-list#center{
+            text-align: center;
+            width: 320px;
+            margin: auto;
+            background-color:rgba(155, 13, 168, 0.808);
+            ion-item{
+                margin: auto;
+                width: 300px;
+                padding-bottom: 10px;
+                height: 60px;
+                ion-input{
+                    height: 10px;
+                }
+            }
+            
+        }
+        div#login{
+            padding-top: 20px;
+            text-align: center;
+            ion-button{
+                font-family: 'Russo One', sans-serif;
+            }
+        }
+    }
+    form{
+        padding-top: 20px;
     }
 }
+
+
 
 
 
