@@ -3,6 +3,7 @@ import { ActionSheetController, AlertController, ToastController } from '@ionic/
 import { Users } from '../models/users';
 import { UsersService } from '../services/users.service';
 import { Storage } from '@ionic/storage';
+import { AngularFireStorage } from '@angular/fire/storage'
 
 @Component({
   selector: 'app-account',
@@ -12,13 +13,14 @@ import { Storage } from '@ionic/storage';
 export class AccountPage implements OnInit {
 
   constructor(private instancia:ActionSheetController, private alert:AlertController, 
-              private toast:ToastController, private userService:UsersService, private storage:Storage) {}
+              private toast:ToastController, private userService:UsersService, private localstorage:Storage,
+              private storage: AngularFireStorage) {}
 
   users: any[] = [];
   currentUser : string = '' ;
 
   ngOnInit(){
-    this.storage.get('currentUser')
+    this.localstorage.get('currentUser')
     .then((data)=>{
       this.currentUser=data.name;
     }).catch((data)=>{
@@ -33,7 +35,7 @@ export class AccountPage implements OnInit {
   }
 
    userSelected(user:any){
-    this.storage.set('currentUser',user);
+    this.localstorage.set('currentUser',user);
   /* const toast = await this.toast.create({
         duration:3000,
         header:'Se ha elegido a '+ user.title,
@@ -114,6 +116,12 @@ export class AccountPage implements OnInit {
       header:'Ejemplo'
     });
     sheet.present();
+  }
+
+  uploadFile(event) {
+    const file = event.target.files[0];
+    const filePath = 'ruta';
+    const task = this.storage.upload(filePath, file);
   }
 
 }
