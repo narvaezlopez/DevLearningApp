@@ -18,6 +18,20 @@
 
   <input type="file" (change)="uploadFile($event)">
   <h1>{{currentUser}}</h1>
+  
+  <div>{{percent}}</div>
+  <!--<div>{{uploadPercent | async}}</div> <a [href]="downloadURL | async">{{ downloadURL | async }} <img [src]="downloadURL | async" alt="imagen_cargada"></a>-->
+  <img [src]="url" alt="imagen_cargada">
+
+  <ion-list>
+    <ion-item *ngFor="let file of uploadFiles">
+      <ion-label>
+        <h1>creado el: {{file.created_at.toDate() | date: 'dd MMM hh:mm' }}</h1>
+        <img [src]="file.file" alt="Archivo">
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  
   <ion-list>
     <ion-item *ngFor="let user of users" (click)="userSelected(user)">
       <ion-label>
