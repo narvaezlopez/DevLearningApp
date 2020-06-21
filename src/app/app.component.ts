@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { NavController, NavParams } from '@ionic/angular';
+import { Router,ActivatedRoute, Params, NavigationExtras } from '@angular/router';
+import { Storage } from '@ionic/storage';
 
 /**App Module
  *Importar modulo 
@@ -18,6 +21,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+  
   public selectedIndex = 0;
   public appPages = [
     {
@@ -51,21 +55,37 @@ export class AppComponent {
       icon: 'https://image.flaticon.com/icons/svg/2614/2614724.svg'
     }
   ];
+
+  bool:string;
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private route:ActivatedRoute,
+    private router:Router,
+    private storage: Storage
   ) {
     this.initializeApp();
-  }
+    this.route.queryParams
+    .subscribe((params)=>{
+      this.bool=params.bool;
+      console.log(params.bool);
+      this.storage.set('bool', "true");
 
+    });
+  }
+  
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      
     });
   }
   ngOnInit() {
+    
+
     const path = window.location.pathname.split('/')[1];
     if (path !== undefined) {
       this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
