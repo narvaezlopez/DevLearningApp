@@ -30,20 +30,10 @@ export class LoginPage implements OnInit {
     password:''
   }
   EP:boolean=null;
-  hola: boolean;
-  Username:string = null;
-  Password:string = null;
-  bool:string;
-
-
   authenticationState = new BehaviorSubject(false);
 
   ngOnInit() {
     
-  }
-
-  canActivate(): boolean {
-    return this.authService.isAuthenticated();
   }
 
   loginMetod(bandera){
