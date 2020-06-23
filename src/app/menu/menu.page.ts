@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { LoginPage } from '../login/login.page';
 
+import { NavController, NavParams } from '@ionic/angular';
+import { Router,ActivatedRoute, Params, NavigationExtras } from '@angular/router';
+import { Storage } from '@ionic/storage';
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.page.html',
@@ -43,23 +47,17 @@ export class MenuPage implements OnInit {
     }
   ];
 
-  constructor(private menu: MenuController) { }
-
-  openFirst() {
-    this.menu.enable(true, 'first');
-    this.menu.open('first');
+  constructor(
+    private menu: MenuController,   
+    private route:ActivatedRoute,
+    private router:Router,
+    private storage: Storage) { 
+    
   }
 
-  openEnd() {
-    this.menu.open('end');
-  }
-
-  openCustom() {
-    this.menu.enable(true, 'custom');
-    this.menu.open('custom');
-  }
 
   ngOnInit() {
+  
   }
 
 }

@@ -34,7 +34,10 @@ export function jwtOptionsFactory(storage){
   imports: [
     AngularFireModule.initializeApp(environment.firebase),// propiedades de la base de datos en firebase
     BrowserModule, 
-    IonicModule.forRoot(), 
+    IonicModule.forRoot({
+      rippleEffect: false,
+      mode: 'md'
+    }), 
     AppRoutingModule, 
     HttpClientModule,
     IonicStorageModule.forRoot(),

@@ -5,6 +5,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { NavController, NavParams } from '@ionic/angular';
 import { Router,ActivatedRoute, Params, NavigationExtras } from '@angular/router';
 import { Storage } from '@ionic/storage';
+import { timer } from 'rxjs'
 
 /**App Module
  *Importar modulo 
@@ -21,6 +22,7 @@ import { Storage } from '@ionic/storage';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+  showSplash=true;
   
   public selectedIndex = 0;
   public appPages = [
@@ -72,6 +74,7 @@ export class AppComponent {
       this.bool=params.bool;
       console.log(params.bool);
       this.storage.set('bool', "true");
+      this.splashScreen.hide();
 
     });
   }
@@ -80,7 +83,7 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      
+      timer(3000).subscribe(()=>this.showSplash = false);
     });
   }
   ngOnInit() {
