@@ -13,6 +13,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/animations": "^9.1.11",
     "@angular/common": "~9.1.6",
     "@angular/core": "~9.1.6",
     "@angular/fire": "^6.0.0",
@@ -29,6 +30,8 @@
     "@ionic/storage": "^2.2.0",
     "cordova-sqlite-storage": "^5.0.0",
     "firebase": "^7.15.1",
+    "gsap": "^3.3.4",
+    "in-view": "^0.6.1",
     "ionic-angular": "^3.9.10",
     "rxjs": "~6.5.1",
     "tslib": "^1.10.0",

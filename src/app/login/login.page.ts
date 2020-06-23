@@ -65,14 +65,8 @@ export class LoginPage implements OnInit {
         console.log(this.token);
         this.storage.set(TOKEN_KEY, this.token);
         this.user = this.helper.decodeToken(String(this.token));
-       
         this.storage.set('bool', "true");
-        let navigationExtras:NavigationExtras={
-          queryParams:{
-            bool:"true"
-          }
-        }
-        this.router.navigate([''],navigationExtras);
+        this.router.navigate(['menu']);
       })
       this.firestore.collection('users').doc(result.user.uid)
       .set({
