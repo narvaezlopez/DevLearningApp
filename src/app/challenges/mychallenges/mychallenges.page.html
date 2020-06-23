@@ -8,20 +8,23 @@
         <img src="https://www.flaticon.es/premium-icon/icons/svg/2378/2378384.svg">
       </ion-avatar>
       <ion-label id="main-title">
-        Badges
+        My Challenges
       </ion-label>
     </ion-item>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item *ngFor="let badge of badges">
+  <ion-list id="challenges-list">
+    <ion-item *ngFor="let challenge of challenges "><!--| async  para observable-->
+      <ion-avatar slot="start">
+        <img [src]="challenge.icon">
+      </ion-avatar>
       <ion-label>
-        <h1>{{badge.name}}</h1>
-        <h3>{{badge.description}}</h3>
-        <img [src]="badge.image">
-        
+        <h3>{{challenge.language}}</h3>
+        <h4>{{challenge.level}}</h4>
+        <h4>{{challenge.title}}</h4>
+        <p>{{challenge.content}}</p>
       </ion-label>
     </ion-item>
   </ion-list>

@@ -7,6 +7,14 @@ const routes: Routes = [
   {
     path: '',
     component: ChallengesPage
+  },
+  {
+    path: 'mychallenges',
+    loadChildren: () => import('./mychallenges/mychallenges.module').then( m => m.MychallengesPageModule)
+  },
+  {
+    path: 'communitychallenges',
+    loadChildren: () => import('./communitychallenges/communitychallenges.module').then( m => m.CommunitychallengesPageModule)
   }
 ];
 

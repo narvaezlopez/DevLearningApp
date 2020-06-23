@@ -1,10 +1,12 @@
+
 ion-header{
+
     padding-bottom: 5px;
     padding-top: 30px;
     text-align: center;
     ion-img#logo{
-        height: 50px;
-        width: 50px;
+        height: 70px;
+        width: 70px;
         margin:auto;
     }
     ion-label#title-app{
@@ -15,15 +17,16 @@ ion-header{
 }
 
 div#main-title{
-    color:#0b7375;
+    color:#10a2a5;
     font-family: 'Russo One', sans-serif;
     text-align: center;
     padding-bottom: 20px;
     padding-top: 20px;
     ion-title#login{
         font-size: 30px;
+        padding-bottom: 20px;
     }
-    .img_session{
+ .img_session{
 
         height: 150px;
         width: 150px;
@@ -36,11 +39,15 @@ div#main-title{
         }
 }
 
+
+
 div#center{
     padding-top: 20px;
+    padding-bottom: 20px;
     text-align: center;
+    
     ion-label{
-        color:#0b7375;
+        color:rgba(155, 13, 168, 0.808);
         font-family: 'Russo One', sans-serif;
 
         padding-bottom: 20px;
@@ -51,6 +58,13 @@ div#center{
         text-align: center;
         ion-button{
             font-family: 'Russo One', sans-serif;
+            ion-avatar{
+                padding-right: 10px;
+                img{
+                    height: 50px;
+                    width: 50px;
+                }
+            }
         }
     }
     ion-list#center{
@@ -62,11 +76,9 @@ div#center{
             margin: auto;
             width: 300px;
             padding-bottom: 10px;
+            height: 60px;
             ion-input{
-                height: 40px;
-            }
-            ion-label{
-                padding-bottom: 5px;
+                height: 10px;
             }
         }
         
@@ -79,6 +91,12 @@ div#center{
         }
     }
 }
+form{
+    padding-top: 20px;
+}
+
+
+
 
 
 

@@ -26,7 +26,8 @@ const routes: Routes = [
   {
     path: 'badges',
     loadChildren: () => import('./badges/badges.module').then( m => m.BadgesPageModule)
-  },  {
+  },
+  {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   }

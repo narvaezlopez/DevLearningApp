@@ -1,9 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 
-
+import { AuthService } from '../services/auth.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
+
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { Storage } from '@ionic/storage';
 import { auth } from 'firebase/app';
+import { BehaviorSubject } from 'rxjs';
+
+import { NavController } from '@ionic/angular';
+import { Router,ActivatedRoute, Params, NavigationExtras } from '@angular/router';
+const TOKEN_KEY = 'access_token';
 
 @Component({
   selector: 'app-login',
@@ -13,19 +21,29 @@ import { auth } from 'firebase/app';
 export class LoginPage implements OnInit {
 
   
-  constructor(public auth:AngularFireAuth,private firestore: AngularFirestore) { }
+  constructor(public auth:AngularFireAuth,private firestore: AngularFirestore, private authService:AuthService, 
+              private storage: Storage, private helper: JwtHelperService, private navCtrl:NavController, private router:Router) { }
 
+  token: any[] = [];
   user = {
     email:'',
     password:''
   }
   EP:boolean=null;
-
+  hola: boolean;
   Username:string = null;
   Password:string = null;
+  bool:string;
+
+
+  authenticationState = new BehaviorSubject(false);
 
   ngOnInit() {
     
+  }
+
+  canActivate(): boolean {
+    return this.authService.isAuthenticated();
   }
 
   loginMetod(bandera){
@@ -41,12 +59,28 @@ export class LoginPage implements OnInit {
     this.loginMetod(false);
     this.auth.signInWithPopup(new auth.GoogleAuthProvider())
     .then((result) => {
+      this.authService.createcustomToken(result.user.uid)
+      .subscribe((tokencito)=>{
+        this.token=<any[]>tokencito['token'];
+        console.log(this.token);
+        this.storage.set(TOKEN_KEY, this.token);
+        this.user = this.helper.decodeToken(String(this.token));
+       
+        this.storage.set('bool', "true");
+        let navigationExtras:NavigationExtras={
+          queryParams:{
+            bool:"true"
+          }
+        }
+        this.router.navigate([''],navigationExtras);
+      })
       this.firestore.collection('users').doc(result.user.uid)
       .set({
         name:result.user.displayName,
         email:result.user.email,
         phoneNumber:result.user.phoneNumber
       })
+      console.log(result);
       console.log("Document successfully written!");
     }).catch(function(error) {
       console.error("Error writing document: ", error);
@@ -66,6 +100,9 @@ export class LoginPage implements OnInit {
   logout() {
 
     this.auth.signOut();
+    this.storage.remove(TOKEN_KEY).then(() => {
+      this.authenticationState.next(false);
+    });
   }
 
 }

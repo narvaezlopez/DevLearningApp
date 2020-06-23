@@ -3,6 +3,10 @@ import { ActionSheetController, AlertController, ToastController } from '@ionic/
 import { Users } from '../models/users';
 import { UsersService } from '../services/users.service';
 import { Storage } from '@ionic/storage';
+import { AngularFireStorage } from '@angular/fire/storage'
+import { Observable } from 'rxjs';
+import { finalize } from 'rxjs/operators';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-account',
@@ -12,13 +16,21 @@ import { Storage } from '@ionic/storage';
 export class AccountPage implements OnInit {
 
   constructor(private instancia:ActionSheetController, private alert:AlertController, 
-              private toast:ToastController, private userService:UsersService, private storage:Storage) {}
+              private toast:ToastController, private userService:UsersService, private localstorage:Storage,
+              private storage: AngularFireStorage, private firestore: AngularFirestore) {}
 
   users: any[] = [];
   currentUser : string = '' ;
 
+  uploadPercent:Observable<number>;
+  downloadURL: Observable<any>;
+  percent:number;
+  url:string;
+
+  uploadFiles: any[]=[];
+
   ngOnInit(){
-    this.storage.get('currentUser')
+    this.localstorage.get('currentUser')
     .then((data)=>{
       this.currentUser=data.name;
     }).catch((data)=>{
@@ -30,10 +42,17 @@ export class AccountPage implements OnInit {
       this.users = <any[]>users['users_dabase'];
       console.log(users);
     });
+
+    this.firestore.collection('uploads').valueChanges()
+    .subscribe((files)=>{
+
+      this.uploadFiles=files;
+      console.log(this.uploadFiles);
+    })
   }
 
    userSelected(user:any){
-    this.storage.set('currentUser',user);
+    this.localstorage.set('currentUser',user);
   /* const toast = await this.toast.create({
         duration:3000,
         header:'Se ha elegido a '+ user.title,
@@ -116,4 +135,37 @@ export class AccountPage implements OnInit {
     sheet.present();
   }
 
+ /* getFileFromStorage(path_gs){
+    const file_gs= this.storage.ref(path_gs);
+    file_gs.getDownloadURL().toPromise().then((response_file)=>{
+      return response_file;
+    }).catch((error)=>{
+      return error;
+    });
+  }*/
+
+  uploadFile(event) {
+    const file = event.target.files[0];
+    const now = new Date().getTime();
+    const filePath = 'archivos_cargados/' + now;
+    const ref= this.storage.ref(filePath);
+    const task =  ref.put(file);
+
+    /*this.uploadPercent= task.percentageChanges();*/
+
+    //un pipe es un modificador del valor que estoy representando
+    task.snapshotChanges().pipe(finalize(() => 
+      ref.getDownloadURL().subscribe((link)=>{
+        this.firestore.collection('uploads')
+        .doc(now.toString())
+        .set({file:link,created_at:new Date()});
+        this.url=link;
+      }) 
+    )).subscribe()
+    
+    task.percentageChanges().subscribe((percent)=>{
+      this.percent=percent;
+    })  
+
+  } 
 }
