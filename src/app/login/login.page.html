@@ -7,62 +7,74 @@
       </ion-label>
 
   </ion-header>
-  
-  <div id="main-title">
-    <ion-title id="login">LOGIN</ion-title>
-    <div>
-      <ion-img class="img_session" src="https://image.flaticon.com/icons/png/512/2922/2922518.png"></ion-img>
-    </div>
-  </div>
-  
-  <div id="center">
+  <ion-content id ="center">
     
-    <div *ngIf="auth.user | async as user; else showLogin">
-      <h1>Hello {{ user.displayName }}!</h1>
-      <button (click)="logout()">Logout</button>
-    </div>
-    <ng-template #showLogin>
-      <ion-label>Please Login! :D</ion-label>
-      <div id="Google-EP">
-        <ion-button (click)="loginGoogle()" color="warning">
-          <ion-avatar slot="start">
-            <img src="https://image.flaticon.com/icons/svg/2702/2702602.svg">
-          </ion-avatar>
-          Login with Google
-        </ion-button>
-        <ion-button (click)="loginMetod(true)" color="warning">
-          <ion-avatar slot="start">
-            <img src="https://image.flaticon.com/icons/svg/1693/1693470.svg">
-          </ion-avatar>
-          Login with Email
-        </ion-button>
+      <div id="main-title">
+        <ion-title id="login">LOGIN</ion-title>
+        <div>
+          <ion-img class="img_session" src="https://image.flaticon.com/icons/png/512/2922/2922518.png"></ion-img>
+        </div>
       </div>
       
-      <div *ngIf="EP==true; then thenBlock else elseBlock">
+      <div id="center">
         
-      </div>
-      <ng-template #thenBlock>
-        <form #formulario="ngForm" (ngSubmit)="onSubmit()">
-          <ion-list id="center">
-            <ion-item>
-              <ion-label position="floating">Email</ion-label>
-              &nbsp;
-              <ion-input [(ngModel)]="user.email" name="email" 
-              pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" type="email" required></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label position="floating">Password</ion-label>
-              &nbsp;
-              <ion-input [(ngModel)]="user.password" name="password" type="Password" required></ion-input>
-            </ion-item>
-          </ion-list>
-          <div id="login">
-            <ion-button color="warning" type="submit">LOGIN</ion-button>
+        <div *ngIf="auth.user | async as user; else showLogin">
+          <h1>Hello {{ user.displayName }}!</h1>
+          <button (click)="logout()">Logout</button>
+        </div>
+        <ng-template #showLogin>
+          <h4>Please Login! :D</h4>
+          <div id="Google-EP">
+            <ion-button (click)="loginGoogle()" color="warning">
+              <ion-avatar slot="start">
+                <img src="https://image.flaticon.com/icons/svg/2702/2702602.svg">
+              </ion-avatar>
+              Login with Google
+            </ion-button>
+            <ion-button (click)="loginMetod(true)" color="warning">
+              <ion-avatar slot="start">
+                <img src="https://image.flaticon.com/icons/svg/1693/1693470.svg">
+              </ion-avatar>
+              Login with Email
+            </ion-button>
           </div>
-        </form>
-      </ng-template>
-    </ng-template>
+          
+          <div *ngIf="EP==true; then thenBlock else elseBlock">
+            
+          </div>
+          <ng-template #thenBlock>
+            <form #formulario="ngForm" (ngSubmit)="onSubmit()">
+              <ion-list id="center">
+                <ion-item>
+                  <ion-label position="floating">Email</ion-label>
+                  &nbsp;
+                  <ion-input [(ngModel)]="user.email" name="email" 
+                  pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" type="email" required></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label position="floating">Password</ion-label>
+                  &nbsp;
+                  <ion-input [(ngModel)]="user.password" name="password" type="Password" required></ion-input>
+                </ion-item>
+              </ion-list>
+              <div id="login">
+                <ion-button color="warning" type="submit">LOGIN</ion-button>
+              </div>
+            </form>
+          </ng-template>
+        </ng-template>
+      </div>
+  </ion-content>
+  <div id ="footer">
+    <ion-label>
+      <h2>DEVLEARNING CO</h2>
+      <h4>Privacy Policy Legal Info Contact Us</h4>
+      <p>Copyright © 2020 DEVLEARNING Corporation</p>
+    </ion-label>
+    
   </div>
+  
+  
   
 
 

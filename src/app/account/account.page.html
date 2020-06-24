@@ -12,16 +12,20 @@
       </ion-label>
     </ion-item>
   </ion-toolbar>
-
 </ion-header>
 <ion-content>
-
+  <ion-progress-bar [value]="percent/100">
+  CARGANDO
+  </ion-progress-bar>
+  <div>
+    <img [src]="url" alt="imagen_cargada" width="300" height="150">
+  </div>
   <input type="file" (change)="uploadFile($event)">
   <h1>{{currentUser}}</h1>
   
   <div>{{percent}}</div>
   <!--<div>{{uploadPercent | async}}</div> <a [href]="downloadURL | async">{{ downloadURL | async }} <img [src]="downloadURL | async" alt="imagen_cargada"></a>-->
-  <img [src]="url" alt="imagen_cargada">
+  
 
   <ion-list>
     <ion-item *ngFor="let file of uploadFiles">
