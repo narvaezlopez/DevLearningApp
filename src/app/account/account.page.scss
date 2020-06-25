@@ -10,8 +10,36 @@ ion-item#main{
 }
 ion-content{
     --background: var(--ion-color-dark);
+    div#photo{
+        padding-top: 20px;
+        padding-bottom: 10px;
+        text-align: center;
+        img#foto{
+            width: 140px;
+            height: 140px;
+            border: 2px solid #f8b607;
+            border-color: #0261fd;
+            border-radius: 30%;
+            box-shadow: 0 0 10px #000000;
+        }
+        ion-item{
+            margin: auto;
+            width: 200px;
+            height: 40px;
+            ion-button {
+                --background: rgba(155, 13, 168, 0.808);
+            }
+            
+            ion-input{
+                position: absolute;
+                opacity: 0;
+            }
+        }
+        
+    }
+    ion-item{
+        --background: var(--ion-color-dark);
+        --color:var(--ion-color-light);
+    }
 }
-ion-item{
-    --background: var(--ion-color-dark);
-    --color:var(--ion-color-light);
-}
+

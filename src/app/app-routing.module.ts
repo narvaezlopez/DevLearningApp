@@ -29,7 +29,15 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./landing/landing.module').then( m => m.LandingPageModule)
+  },  {
+    path: 'team',
+    loadChildren: () => import('./team/team.module').then( m => m.TeamPageModule)
+  },
+  {
+    path: 'advances',
+    loadChildren: () => import('./advances/advances.module').then( m => m.AdvancesPageModule)
   }
+
 
 
 
