@@ -14,23 +14,45 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-
-  <ion-list id="challenges-list">
-    <ion-item *ngFor="let challenge of challenges "><!--| async  para observable-->
+  <ion-list>
+    <ion-item><!--| async  para observable-->
       <ion-avatar slot="start">
-        <img [src]="challenge.icon">
+        <img src="https://www.flaticon.com/premium-icon/icons/svg/2369/2369399.svg">
       </ion-avatar>
       <ion-label>
-        <h3>{{challenge.language}}</h3>
-        <h4>{{challenge.level}}</h4>
-        <h4>{{challenge.title}}</h4>
-        <p>{{challenge.content}}</p>
+        <h3>My Challenges</h3>
+        <p>Here you can find the challenges that you have been trying and sharing with the community!</p>
       </ion-label>
+      <ion-button>
+        Go to my Challenges!
+      </ion-button>
+    </ion-item>
+    <ion-item><!--| async  para observable-->
+      <ion-avatar slot="start">
+        <img src="https://image.flaticon.com/icons/svg/2646/2646775.svg">
+      </ion-avatar>
+      <ion-label>
+        <h3>Community Challenges</h3>
+        <p>Here you can find the challenges that people have shared!</p>
+      </ion-label>
+      <ion-button>
+        Go to Community Challenges!
+      </ion-button>
+    </ion-item>
+    <ion-item><!--| async  para observable-->
+      <ion-avatar slot="start">
+        <img src="https://image.flaticon.com/icons/svg/2737/2737737.svg">
+      </ion-avatar>
+      <ion-label>
+        <h3>Share a Challenge</h3>
+        <p>Here you can share a challenge with us! Fill the form, our team will verify your idea.</p>
+      </ion-label>
+      <ion-button>
+        Create a Challenge!
+      </ion-button>
     </ion-item>
   </ion-list>
-
   <div id ="Dev-content">
-
     <ion-list>
       <ion-item id="Console-Settings">
         <ion-button id="Color-Selector">
@@ -54,21 +76,15 @@
           </ion-select>
         </ion-button>
       </ion-item>
-
-        <ion-textarea rows="15" cols="20"  spellcheck="false" [(ngModel)]="inputCode" id ="{{color}}">
-        </ion-textarea>
-
+       <ion-textarea rows="15" cols="20"  spellcheck="false" [(ngModel)]="inputCode" id ="{{color}}">
+      </ion-textarea>
     </ion-list>
-
     <div id="button">
       <ion-button id="Compile-Button" (click)="compile()" color="warning">&nbsp;Compile
         <ion-icon slot="icon-only" name="star"></ion-icon>
       </ion-button>
     </div>
-
   </div>
-
-
 </ion-content>
 
 

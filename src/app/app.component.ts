@@ -72,7 +72,6 @@ export class AppComponent {
     this.route.queryParams
     .subscribe((params)=>{
       this.bool=params.bool;
-      console.log(params.bool);
       this.storage.set('bool', "true");
       this.splashScreen.hide();
 

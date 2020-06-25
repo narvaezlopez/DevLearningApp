@@ -32,7 +32,7 @@ export class MenuPage implements OnInit {
     },
     {
       title: 'Advances',
-      url: '/folder/Favorites',
+      url: '/menu/advances',
       icon: 'https://image.flaticon.com/icons/svg/2614/2614615.svg'
     },
     {
@@ -42,7 +42,7 @@ export class MenuPage implements OnInit {
     },
     {
       title: 'Team',
-      url: '/folder/Spam',
+      url: '/menu/team',
       icon: 'https://image.flaticon.com/icons/svg/2614/2614724.svg'
     }
   ];
