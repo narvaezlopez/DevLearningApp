@@ -1,9 +1,7 @@
 import {Injectable} from '@angular/core';
-import {Session} from '../models/session';
-import {Users} from '../models/users';
 import { Storage } from '@ionic/storage';
-
-const CURRENT_USER = 'currentUser';
+import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +9,7 @@ const CURRENT_USER = 'currentUser';
 export class StorageService {
   private localStorageService;
 
-  constructor( private storage: Storage
+  constructor( private storage: Storage, private router:Router,public auth:AngularFireAuth
   ) {
     this.localStorageService = localStorage;
     if (!this.isAuthenticated()) {
@@ -21,30 +19,17 @@ export class StorageService {
 
 
   isAuthenticated(): boolean {
-    console.log(this.storage);
+    console.log(this.storage.get('key'));
     //return (this.storage.get != null)
-    return (this.getCurrentToken() != null);
-  }
-
-  getCurrentToken(): string {
-    const session = this.getCurrentSession();
-    return (session && session.token) ? `${session.token}` : null;
-  }
-
-  getCurrentSession(): Session {
-    return this.loadSessionData();
-  }
-
-  loadSessionData(): Session {
-    const sessionStr = this.localStorageService.getItem(CURRENT_USER);
-    console.log(localStorage);
-    return (sessionStr) ? JSON.parse(sessionStr) as Session : null;
+    return (this.storage.get('key') != null);
   }
 
   logout(): void {
     // TODO: cerrar todos los dialogos
     // this._dialog.closeAll();
-    this.localStorageService.removeItem(CURRENT_USER);
+    this.auth.signOut();
+    this.storage.remove('key');
+    this.router.navigate(['/login']);
   }
 
 }

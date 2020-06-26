@@ -31,6 +31,10 @@ const routes: Routes = [
       {
         path: 'advances',
         loadChildren: () => import('../advances/advances.module').then( m => m.AdvancesPageModule)
+      },
+      {
+        path: 'singout',
+        loadChildren: () => import('../signup/signup.module').then( m => m.SignupPageModule)
       }
     ]
   },

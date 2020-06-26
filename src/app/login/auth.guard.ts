@@ -14,10 +14,8 @@ export class AuthGuard implements CanActivate {
   
     canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
       if (this.storageService.isAuthenticated()) {
-        console.log("trueeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
         return true;
       } else {
-        console.log("falseeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
         this.storageService.logout();
         this.router.navigate(['/login']);
         return false;
