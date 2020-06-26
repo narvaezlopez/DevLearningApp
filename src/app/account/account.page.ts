@@ -17,22 +17,31 @@ import { UploadsUserService } from '../services/uploads-user.service';
 })
 export class AccountPage implements OnInit {
 
-  constructor(private instancia:ActionSheetController, private alert:AlertController, 
-              private toast:ToastController, private userService:UsersService, private localstorage:Storage,
-              private storage: AngularFireStorage, private firestore: AngularFirestore, private uploadService:UploadsService,
-              private uploadsUserService:UploadsUserService) {}
+  constructor(private instancia:ActionSheetController, 
+              private alert:AlertController, 
+              private toast:ToastController, 
+              private localstorage:Storage,
+              private storage: AngularFireStorage, 
+              private firestore: AngularFirestore, 
+              private uploadService:UploadsService,
+              private uploadsUserService:UploadsUserService,
+              private userService:UsersService) {}
 
   users: any[] = [];
+
   user: any[]= [];
   uploads_user: any[]=[];
+  idparam:string;
+  url:string;
+  upload: any;
+
   currentUser : string = '' ;
+  
 
   uploadPercent:Observable<number>;
   downloadURL: Observable<any>;
   percent:number;
-  url:string;
 
-  upload: any[]=[];
 
   ngOnInit(){
     this.localstorage.get('currentUser')
@@ -51,13 +60,18 @@ export class AccountPage implements OnInit {
 
     this.uploadsUserService.getUploadsUserByIdUser('r5eHBQ2VvugPFfO9zbLAgWj7BQG3')
     .subscribe((info)=>{
-      this.uploads_user=<any[]>info['upload'];
+      console.log(info);
+      this.uploads_user=<any[]>info;
+      this.idparam=this.uploads_user[0].upload;
+      console.log(this.idparam);
+      this.uploadService.getUploadById(this.idparam)
+      .subscribe((info)=>{
+        this.upload=<any>info;
+        this.url=this.upload.photo;
+      });
     });
 
-    this.uploadService.getUploadById(this.uploads_user.toString())
-    .subscribe((info)=>{
-      this.upload=<any[]>info;
-    });
+
     
     /*this.userService.getUsers().subscribe((users) => {
       this.users = <any[]>users['users_dabase'];
@@ -168,9 +182,8 @@ export class AccountPage implements OnInit {
   uploadFile(event) {
     const file = event.target.files[0];
     //const now = new Date().getTime();
-    const now:string = this.user['id']+new Date().getTime();
-    console.log(now)
-    const filePath = 'archivos_cargados/' + now;
+    const now:string = this.user['id']+'profilephoto';
+    const filePath = 'profile_photos/' + now;
     const ref= this.storage.ref(filePath);
     const task =  ref.put(file);
 
@@ -191,8 +204,14 @@ export class AccountPage implements OnInit {
         .doc(now.toString())
         .set({photo:link,created_at:new Date()});
         this.url=link;
-        this.firestore.collection('uploads_user')
-        .add({upload:now.toString(),user:this.user['id']});
+        if(this.idparam){
+          this.firestore.collection('uploads_user').doc(this.idparam)
+          .update({upload:now.toString,user:this.user['id']});
+        }else{
+          this.firestore.collection('uploads_user')
+          .add({upload:now.toString(),user:this.user['id']});
+        }
+
       }) 
     )).subscribe()
     
