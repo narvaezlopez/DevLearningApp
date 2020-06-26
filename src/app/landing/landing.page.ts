@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { gsap, ScrollTrigger, Draggable, MotionPathPlugin } from "gsap/all";
-import inView from 'in-view';
+//import { gsap, ScrollTrigger, Draggable, MotionPathPlugin } from 'gsap/all';
+//import inView from 'in-view';
 import { Animation, AnimationController } from '@ionic/angular';
 
 @Component({

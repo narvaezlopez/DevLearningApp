@@ -51,8 +51,8 @@ export class LoginPage implements OnInit {
     .then((result) => {
       this.authService.createcustomToken(result.user.uid)
       .subscribe((tokencito)=>{
+        console.log("tokeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeen");
         this.token=<any[]>tokencito['token'];
-        console.log(this.token);
         this.storage.set(TOKEN_KEY, this.token);
         this.user = this.helper.decodeToken(String(this.token));
         this.storage.set('bool', "true");
