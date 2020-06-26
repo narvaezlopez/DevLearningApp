@@ -5,6 +5,10 @@ import { LoginPage } from '../login/login.page';
 import { NavController, NavParams } from '@ionic/angular';
 import { Router,ActivatedRoute, Params, NavigationExtras } from '@angular/router';
 import { Storage } from '@ionic/storage';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { UploadsService } from '../services/uploads.service';
+import { UploadsUserService } from '../services/uploads-user.service';
+import { UsersService } from '../services/users.service';
 
 @Component({
   selector: 'app-menu',
@@ -47,17 +51,47 @@ export class MenuPage implements OnInit {
     }
   ];
 
+  user: any[]= [];
+  uploads_user: any[]=[];
+  idparam:string;
+  url:string;
+  upload: any;
+
   constructor(
     private menu: MenuController,   
     private route:ActivatedRoute,
     private router:Router,
-    private storage: Storage) { 
+    private storage: Storage,
+    private localstorage:Storage,
+    private firestore: AngularFirestore, 
+    private uploadService:UploadsService,
+    private uploadsUserService:UploadsUserService,
+    private userService:UsersService
+    ) { 
     
   }
 
 
   ngOnInit() {
   
+    this.userService.getUserById('r5eHBQ2VvugPFfO9zbLAgWj7BQG3')
+    .subscribe((user)=>{
+      this.user=<any[]>user['user_database'];
+
+    });
+
+    this.uploadsUserService.getUploadsUserByIdUser('r5eHBQ2VvugPFfO9zbLAgWj7BQG3')
+    .subscribe((info)=>{
+      console.log(info);
+      this.uploads_user=<any[]>info;
+      this.idparam=this.uploads_user[0].upload;
+      console.log(this.idparam);
+      this.uploadService.getUploadById(this.idparam)
+      .subscribe((info)=>{
+        this.upload=<any>info;
+        this.url=this.upload.photo;
+      });
+    });
   }
 
 }

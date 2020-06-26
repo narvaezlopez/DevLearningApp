@@ -33,14 +33,14 @@
     </ng-template>
   </ng-template>
   
-  <div *ngIf="upload.photo;then Foto else default"></div>
+  <div *ngIf="url;then Foto else default"></div>
   <ng-template #default>
     <div id="photo">
       <img src="https://image.flaticon.com/icons/svg/3094/3094215.svg" id ="foto" alt="foto_cargada">
 
       <ion-item>
         <ion-button color="primary" (click)="inputFile.change()">
-          <ion-icon name="camera"></ion-icon> Upload a photo!
+          <ion-icon name="camera"></ion-icon> Upload your profile photo!
         </ion-button>
         <ion-input #inputFile type="file" (change)="uploadFile($event)"></ion-input>
       </ion-item>
@@ -49,7 +49,12 @@
   <ng-template #Foto>
     <div id="photo">
       <img [src]="url" alt="foto_cargada" id="foto">
-      
+      <ion-item>
+        <ion-button color="primary" (click)="inputFile.change()">
+          <ion-icon name="camera"></ion-icon> Change your profile photo!
+        </ion-button>
+        <ion-input #inputFile type="file" (change)="uploadFile($event)"></ion-input>
+      </ion-item>
     </div>
   </ng-template>
      
