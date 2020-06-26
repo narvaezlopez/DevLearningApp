@@ -7,6 +7,8 @@ import { AngularFireStorage } from '@angular/fire/storage'
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { UploadsService } from '../services/uploads.service';
+import { UploadsUserService } from '../services/uploads-user.service';
 
 @Component({
   selector: 'app-account',
@@ -15,19 +17,31 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class AccountPage implements OnInit {
 
-  constructor(private instancia:ActionSheetController, private alert:AlertController, 
-              private toast:ToastController, private userService:UsersService, private localstorage:Storage,
-              private storage: AngularFireStorage, private firestore: AngularFirestore) {}
+  constructor(private instancia:ActionSheetController, 
+              private alert:AlertController, 
+              private toast:ToastController, 
+              private localstorage:Storage,
+              private storage: AngularFireStorage, 
+              private firestore: AngularFirestore, 
+              private uploadService:UploadsService,
+              private uploadsUserService:UploadsUserService,
+              private userService:UsersService) {}
 
   users: any[] = [];
+
+  user: any[]= [];
+  uploads_user: any[]=[];
+  idparam:string;
+  url:string;
+  upload: any;
+
   currentUser : string = '' ;
+  
 
   uploadPercent:Observable<number>;
   downloadURL: Observable<any>;
   percent:number;
-  url:string;
 
-  uploadFiles: any[]=[];
 
   ngOnInit(){
     this.localstorage.get('currentUser')
@@ -38,17 +52,38 @@ export class AccountPage implements OnInit {
     });
   /*  this.users.push({title:'Obi Wan Kenobi',subtitle:'Yedi Master',description:'Anakin Advisor', avatar:'https://i.pinimg.com/originals/7b/99/e5/7b99e5e44c3ce7bfb79c8d9094ee63d8.jpg'});
     this.users.push({title:'Darth Vader',subtitle:'Sid Master',description:'Anakin Skywalker', avatar:'https://www.denofgeek.com/wp-content/uploads/2017/03/darth-vader-1_0.jpg'});*/
-    this.userService.getUsers().subscribe((users) => {
-      this.users = <any[]>users['users_dabase'];
-      console.log(users);
+    this.userService.getUserById('r5eHBQ2VvugPFfO9zbLAgWj7BQG3')
+    .subscribe((user)=>{
+      this.user=<any[]>user['user_database'];
+
     });
 
-    this.firestore.collection('uploads').valueChanges()
+    this.uploadsUserService.getUploadsUserByIdUser('r5eHBQ2VvugPFfO9zbLAgWj7BQG3')
+    .subscribe((info)=>{
+      console.log(info);
+      this.uploads_user=<any[]>info;
+      this.idparam=this.uploads_user[0].upload;
+      console.log(this.idparam);
+      this.uploadService.getUploadById(this.idparam)
+      .subscribe((info)=>{
+        this.upload=<any>info;
+        this.url=this.upload.photo;
+      });
+    });
+
+
+    
+    /*this.userService.getUsers().subscribe((users) => {
+      this.users = <any[]>users['users_dabase'];
+      console.log(users);
+    });*/
+
+    /*this.firestore.collection('uploads').valueChanges()
     .subscribe((files)=>{
 
       this.uploadFiles=files;
       console.log(this.uploadFiles);
-    })
+    })*/
   }
 
    userSelected(user:any){
@@ -146,26 +181,40 @@ export class AccountPage implements OnInit {
 
   uploadFile(event) {
     const file = event.target.files[0];
-    const now = new Date().getTime();
-    const filePath = 'archivos_cargados/' + now;
+    //const now = new Date().getTime();
+    const now:string = this.user['id']+'profilephoto';
+    const filePath = 'profile_photos/' + now;
     const ref= this.storage.ref(filePath);
     const task =  ref.put(file);
 
-    /*this.uploadPercent= task.percentageChanges();*/
+
+    /*2 formas:
+
+    1- this.uploadPercent= task.percentageChanges();
+    2- */
+    task.percentageChanges().subscribe((percent)=>{
+      this.percent=percent;
+    })  
+
 
     //un pipe es un modificador del valor que estoy representando
     task.snapshotChanges().pipe(finalize(() => 
       ref.getDownloadURL().subscribe((link)=>{
         this.firestore.collection('uploads')
         .doc(now.toString())
-        .set({file:link,created_at:new Date()});
+        .set({photo:link,created_at:new Date()});
         this.url=link;
+        if(this.idparam){
+          this.firestore.collection('uploads_user').doc(this.idparam)
+          .update({upload:now.toString,user:this.user['id']});
+        }else{
+          this.firestore.collection('uploads_user')
+          .add({upload:now.toString(),user:this.user['id']});
+        }
+
       }) 
     )).subscribe()
     
-    task.percentageChanges().subscribe((percent)=>{
-      this.percent=percent;
-    })  
 
   } 
 }

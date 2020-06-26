@@ -49,10 +49,16 @@ export class LoginPage implements OnInit {
     this.loginMetod(false);
     this.auth.signInWithPopup(new auth.GoogleAuthProvider())
     .then((result) => {
+      console.log(result);
       this.authService.createcustomToken(result.user.uid)
       .subscribe((tokencito)=>{
         console.log("tokeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeen");
         this.token=<any[]>tokencito['token'];
+<<<<<<< HEAD
+=======
+        console.log(this.token);
+        console.log(tokencito);
+>>>>>>> 4945687b55bf9dc3b3f0c25d78bd2f35f0bbbc0d
         this.storage.set(TOKEN_KEY, this.token);
         this.user = this.helper.decodeToken(String(this.token));
         this.storage.set('bool', "true");

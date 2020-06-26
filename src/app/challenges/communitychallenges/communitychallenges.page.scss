@@ -1,0 +1,20 @@
+ion-header{
+    ion-item#main{
+        --background:var(--ion-color-warning);
+        ion-avatar{
+            --border-radius: 0%;
+        }
+        ion-label#main-title{
+            color:#0b7375;
+            font-family: 'Russo One', sans-serif;
+            font-size: 20px;
+        }
+    }
+}
+ion-content{
+    --background: var(--ion-color-dark);
+    ion-avatar{
+        --border-radius: 0%;
+    }
+ 
+}

@@ -23,6 +23,14 @@ const routes: Routes = [
       {
         path: 'badges',
         loadChildren: () => import('../badges/badges.module').then( m => m.BadgesPageModule)
+      },
+      {
+        path: 'team',
+        loadChildren: () => import('../team/team.module').then( m => m.TeamPageModule)
+      },
+      {
+        path: 'advances',
+        loadChildren: () => import('../advances/advances.module').then( m => m.AdvancesPageModule)
       }
     ]
   },
