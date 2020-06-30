@@ -8,12 +8,19 @@ import { BadgesPageRoutingModule } from './badges-routing.module';
 
 import { BadgesPage } from './badges.page';
 
+import { AngularFireModule} from '@angular/fire'
+import { AngularFirestoreModule} from '@angular/fire/firestore'
+import { environment } from '../../environments/environment';
+
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    BadgesPageRoutingModule
+    BadgesPageRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
   ],
   declarations: [BadgesPage]
 })

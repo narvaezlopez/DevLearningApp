@@ -3,12 +3,15 @@ import { MenuController } from '@ionic/angular';
 import { LoginPage } from '../login/login.page';
 
 import { NavController, NavParams } from '@ionic/angular';
-import { Router,ActivatedRoute, Params, NavigationExtras } from '@angular/router';
+import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/router';
 import { Storage } from '@ionic/storage';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { UploadsService } from '../services/uploads.service';
 import { UploadsUserService } from '../services/uploads-user.service';
 import { UsersService } from '../services/users.service';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { BehaviorSubject } from 'rxjs';
+import { StorageService } from '../services/storage.service';
 
 @Component({
   selector: 'app-menu',
@@ -16,7 +19,8 @@ import { UsersService } from '../services/users.service';
   styleUrls: ['./menu.page.scss'],
 })
 export class MenuPage implements OnInit {
-  rootPage=LoginPage;
+
+  rootPage = LoginPage;
   public selectedIndex = 0;
   public appPages = [
     {
@@ -49,49 +53,62 @@ export class MenuPage implements OnInit {
       url: '/menu/team',
       icon: 'https://image.flaticon.com/icons/svg/2614/2614724.svg'
     }
+
   ];
 
-  user: any[]= [];
-  uploads_user: any[]=[];
-  idparam:string;
-  url:string;
+  user: any[] = [];
+  uploads_user: any[] = [];
+  idparam: string;
+  url: string;
   upload: any;
 
   constructor(
-    private menu: MenuController,   
-    private route:ActivatedRoute,
-    private router:Router,
+    private menu: MenuController,
+    private route: ActivatedRoute,
+    private router: Router,
     private storage: Storage,
-    private localstorage:Storage,
-    private firestore: AngularFirestore, 
-    private uploadService:UploadsService,
-    private uploadsUserService:UploadsUserService,
-    private userService:UsersService
-    ) { 
-    
+    private localstorage: Storage,
+    private firestore: AngularFirestore,
+    private uploadService: UploadsService,
+    private uploadsUserService: UploadsUserService,
+    private userService: UsersService,
+    public auth: AngularFireAuth,
+    private storageService: StorageService
+  ) {
+
   }
 
 
   ngOnInit() {
-  
-    this.userService.getUserById('r5eHBQ2VvugPFfO9zbLAgWj7BQG3')
-    .subscribe((user)=>{
-      this.user=<any[]>user['user_database'];
 
+    this.storage.get('idUser').then((res) => {
+      this.userService.getUserById(res)
+        .subscribe((user) => {
+          this.user = <any[]>user['user_database'];
+        });
+
+      this.uploadsUserService.getUploadsUserByIdUser(res)
+        .subscribe((info) => {
+          console.log(info);
+          this.uploads_user = <any[]>info;
+          this.idparam = this.uploads_user[0].upload;
+          console.log(this.idparam);
+          this.uploadService.getUploadById(this.idparam)
+            .subscribe((info) => {
+              this.upload = <any>info;
+              console.log("fotooooooooooooooooooooooooooo");
+              console.log(this.upload.photo);
+              this.url = this.upload.photo;
+            });
+        });
     });
 
-    this.uploadsUserService.getUploadsUserByIdUser('r5eHBQ2VvugPFfO9zbLAgWj7BQG3')
-    .subscribe((info)=>{
-      console.log(info);
-      this.uploads_user=<any[]>info;
-      this.idparam=this.uploads_user[0].upload;
-      console.log(this.idparam);
-      this.uploadService.getUploadById(this.idparam)
-      .subscribe((info)=>{
-        this.upload=<any>info;
-        this.url=this.upload.photo;
-      });
-    });
+
+
+  }
+
+  logout() {
+    this.storageService.logout();
   }
 
 }

@@ -17,62 +17,68 @@ import { UploadsUserService } from '../services/uploads-user.service';
 })
 export class AccountPage implements OnInit {
 
-  constructor(private instancia:ActionSheetController, 
-              private alert:AlertController, 
-              private toast:ToastController, 
-              private localstorage:Storage,
-              private storage: AngularFireStorage, 
-              private firestore: AngularFirestore, 
-              private uploadService:UploadsService,
-              private uploadsUserService:UploadsUserService,
-              private userService:UsersService) {}
+  constructor(private instancia: ActionSheetController,
+    private alert: AlertController,
+    private toast: ToastController,
+    private localstorage: Storage,
+    private storage: AngularFireStorage,
+    private firestore: AngularFirestore,
+    private uploadService: UploadsService,
+    private uploadsUserService: UploadsUserService,
+    private userService: UsersService) { }
 
   users: any[] = [];
 
-  user: any[]= [];
-  uploads_user: any[]=[];
-  idparam:string;
-  url:string;
+  user: any[] = [];
+  uploads_user: any[] = [];
+  idparam: string;
+  url: string;
   upload: any;
 
-  currentUser : string = '' ;
-  
+  currentUser: string = '';
 
-  uploadPercent:Observable<number>;
+
+  uploadPercent: Observable<number>;
   downloadURL: Observable<any>;
-  percent:number;
+  percent: number;
 
 
-  ngOnInit(){
+  ngOnInit() {
+    this.localstorage.get('idUser').then((res) => {
+      this.userService.getUserById(res)
+        .subscribe((user) => {
+          this.user = <any[]>user['user_database'];
+
+        });
+
+      this.uploadsUserService.getUploadsUserByIdUser(res)
+        .subscribe((info) => {
+          console.log(info);
+          this.uploads_user = <any[]>info;
+          this.idparam = this.uploads_user[0].upload;
+          console.log(this.idparam);
+          this.uploadService.getUploadById(this.idparam)
+            .subscribe((info) => {
+              this.upload = <any>info;
+              this.url = this.upload.photo;
+            });
+        });
+    });
+
+
+
     this.localstorage.get('currentUser')
-    .then((data)=>{
-      this.currentUser=data.name;
-    }).catch((data)=>{
-      this.currentUser="No se pudo encontrar el usuario";
-    });
-  /*  this.users.push({title:'Obi Wan Kenobi',subtitle:'Yedi Master',description:'Anakin Advisor', avatar:'https://i.pinimg.com/originals/7b/99/e5/7b99e5e44c3ce7bfb79c8d9094ee63d8.jpg'});
-    this.users.push({title:'Darth Vader',subtitle:'Sid Master',description:'Anakin Skywalker', avatar:'https://www.denofgeek.com/wp-content/uploads/2017/03/darth-vader-1_0.jpg'});*/
-    this.userService.getUserById('r5eHBQ2VvugPFfO9zbLAgWj7BQG3')
-    .subscribe((user)=>{
-      this.user=<any[]>user['user_database'];
-
-    });
-
-    this.uploadsUserService.getUploadsUserByIdUser('r5eHBQ2VvugPFfO9zbLAgWj7BQG3')
-    .subscribe((info)=>{
-      console.log(info);
-      this.uploads_user=<any[]>info;
-      this.idparam=this.uploads_user[0].upload;
-      console.log(this.idparam);
-      this.uploadService.getUploadById(this.idparam)
-      .subscribe((info)=>{
-        this.upload=<any>info;
-        this.url=this.upload.photo;
+      .then((data) => {
+        this.currentUser = data.name;
+      }).catch((data) => {
+        this.currentUser = "No se pudo encontrar el usuario";
       });
-    });
+    /*  this.users.push({title:'Obi Wan Kenobi',subtitle:'Yedi Master',description:'Anakin Advisor', avatar:'https://i.pinimg.com/originals/7b/99/e5/7b99e5e44c3ce7bfb79c8d9094ee63d8.jpg'});
+      this.users.push({title:'Darth Vader',subtitle:'Sid Master',description:'Anakin Skywalker', avatar:'https://www.denofgeek.com/wp-content/uploads/2017/03/darth-vader-1_0.jpg'});*/
 
 
-    
+
+
     /*this.userService.getUsers().subscribe((users) => {
       this.users = <any[]>users['users_dabase'];
       console.log(users);
@@ -86,39 +92,39 @@ export class AccountPage implements OnInit {
     })*/
   }
 
-   userSelected(user:any){
-    this.localstorage.set('currentUser',user);
-  /* const toast = await this.toast.create({
-        duration:3000,
-        header:'Se ha elegido a '+ user.title,
-        position:'bottom',
-        message: user.description,
-        buttons:[{
-          handler:()=>{
-            console.log('Se ha eliminado el usuario ' + user.title);
-            this.users.pop();
-          },
-        text:'Eliminar',
-        icon:'trash',
-        }],
-    });
-    toast.present();*/
+  userSelected(user: any) {
+    this.localstorage.set('currentUser', user);
+    /* const toast = await this.toast.create({
+          duration:3000,
+          header:'Se ha elegido a '+ user.title,
+          position:'bottom',
+          message: user.description,
+          buttons:[{
+            handler:()=>{
+              console.log('Se ha eliminado el usuario ' + user.title);
+              this.users.pop();
+            },
+          text:'Eliminar',
+          icon:'trash',
+          }],
+      });
+      toast.present();*/
   }
 
-  async confirmarBorrado(){
+  async confirmarBorrado() {
     const alerta = await this.alert.create({
-      header:'Seguro desea elminar este elemento?',
-      message:'Esta acción no se podrá deshacer.',
-      buttons:[
+      header: 'Seguro desea elminar este elemento?',
+      message: 'Esta acción no se podrá deshacer.',
+      buttons: [
         {
-          text:'confirmar',
-          handler:()=>{
+          text: 'confirmar',
+          handler: () => {
             console.log('se confirmó la acción');
           }
         },
         {
-          text:'cancelar',
-          handler:()=>{
+          text: 'cancelar',
+          handler: () => {
             console.log('se canceló la acción');
           }
         }
@@ -129,7 +135,7 @@ export class AccountPage implements OnInit {
 
   async mostrarHoja() {
     const sheet = await this.instancia.create({
-      buttons:[
+      buttons: [
         {
           text: 'Delete',
           role: 'destructive',
@@ -163,58 +169,58 @@ export class AccountPage implements OnInit {
           handler: () => {
             console.log('Cancel clicked');
           }
-        }  
+        }
       ],
-      header:'Ejemplo'
+      header: 'Ejemplo'
     });
     sheet.present();
   }
 
- /* getFileFromStorage(path_gs){
-    const file_gs= this.storage.ref(path_gs);
-    file_gs.getDownloadURL().toPromise().then((response_file)=>{
-      return response_file;
-    }).catch((error)=>{
-      return error;
-    });
-  }*/
+  /* getFileFromStorage(path_gs){
+     const file_gs= this.storage.ref(path_gs);
+     file_gs.getDownloadURL().toPromise().then((response_file)=>{
+       return response_file;
+     }).catch((error)=>{
+       return error;
+     });
+   }*/
 
   uploadFile(event) {
     const file = event.target.files[0];
     //const now = new Date().getTime();
-    const now:string = this.user['id']+'profilephoto';
+    const now: string = this.user['id'] + 'profilephoto';
     const filePath = 'profile_photos/' + now;
-    const ref= this.storage.ref(filePath);
-    const task =  ref.put(file);
+    const ref = this.storage.ref(filePath);
+    const task = ref.put(file);
 
 
     /*2 formas:
 
     1- this.uploadPercent= task.percentageChanges();
     2- */
-    task.percentageChanges().subscribe((percent)=>{
-      this.percent=percent;
-    })  
+    task.percentageChanges().subscribe((percent) => {
+      this.percent = percent;
+    })
 
 
     //un pipe es un modificador del valor que estoy representando
-    task.snapshotChanges().pipe(finalize(() => 
-      ref.getDownloadURL().subscribe((link)=>{
+    task.snapshotChanges().pipe(finalize(() =>
+      ref.getDownloadURL().subscribe((link) => {
         this.firestore.collection('uploads')
-        .doc(now.toString())
-        .set({photo:link,created_at:new Date()});
-        this.url=link;
-        if(this.idparam){
+          .doc(now.toString())
+          .set({ photo: link, created_at: new Date() });
+        this.url = link;
+        if (this.idparam) {
           this.firestore.collection('uploads_user').doc(this.idparam)
-          .update({upload:now.toString,user:this.user['id']});
-        }else{
+            .update({ upload: now.toString, user: this.user['id'] });
+        } else {
           this.firestore.collection('uploads_user')
-          .add({upload:now.toString(),user:this.user['id']});
+            .add({ upload: now.toString(), user: this.user['id'] });
         }
 
-      }) 
+      })
     )).subscribe()
-    
 
-  } 
+
+  }
 }

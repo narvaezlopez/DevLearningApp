@@ -53,12 +53,14 @@ export class LoginPage implements OnInit {
       this.authService.createcustomToken(result.user.uid)
       .subscribe((tokencito)=>{
         this.token=<any[]>tokencito['token'];
-        console.log(this.token);
-        console.log(tokencito);
+        this.storage.set('idUser', result.user.uid);
+        console.log('tokeeeeeeeeeeeeeen');
+        //console.log(result.user.uid);
+        //console.log(result.user.uid[0]);
         this.storage.set(TOKEN_KEY, this.token);
         this.user = this.helper.decodeToken(String(this.token));
         this.storage.set('bool', "true");
-        this.router.navigate(['menu']);
+        this.router.navigate(['/menu/account']);
       })
       this.firestore.collection('users').doc(result.user.uid)
       .set({

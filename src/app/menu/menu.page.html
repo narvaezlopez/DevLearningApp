@@ -25,6 +25,7 @@
                   <ion-label id="name">
                     <h4>DEVELOPER:</h4>
                     <h3>{{user.name}}</h3>
+                    <button (click)="logout()">Cerrar Sesion</button>
                   </ion-label>
                 </ion-item>
               <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
