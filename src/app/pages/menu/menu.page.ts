@@ -6,12 +6,12 @@ import { NavController, NavParams } from '@ionic/angular';
 import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/router';
 import { Storage } from '@ionic/storage';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { UploadsService } from '../services/uploads.service';
-import { UploadsUserService } from '../services/uploads-user.service';
-import { UsersService } from '../services/users.service';
+import { UploadsService } from '../../services/uploads.service';
+import { UploadsUserService } from '../../services/uploads-user.service';
+import { UsersService } from '../../services/users.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { BehaviorSubject } from 'rxjs';
-import { StorageService } from '../services/storage.service';
+import { StorageService } from '../../services/storage.service';
 
 @Component({
   selector: 'app-menu',
@@ -63,12 +63,7 @@ export class MenuPage implements OnInit {
   upload: any;
 
   constructor(
-    private menu: MenuController,
-    private route: ActivatedRoute,
-    private router: Router,
     private storage: Storage,
-    private localstorage: Storage,
-    private firestore: AngularFirestore,
     private uploadService: UploadsService,
     private uploadsUserService: UploadsUserService,
     private userService: UsersService,
@@ -89,21 +84,15 @@ export class MenuPage implements OnInit {
 
       this.uploadsUserService.getUploadsUserByIdUser(res)
         .subscribe((info) => {
-          console.log(info);
           this.uploads_user = <any[]>info;
           this.idparam = this.uploads_user[0].upload;
-          console.log(this.idparam);
           this.uploadService.getUploadById(this.idparam)
             .subscribe((info) => {
               this.upload = <any>info;
-              console.log("fotooooooooooooooooooooooooooo");
-              console.log(this.upload.photo);
               this.url = this.upload.photo;
             });
         });
     });
-
-
 
   }
 

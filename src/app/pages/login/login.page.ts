@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 
@@ -49,18 +49,15 @@ export class LoginPage implements OnInit {
     this.loginMetod(false);
     this.auth.signInWithPopup(new auth.GoogleAuthProvider())
     .then((result) => {
-      console.log(result);
       this.authService.createcustomToken(result.user.uid)
       .subscribe((tokencito)=>{
         this.token=<any[]>tokencito['token'];
         this.storage.set('idUser', result.user.uid);
-        console.log('tokeeeeeeeeeeeeeen');
-        //console.log(result.user.uid);
-        //console.log(result.user.uid[0]);
+        console.log('token!');
         this.storage.set(TOKEN_KEY, this.token);
         this.user = this.helper.decodeToken(String(this.token));
-        this.storage.set('bool', "true");
-        this.router.navigate(['/menu/account']);
+        console.log(this.user);
+        this.router.navigate(['/menu']);
       })
       this.firestore.collection('users').doc(result.user.uid)
       .set({
@@ -86,8 +83,10 @@ export class LoginPage implements OnInit {
   }
 
   logout() {
-
     this.auth.signOut();
+    this.storage.remove('access_token');
+    this.storage.remove('idUser')
+    this.router.navigate(['/login']);
     this.storage.remove(TOKEN_KEY).then(() => {
       this.authenticationState.next(false);
     });

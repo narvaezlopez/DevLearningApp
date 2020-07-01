@@ -10,7 +10,7 @@ import { BadgesPage } from './badges.page';
 
 import { AngularFireModule} from '@angular/fire'
 import { AngularFirestoreModule} from '@angular/fire/firestore'
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 
 
 @NgModule({

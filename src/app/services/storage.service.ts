@@ -7,28 +7,16 @@ import { AngularFireAuth } from '@angular/fire/auth';
   providedIn: 'root'
 })
 export class StorageService {
-  private localStorageService;
 
   constructor( private storage: Storage, private router:Router,public auth:AngularFireAuth
-  ) {
-    this.localStorageService = localStorage;
-    if (!this.isAuthenticated()) {
-      this.logout();
-    }
-  }
-
-
-  isAuthenticated(): boolean {
-    console.log(this.storage.get('key'));
-    //return (this.storage.get != null)
-    return (this.storage.get('key') != null);
-  }
+  ){}
 
   logout(): void {
     // TODO: cerrar todos los dialogos
     // this._dialog.closeAll();
     this.auth.signOut();
-    this.storage.remove('key');
+    this.storage.remove('access_token');
+    this.storage.remove('idUser')
     this.router.navigate(['/login']);
   }
 

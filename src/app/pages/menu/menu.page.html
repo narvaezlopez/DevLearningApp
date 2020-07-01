@@ -25,7 +25,6 @@
                   <ion-label id="name">
                     <h4>DEVELOPER:</h4>
                     <h3>{{user.name}}</h3>
-                    <button (click)="logout()">Cerrar Sesion</button>
                   </ion-label>
                 </ion-item>
               <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
@@ -37,12 +36,10 @@
                 </ion-item>
               </ion-menu-toggle>
             </ion-list>
-            <div id ="footer">
-              <ion-label>
-                <h2>DEVLEARNING CO</h2>
-                <h4>Privacy Policy Legal Info Contact Us</h4>
-                <p>Copyright © 2020 DEVLEARNING Corporation</p>
-              </ion-label>
+            <div id="button">
+              <ion-button id="Compile-Button" (click)="logout()" color="warning">&nbsp;Logout
+                <ion-icon name="log-out" slot="start"></ion-icon>
+              </ion-button>
             </div>
           </ion-content>
         </ion-menu>

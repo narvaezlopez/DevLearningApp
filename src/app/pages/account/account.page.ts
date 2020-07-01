@@ -1,14 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+
 import { ActionSheetController, AlertController, ToastController } from '@ionic/angular';
-import { Users } from '../models/users';
-import { UsersService } from '../services/users.service';
 import { Storage } from '@ionic/storage';
 import { AngularFireStorage } from '@angular/fire/storage'
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { UploadsService } from '../services/uploads.service';
-import { UploadsUserService } from '../services/uploads-user.service';
+
+//Services
+import { UploadsService } from '../../services/uploads.service';
+import { UploadsUserService } from '../../services/uploads-user.service';
+import { UsersService } from '../../services/users.service';
+
+//interfaces
+import { Users } from '../../models/users';
 
 @Component({
   selector: 'app-account',
@@ -27,28 +32,26 @@ export class AccountPage implements OnInit {
     private uploadsUserService: UploadsUserService,
     private userService: UsersService) { }
 
-  users: any[] = [];
 
-  user: any[] = [];
-  uploads_user: any[] = [];
-  idparam: string;
-  url: string;
-  upload: any;
+    //session variables
+    user: any[] = [];
+    uploads_user: any[] = [];
+    idparam: string;
+    url: string;
+    upload: any;
+    percent: number;
 
-  currentUser: string = '';
-
-
-  uploadPercent: Observable<number>;
+  //testing variables
   downloadURL: Observable<any>;
-  percent: number;
-
+  uploadPercent: Observable<number>;
+  currentUser: string = '';
+  users: any[] = [];
 
   ngOnInit() {
     this.localstorage.get('idUser').then((res) => {
       this.userService.getUserById(res)
         .subscribe((user) => {
           this.user = <any[]>user['user_database'];
-
         });
 
       this.uploadsUserService.getUploadsUserByIdUser(res)
@@ -65,31 +68,26 @@ export class AccountPage implements OnInit {
         });
     });
 
-
-
     this.localstorage.get('currentUser')
       .then((data) => {
         this.currentUser = data.name;
       }).catch((data) => {
         this.currentUser = "No se pudo encontrar el usuario";
-      });
-    /*  this.users.push({title:'Obi Wan Kenobi',subtitle:'Yedi Master',description:'Anakin Advisor', avatar:'https://i.pinimg.com/originals/7b/99/e5/7b99e5e44c3ce7bfb79c8d9094ee63d8.jpg'});
-      this.users.push({title:'Darth Vader',subtitle:'Sid Master',description:'Anakin Skywalker', avatar:'https://www.denofgeek.com/wp-content/uploads/2017/03/darth-vader-1_0.jpg'});*/
+    });
+        /*  this.users.push({title:'Obi Wan Kenobi',subtitle:'Yedi Master',description:'Anakin Advisor', avatar:'https://i.pinimg.com/originals/7b/99/e5/7b99e5e44c3ce7bfb79c8d9094ee63d8.jpg'});
+          this.users.push({title:'Darth Vader',subtitle:'Sid Master',description:'Anakin Skywalker', avatar:'https://www.denofgeek.com/wp-content/uploads/2017/03/darth-vader-1_0.jpg'});*/
 
+        /*this.userService.getUsers().subscribe((users) => {
+          this.users = <any[]>users['users_dabase'];
+          console.log(users);
+        });*/
 
+        /*this.firestore.collection('uploads').valueChanges()
+        .subscribe((files)=>{
 
-
-    /*this.userService.getUsers().subscribe((users) => {
-      this.users = <any[]>users['users_dabase'];
-      console.log(users);
-    });*/
-
-    /*this.firestore.collection('uploads').valueChanges()
-    .subscribe((files)=>{
-
-      this.uploadFiles=files;
-      console.log(this.uploadFiles);
-    })*/
+          this.uploadFiles=files;
+          console.log(this.uploadFiles);
+        })*/
   }
 
   userSelected(user: any) {
@@ -192,17 +190,12 @@ export class AccountPage implements OnInit {
     const filePath = 'profile_photos/' + now;
     const ref = this.storage.ref(filePath);
     const task = ref.put(file);
-
-
     /*2 formas:
-
     1- this.uploadPercent= task.percentageChanges();
     2- */
     task.percentageChanges().subscribe((percent) => {
       this.percent = percent;
     })
-
-
     //un pipe es un modificador del valor que estoy representando
     task.snapshotChanges().pipe(finalize(() =>
       ref.getDownloadURL().subscribe((link) => {

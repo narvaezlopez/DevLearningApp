@@ -20,7 +20,7 @@ ion-header{
 
 
 ion-content#center{
-    --background: #fff url('../../../resources/login.jpg') no-repeat center center / cover;
+    --background: #fff url('../../../../resources/login.jpg') no-repeat center center / cover;
         div#main-title{
             color:#0261fd;
             font-family: 'Russo One', sans-serif;
@@ -45,12 +45,22 @@ ion-content#center{
         }
         div#center{
             text-align: center;
-            h4{
-                color: #fff;
-            }
             ion-label{
                 color: rgba(155, 13, 168, 0.808);
                 font-family: 'Russo One', sans-serif;
+            }
+            ion-item{
+                padding-top: 30px;
+                margin: auto;
+                width: 300px;
+                text-align: center;
+                ion-label#welcome{
+                    color: black;
+                    font-family: 'Russo One', sans-serif;
+                }
+                ion-button{
+                    font-family: 'Russo One', sans-serif;
+                }
             }
             div#Google-EP{
                 padding-top: 20px;

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ConsoleService } from '../services/console.service';
-import { Output } from '../models/output';
+import { ConsoleService } from '../../services/console.service';
+import { Output } from '../../models/output';
 import { ToastController, AlertController } from '@ionic/angular';
 
 import { AngularFirestore } from '@angular/fire/firestore';

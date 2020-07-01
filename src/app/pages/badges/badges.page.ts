@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BadgeUserService } from '../services/badge-user.service';
-import { BadgesService } from '../services/badges.service';
+import { BadgeUserService } from '../../services/badge-user.service';
+import { BadgesService } from '../../services/badges.service';
 
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
