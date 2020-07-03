@@ -15,4 +15,14 @@
 </ion-header>
 <ion-content>
 
+  <ion-list>
+    <ion-item *ngFor="let advance of advances "><!--| async  para observable-->
+      <ion-label>
+        <h3>{{advance.title}}</h3>
+        <h4>{{advance.desc}}</h4>
+      </ion-label>
+
+    </ion-item>
+  </ion-list>
+
 </ion-content>

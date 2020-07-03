@@ -11,12 +11,12 @@ const routes: Routes = [
     loadChildren: () => import('../app/pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path:'challenges',
-    loadChildren: () => import('../app/pages/challenges/challenges.module').then( m => m.ChallengesPageModule)
-  },
-  {
     path: '',
     loadChildren: () => import('../app/pages/landing/landing.module').then( m => m.LandingPageModule)
+  },
+  {
+    path: 'signup',
+    loadChildren: () => import('../app/pages/signup/signup.module').then( m => m.SignupPageModule)
   }
 ];
 
