@@ -43,7 +43,7 @@ export class AppComponent {
     },
     {
       title: 'Advances',
-      url: '/folder/Favorites',
+      url: '/advances',
       icon: 'https://image.flaticon.com/icons/svg/2614/2614615.svg'
     },
     {
