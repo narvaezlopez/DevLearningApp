@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+
+//new packages
 import { NavController, NavParams } from '@ionic/angular';
 import { Router,ActivatedRoute, Params, NavigationExtras } from '@angular/router';
 import { Storage } from '@ionic/storage';
@@ -65,17 +67,9 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private route:ActivatedRoute,
-    private router:Router,
     private storage: Storage
   ) {
     this.initializeApp();
-    this.route.queryParams
-    .subscribe((params)=>{
-      this.bool=params.bool;
-      this.storage.set('bool', "true");
-      this.splashScreen.hide();
-
-    });
   }
   
   initializeApp() {
@@ -86,8 +80,6 @@ export class AppComponent {
     });
   }
   ngOnInit() {
-    
-
     const path = window.location.pathname.split('/')[1];
     if (path !== undefined) {
       this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());

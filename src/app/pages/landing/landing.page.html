@@ -1,0 +1,55 @@
+<ion-header>
+  <div id ="buttons">
+    <ion-button (click)="Login()">LOGIN</ion-button>
+    <ion-button (click)="SignUp()">SIGN UP</ion-button>
+  </div>
+
+</ion-header>
+<ion-content id="devlearning">
+
+  <div id="container">
+    <div id="img1">
+        <img src="../../../assets/img/Logo-Code1.png" alt="Album1">
+    </div>
+    <div id="welcome"> 
+      <ion-text> Welcome to the new programming adventure!</ion-text>
+    </div>
+    <div id="description">
+      <ion-item id ="wel">
+        <ion-label>
+         <h1>Practice & learn the fun way</h1> 
+
+        </ion-label>
+      </ion-item>
+    </div>
+    <div id="languages">
+      <ion-item>
+        <ion-label>
+          <h1>We support these experiences!</h1> 
+         </ion-label>
+      </ion-item>
+      
+      <ion-item id="another">
+
+         <ion-slides [options]="sliderConfig" pager>
+          <ion-slide>
+            <img class="album1" src="https://lh3.googleusercontent.com/proxy/fNZ0vSlfU3HYbPpXyUiAA2PzcaWXOO9FvNXFmgOiX8bIoUhzw4FhE58ZJdyQB073J_WLTvy3-ph1qUqq8AlC7Z4hibXy-VM9Wu6XullMANkazfPz6BJqUIpc3E0JWY7t">
+          </ion-slide>
+          <ion-slide>
+            <img class="album2" src="https://logos-download.com/wp-content/uploads/2016/10/Java_logo.png">
+          </ion-slide>
+          <ion-slide>
+            <img class="album3" src="https://image.flaticon.com/icons/png/512/919/919830.png">
+          </ion-slide>
+          <ion-slide>
+            <img class="album4" src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Csharp_Logo.png" alt="Album4">
+          </ion-slide>
+        </ion-slides>
+      </ion-item>
+    </div>
+  </div>
+
+
+
+
+</ion-content>
