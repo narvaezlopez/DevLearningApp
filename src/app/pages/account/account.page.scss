@@ -1,12 +1,12 @@
 ion-label#main-title{
 
-    color:#0b7375;
+    color:#fbe47b;
     font-family: 'Russo One', sans-serif;
     font-size: 20px;
     
 }
 ion-item#main{
-    --background:var(--ion-color-warning);
+    --background:#77003c;
 }
 ion-content{
     --background: var(--ion-color-dark);
@@ -16,7 +16,7 @@ ion-content{
         text-align: center;
         img#foto{
             width: 140px;
-            height: 140px;
+            height: 120px;
             border: 2px solid #f8b607;
             border-color: #0261fd;
             border-radius: 30%;
@@ -24,7 +24,7 @@ ion-content{
         }
         ion-item{
             margin: auto;
-            width: 300px;
+            width: 65px;
             height: 40px;
             ion-button {
                 --background: rgba(155, 13, 168, 0.808);

@@ -2,12 +2,10 @@
 ion-header{
     padding-top: 5px;
     padding-bottom: 5px;
-    text-align: center;
     background: linear-gradient(to right, #77003c, var(--ion-color-dark));
     border-bottom: solid 2px;
     border-bottom-color: #fbe47b;
-    div#img1{
-        
+    div#img1{  
         margin: auto;
         text-align: center;
         width: 300px;
@@ -19,17 +17,20 @@ ion-header{
           margin: auto;
           padding:0px ;
         }
-      }
+    }
+
+    ion-button{
+        text-align: left;
+        --background: #fbe47b;
+        color: #77003c;
+    }
+      
     ion-img#logo{
         height: 70px;
         width: 70px;
         margin:auto;
     }
-    ion-label#title-app{
-        color:rgba(155, 13, 168, 0.808);
-        font-family: 'Russo One', sans-serif;
-        font-size: 35px;
-    }
+
 }
 
 

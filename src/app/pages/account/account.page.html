@@ -40,7 +40,7 @@
 
       <ion-item>
         <ion-button color="primary" (click)="inputFile.change()">
-          <ion-icon name="camera"></ion-icon> Upload your profile photo!
+          <ion-icon name="camera"></ion-icon>
         </ion-button>
         <ion-input #inputFile type="file" (change)="uploadFile($event)"></ion-input>
       </ion-item>
@@ -51,7 +51,7 @@
       <img [src]="url" alt="foto_cargada" id="foto">
       <ion-item>
         <ion-button color="primary" (click)="inputFile.change()">
-          <ion-icon name="camera"></ion-icon> Change your profile photo!
+          <ion-icon name="camera"></ion-icon>
         </ion-button>
         <ion-input #inputFile type="file" (change)="uploadFile($event)"></ion-input>
       </ion-item>
@@ -63,10 +63,13 @@
   <ion-list>
     <ion-item>
       <ion-label>
-        <h1>{{user.name}}</h1>
-        <h3>{{user.id}}</h3>
-        <p>{{user.email}}</p>
-        <p>{{user.phoneNumber}}</p>
+        <h1> Name: {{user.name}}</h1>
+        <h3> Id: {{user.id}}</h3>
+        <h3> Email: {{user.email}}</h3>
+        <h3> Phone Number: {{user.phoneNumber}}</h3>
+        <h3> Favorite Language: </h3>
+        <h3> Number of Advances:</h3>
+        <h3> Number of Badges:</h3>
       </ion-label>
     </ion-item>
   </ion-list>

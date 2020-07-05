@@ -12,7 +12,6 @@ import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../../../environments/environment';
 import { AngularFireAuthModule, AngularFireAuth } from '@angular/fire/auth';
-
 import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
@@ -26,6 +25,8 @@ import { BrowserModule } from '@angular/platform-browser';
     IonicModule,
     ChallengesPageRoutingModule
   ],
-  declarations: [ChallengesPage]
+  declarations: [
+    ChallengesPage
+  ]
 })
 export class ChallengesPageModule {}

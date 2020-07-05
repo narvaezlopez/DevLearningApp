@@ -6,24 +6,8 @@ import { ChallengesPage } from './challenges.page';
 const routes: Routes = [
   {
     path: '',
-    component: ChallengesPage,
-    children:[
-      {
-        path:'tab1',
-        loadChildren: () => import('../mychallenges/mychallenges.module').then( m => m.MychallengesPageModule)
-      },
-      {
-        path:'tab2',
-        loadChildren: () => import('../communitychallenges/communitychallenges.module').then( m => m.CommunitychallengesPageModule)
-      }
-    ]
+    component: ChallengesPage
   },
-  {
-    path:'',
-    redirectTo:'tab1'
-
-  }
-  
 ];
 
 @NgModule({
