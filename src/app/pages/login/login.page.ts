@@ -95,5 +95,8 @@ export class LoginPage implements OnInit {
   Landing(){
     this.router.navigate(['']);
   }
+  Menu(){
+    this.router.navigate(['/menu']);
+  }
 
 }

@@ -41,6 +41,7 @@ export class ChallengesPage implements OnInit {
   mychallenges: any[] = [];
 
   //section console
+  currentchallenge: any;
   out:any;
   color:string = 'Dark';
   color2:string = 'Dark2';
@@ -50,6 +51,7 @@ export class ChallengesPage implements OnInit {
   result:string;
   cputime:string;
   memory:string;
+
 
   constructor(private consoleService:ConsoleService,private alert:AlertController, 
               private toast:ToastController, private firestore: AngularFirestore,
@@ -76,6 +78,13 @@ export class ChallengesPage implements OnInit {
          .subscribe((challenges)=>{
            this.challenges=<any[]>challenges;
          });
+
+         //Challenge console
+         this.firestore.collection('challenge').doc('XvKwVArIL4belNfz0CQ4').valueChanges()
+         .subscribe((currentchallenge)=>{
+          this.currentchallenge=<any>currentchallenge;
+          console.log(this.currentchallenge);
+         })
   }
   ionViewWillEnter(){
     this.section="General";

@@ -26,18 +26,43 @@ ion-segment{
       ion-label{
         color:white;
         font-family: 'Russo One', sans-serif;
-        font-size: 20px;
+        font-size: 15px;
       }
     }
   }
 }
-
 
 ion-content{
     --background: var(--ion-color-dark);
     ion-avatar{
         --border-radius: 0%;
     }
+    div#ChallengeConsole{
+        width: 1100px;
+        margin:auto;
+        ion-grid{
+            ion-row#title{
+                ion-item{
+                    --background: transparent;
+                    ion-label{
+                        color:#fbe47b;
+                        font-family: 'Russo One', sans-serif;
+                    }
+                }
+            }
+            ion-row#content{
+                h4{
+                    color:#fbe47b;;
+                    font-family: 'Russo One', sans-serif;
+                }
+                p{
+                    color:white;
+                    font-family: 'Russo One', sans-serif;
+                }
+            }
+        }
+    }
+    
     div#Dev-content{
         padding-top: 5px;
         padding-bottom:5px ;
