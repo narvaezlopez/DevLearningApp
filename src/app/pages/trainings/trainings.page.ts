@@ -11,6 +11,7 @@ export class TrainingsPage implements OnInit {
 
   //heroes: Observable<any[]>;
   heroes: any[]=[];
+  section:string;
 
   constructor(public firestore: AngularFirestore) { 
     //this.heroes = firestore.collection('heroes').valueChanges();
@@ -22,6 +23,12 @@ export class TrainingsPage implements OnInit {
     .subscribe((heroes)=>{
       this.heroes=<any[]>heroes;
     })  
+  }
+  ionViewWillEnter(){
+    this.section="CSharp";
+  }
+  segmentChanged($event) {
+    this.section=$event.target.value;
   }
   
 

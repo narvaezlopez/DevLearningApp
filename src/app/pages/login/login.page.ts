@@ -57,7 +57,7 @@ export class LoginPage implements OnInit {
         this.storage.set(TOKEN_KEY, this.token);
         this.user = this.helper.decodeToken(String(this.token));
         console.log(this.user);
-        this.router.navigate(['/menu']);
+        this.router.navigate(['/menu/start']);
       })
       this.firestore.collection('users').doc(result.user.uid)
       .set({

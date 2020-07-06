@@ -24,19 +24,24 @@ export class MenuPage implements OnInit {
   public selectedIndex = 0;
   public appPages = [
     {
-      title: 'Account',
-      url: '/menu/account',
-      icon: 'https://image.flaticon.com/icons/svg/2328/2328666.svg'
+      title: 'Home',
+      url: '/menu/start',
+      icon: 'https://image.flaticon.com/icons/svg/2614/2614724.svg'
     },
     {
-      title: 'Challenges ',
-      url: '/menu/challenges',
-      icon: 'https://image.flaticon.com/icons/svg/1693/1693487.svg'
+      title: 'Account',
+      url: '/menu/account',
+      icon: 'https://www.flaticon.com/premium-icon/icons/svg/2316/2316176.svg'
     },
     {
       title: 'Trainings',
       url: '/menu/trainings',
       icon: 'https://image.flaticon.com/icons/svg/2646/2646823.svg'
+    },
+    {
+      title: 'Challenges ',
+      url: '/menu/challenges',
+      icon: 'https://image.flaticon.com/icons/svg/1693/1693487.svg'
     },
     {
       title: 'Advances',
@@ -51,7 +56,7 @@ export class MenuPage implements OnInit {
     {
       title: 'Team',
       url: '/menu/team',
-      icon: 'https://image.flaticon.com/icons/svg/2614/2614724.svg'
+      icon: 'https://image.flaticon.com/icons/svg/2070/2070319.svg'
     }
 
   ];

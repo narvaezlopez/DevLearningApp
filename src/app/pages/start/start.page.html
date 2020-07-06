@@ -5,10 +5,10 @@
     </ion-buttons>
     <ion-item id="main">
       <ion-avatar slot="start">
-        <img src="https://image.flaticon.com/icons/svg/2328/2328666.svg">
+        <img src="https://image.flaticon.com/icons/svg/2614/2614724.svg">
       </ion-avatar>
       <ion-label id="main-title">
-        Advances
+        Home
       </ion-label>
     </ion-item>
   </ion-toolbar>
@@ -16,14 +16,11 @@
 <ion-content>
   <ion-progress-bar [value]="1">
   </ion-progress-bar>
-  <ion-list>
-    <ion-item *ngFor="let advance of advances "><!--| async  para observable-->
-      <ion-label>
-        <h3>{{advance.title}}</h3>
-        <h4>{{advance.desc}}</h4>
-      </ion-label>
-
-    </ion-item>
-  </ion-list>
+  <ion-item>
+    <ion-label id="name">
+      <h4>Welcome </h4>
+      <h3>{{user.name}}</h3>
+    </ion-label>
+  </ion-item>
 
 </ion-content>

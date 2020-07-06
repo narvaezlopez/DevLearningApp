@@ -16,22 +16,6 @@ import { ChallengesService } from 'src/app/services/challenges.service';
 })
 export class ChallengesPage implements OnInit {
 
-  public selectedIndex = 0;
-  public appPages = [
-    {
-      title: 'My Challenges',
-      url: 'mychallenges',
-      icon: 'https://image.flaticon.com/icons/svg/1693/1693487.svg'
-    },
-    {
-      title: 'Community Challenges',
-      url: 'communitychallenges',
-      icon: 'https://image.flaticon.com/icons/svg/2646/2646823.svg'
-    }
-
-  ];
-
-
   challenges: any[]=[];
   
   section:string;
@@ -59,7 +43,7 @@ export class ChallengesPage implements OnInit {
               private challengesService:ChallengesService) { }
 
   ngOnInit() {
-        //My challenges
+        //My challenges ionic g services services/advancesUser
         this.challengesUserService.getChallengeUserByIdUser('r5eHBQ2VvugPFfO9zbLAgWj7BQG3')
         .subscribe((challenges_users) => {
           this.challenges_users = <any[]>challenges_users;
