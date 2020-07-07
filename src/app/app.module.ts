@@ -23,7 +23,7 @@ export function jwtOptionsFactory(storage){
     tokenGetter: () => {
       return storage.get('access_token');
     },
-    whitelisteDomains:['localhost:5000']
+    whitelisteDomains:['localhost:3000']
   }
 }
 @NgModule({

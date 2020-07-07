@@ -11,6 +11,7 @@ import { BehaviorSubject } from 'rxjs';
 
 import { NavController } from '@ionic/angular';
 import { Router,ActivatedRoute, Params, NavigationExtras } from '@angular/router';
+import { StorageService } from 'src/app/services/storage.service';
 const TOKEN_KEY = 'access_token';
 
 @Component({
@@ -22,7 +23,8 @@ export class LoginPage implements OnInit {
 
   
   constructor(public auth:AngularFireAuth,private firestore: AngularFirestore, private authService:AuthService, 
-              private storage: Storage, private helper: JwtHelperService, private navCtrl:NavController, private router:Router) { }
+              private storage: Storage, private helper: JwtHelperService, private navCtrl:NavController, private router:Router, 
+              private storageService: StorageService) { }
 
   token: any[] = [];
   user = {
@@ -56,7 +58,6 @@ export class LoginPage implements OnInit {
         console.log('token!');
         this.storage.set(TOKEN_KEY, this.token);
         this.user = this.helper.decodeToken(String(this.token));
-        console.log(this.user);
         this.router.navigate(['/menu/start']);
       })
       this.firestore.collection('users').doc(result.user.uid)
@@ -86,10 +87,7 @@ export class LoginPage implements OnInit {
     this.auth.signOut();
     this.storage.remove('access_token');
     this.storage.remove('idUser')
-    this.router.navigate(['/login']);
-    this.storage.remove(TOKEN_KEY).then(() => {
-      this.authenticationState.next(false);
-    });
+  //  this.storageService.logout();
   }
 
   Landing(){
