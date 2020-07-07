@@ -32,47 +32,74 @@
     <ng-template #nothing>
     </ng-template>
   </ng-template>
+  <ion-grid>
+    <ion-row id="photo">
+      <ion-col size="8">
+        <div *ngIf="url;then Foto else default"></div>
+        <ng-template #default>
+          <div id="photo">
+            <img src="https://image.flaticon.com/icons/svg/3094/3094215.svg" id ="foto" alt="foto_cargada">
+      
+            <ion-item>
+              <ion-button (click)="inputFile.change()">
+                <ion-icon name="camera"></ion-icon>
+              </ion-button>
+              <ion-input #inputFile type="file" (change)="uploadFile($event)"></ion-input>
+            </ion-item>
+          </div>
+        </ng-template>
+        <ng-template #Foto>
+          <div id="photo">
+            <img [src]="url" alt="foto_cargada" id="foto">
+            <ion-item>
+              <ion-button (click)="inputFile.change()">
+                <ion-icon name="camera"></ion-icon>
+              </ion-button>
+              <ion-input #inputFile type="file" (change)="uploadFile($event)"></ion-input>
+            </ion-item>
+          </div>
+        </ng-template>      
+      </ion-col>
+    </ion-row>
+    <ion-row id="data">
+      <ion-col size="8">
+          <ion-item>
+            <ion-label>
+              <h4>Name:</h4>
+              &nbsp;
+              <h2>{{user.name}}</h2>
+              &nbsp;
+              <h4>Id:</h4>
+              &nbsp;
+              <h2>{{user.id}}</h2>
+              &nbsp;
+              <h4>Nacionality:</h4>
+              &nbsp;
+              <h2>{{user.nacionality}}</h2>
+              &nbsp;
+              <h4>Email:</h4>
+              &nbsp;
+              <h2>{{user.email}}</h2>
+              &nbsp;
+              <h4>Phone Number: </h4>
+              &nbsp;
+              <h2>{{user.phoneNumber}}</h2>
+              &nbsp;
+              <h4> Favorite Language: </h4>
+              &nbsp;
+              <h4> Number of Advances:</h4>
+              &nbsp;
+              <h4> Number of Badges:</h4>
+            </ion-label>
+          </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
   
-  <div *ngIf="url;then Foto else default"></div>
-  <ng-template #default>
-    <div id="photo">
-      <img src="https://image.flaticon.com/icons/svg/3094/3094215.svg" id ="foto" alt="foto_cargada">
 
-      <ion-item>
-        <ion-button (click)="inputFile.change()">
-          <ion-icon name="camera"></ion-icon>
-        </ion-button>
-        <ion-input #inputFile type="file" (change)="uploadFile($event)"></ion-input>
-      </ion-item>
-    </div>
-  </ng-template>
-  <ng-template #Foto>
-    <div id="photo">
-      <img [src]="url" alt="foto_cargada" id="foto">
-      <ion-item>
-        <ion-button (click)="inputFile.change()">
-          <ion-icon name="camera"></ion-icon>
-        </ion-button>
-        <ion-input #inputFile type="file" (change)="uploadFile($event)"></ion-input>
-      </ion-item>
-    </div>
-  </ng-template>
-     
   <!--<div>{{uploadPercent | async}}</div> <a [href]="downloadURL | async">{{ downloadURL | async }} <img [src]="downloadURL | async" alt="imagen_cargada"></a>-->
     <!--<h1>{{currentUser}}</h1>-->
-  <ion-list>
-    <ion-item>
-      <ion-label>
-        <h1> Name: {{user.name}}</h1>
-        <h3> Id: {{user.id}}</h3>
-        <h3> Email: {{user.email}}</h3>
-        <h3> Phone Number: {{user.phoneNumber}}</h3>
-        <h3> Favorite Language: </h3>
-        <h3> Number of Advances:</h3>
-        <h3> Number of Badges:</h3>
-      </ion-label>
-    </ion-item>
-  </ion-list>
+
   
   <!--<ion-list>
     <ion-item *ngFor="let file of uploadFiles">
