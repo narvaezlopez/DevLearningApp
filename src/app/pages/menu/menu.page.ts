@@ -73,7 +73,8 @@ export class MenuPage implements OnInit {
     private uploadsUserService: UploadsUserService,
     private userService: UsersService,
     public auth: AngularFireAuth,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private router:Router,
   ) {
 
   }
@@ -103,6 +104,7 @@ export class MenuPage implements OnInit {
 
   logout() {
     this.storageService.logout();
+    console.log('logout');
   }
 
 }

@@ -7,17 +7,29 @@ import { AngularFireAuth } from '@angular/fire/auth';
   providedIn: 'root'
 })
 export class StorageService {
+  x:boolean;
+  private localStorageService;
+  constructor(private storage: Storage, private router:Router,public auth:AngularFireAuth){
 
-  constructor( private storage: Storage, private router:Router,public auth:AngularFireAuth
-  ){}
+  }
 
   logout(): void {
-    // TODO: cerrar todos los dialogos
-    // this._dialog.closeAll();
     this.auth.signOut();
     this.storage.remove('access_token');
     this.storage.remove('idUser')
     this.router.navigate(['/login']);
+  }
+
+  isAuthenticated(): boolean {     
+    console.log(this.storage.get('idUser'));     //return (this.storage.get != null)     
+    this.storage.get('idUser')
+    .then((valor)=>{
+    this.x=valor;
+      console.log(valor);
+    }).catch((error)=>{
+      console.log(error);
+    })
+    return (this.x!=null);
   }
 
 }
