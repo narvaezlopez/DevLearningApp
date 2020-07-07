@@ -45,9 +45,9 @@
 
 <ion-content>
 
-  <div *ngIf="section=='CSharp'">
+  <!-- <div *ngIf="section=='CSharp'">
     <ion-list>
-      <ion-item *ngFor="let training of trainings "><!--| async  para observable-->
+      <ion-item *ngFor="let training of trainings ">| async  para observable
         <ion-avatar slot="start">
           <img [src]="training.icon">
         </ion-avatar>
@@ -55,29 +55,54 @@
           <h3>{{training.language}}</h3>
           <h4 id="title">{{training.title}}</h4>
           <p>{{training.desc}}</p>
-          <h4>{{training.sintax}}</h4>
+          <h4>Sintax: {{training.sintax}}</h4>
+          <ion-button>
+            Try {{training.title}}
+          </ion-button>
         </ion-label>
+        
+      </ion-item>
+    </ion-list>
+  </div> -->
+
+
+  <div *ngIf="section=='CSharp'">
+    <ion-list>
+      <ion-item *ngFor="let training of languagesCsharp"><!--| async  para observable-->
+        <ion-avatar slot="start">
+          <img [src]="training.icon">
+        </ion-avatar>
+        <ion-label>
+          <h4>// {{training.language}}</h4>
+          <p id="title">{{training.title}}</p>
+          <p>{{training.desc}}</p>
+          <h4>Sintax: {{training.sintax}}</h4>
+          <ion-button>
+            Try {{training.title}}
+          </ion-button>
+        </ion-label>
+        
       </ion-item>
     </ion-list>
   </div>
 
   <div *ngIf="section=='Java'">
     <ion-list>
-      <ion-item *ngFor="let training of trainings "><!--| async  para observable-->
+      <ion-item *ngFor="let training of languagesJava"><!--| async  para observable-->
         <ion-avatar slot="start">
           <img [src]="training.icon">
         </ion-avatar>
         <ion-label>
-          <!-- <h3>{{training.language}}</h3> -->
+          <h3>{{training.language}}</h3>
           <h4 id="title">{{training.title}}</h4>
           <p>{{training.desc}}</p>
-          <h4>{{training.sintax}}</h4>
+          <h4>Sintax: {{training.sintax}}</h4>
         </ion-label>
       </ion-item>
     </ion-list>
   </div>
 
-  
+
   <div *ngIf="section=='Php'">
   </div>
 

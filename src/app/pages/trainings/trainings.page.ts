@@ -16,22 +16,41 @@ import { TrainingsService } from 'src/app/services/trainings.service';
 })
 export class TrainingsPage implements OnInit {
 
-  //heroes: Observable<any[]>;
   trainings: any[]=[];
+  
+  languagesJava: any[]=[];
+  languagesCsharp: any[]=[];
 
   section:string;
   
-  constructor(public firestore: AngularFirestore) { }
+  constructor(public firestore: AngularFirestore,
+              private trainingService: TrainingsService) { }
 
   ngOnInit() {
+    // get trainings
     this.firestore.collection('training').valueChanges()
     .subscribe((trainings)=>{
       this.trainings=<any[]>trainings;
-    })  
+    }) 
+    
+    // -- get trainings by language -- Java --
+    this.trainingService.getTrainingsByLanguage('Java')
+    .subscribe((trainings)=>{
+      this.languagesJava=<any[]>trainings;
+    }) 
+
+    // -- get trainings by language -- CSharp --
+    this.trainingService.getTrainingsByLanguage('CSharp')
+    .subscribe((trainings)=>{
+      this.languagesCsharp=<any[]>trainings;
+    }) 
   }
+
+
   ionViewWillEnter(){
     this.section="CSharp";
   }
+
   segmentChanged($event) {
     this.section=$event.target.value;
   }
