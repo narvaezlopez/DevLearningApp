@@ -8,6 +8,8 @@ import { NavController, NavParams } from '@ionic/angular';
 import { Router,ActivatedRoute, Params, NavigationExtras } from '@angular/router';
 import { Storage } from '@ionic/storage';
 import { timer } from 'rxjs'
+import { AuthService } from './services/auth.service';
+import { StorageService } from './services/storage.service';
 
 /**App Module
  *Importar modulo 
@@ -66,8 +68,9 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private route:ActivatedRoute,
-    private storage: Storage
+    private storage: Storage,
+    private storageService:StorageService,
+    private route:Router
   ) {
     this.initializeApp();
   }
@@ -77,7 +80,9 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       timer(3000).subscribe(()=>this.showSplash = false);
+      
     });
+    
   }
   ngOnInit() {
     const path = window.location.pathname.split('/')[1];

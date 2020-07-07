@@ -24,14 +24,6 @@
         <ion-label>General</ion-label>
       </ion-item>
     </ion-segment-button>
-    <ion-segment-button value="MyChallenges">
-      <ion-item>
-        <ion-avatar slot="start">
-          <img src="https://www.flaticon.com/premium-icon/icons/svg/2369/2369399.svg">
-        </ion-avatar>
-        <ion-label>My Challenges</ion-label>
-      </ion-item>
-    </ion-segment-button>
     <ion-segment-button value="CommunityChallenges">
       <ion-item>
         <ion-avatar slot="start">
@@ -40,6 +32,14 @@
         <ion-label>Community Challenges</ion-label>  
       </ion-item>
       </ion-segment-button>
+    <ion-segment-button value="MyChallenges">
+      <ion-item>
+        <ion-avatar slot="start">
+          <img src="https://www.flaticon.com/premium-icon/icons/svg/2369/2369399.svg">
+        </ion-avatar>
+        <ion-label>My Challenges</ion-label>
+      </ion-item>
+    </ion-segment-button>
     <ion-segment-button value="Console">
       <ion-item>
         <ion-avatar slot="start">
@@ -51,7 +51,37 @@
 </ion-segment>
 <ion-content>
 
-  <div *ngIf="section=='General'">
+  <div id="General" *ngIf="section=='General'">
+  </div>
+  <div id="Community" *ngIf="section=='CommunityChallenges'">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-list>
+            <ion-item *ngFor="let challenge of challenges "><!--| async  para observable-->
+              <ion-avatar slot="start">
+                <img [src]="challenge.icon">
+              </ion-avatar>
+              <ion-label>
+                <h2>{{challenge.language}}</h2>
+                <h3>{{challenge.level}}</h3>
+                <h3>{{challenge.title}}</h3>
+                <h4>{{challenge.content}}</h4>
+              </ion-label>
+              <ion-button>
+                Go to challenge
+              </ion-button>
+              <ion-button>
+                Add to my challenge
+              </ion-button>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+        <ion-col>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
   <div *ngIf="section=='MyChallenges'">
     <ion-list id="challenges-list">
@@ -65,22 +95,6 @@
           <h4>{{challenge.title}}</h4>
           <p>{{challenge.content}}</p>
         </ion-label>
-      </ion-item>
-    </ion-list>
-  </div>
-  <div *ngIf="section=='CommunityChallenges'">
-    <ion-list>
-      <ion-item *ngFor="let challenge of challenges "><!--| async  para observable-->
-        <ion-avatar slot="start">
-          <img [src]="challenge.icon">
-        </ion-avatar>
-        <ion-label>
-          <h3>{{challenge.language}}</h3>
-          <h4>{{challenge.level}}</h4>
-          <h4>{{challenge.title}}</h4>
-          <p>{{challenge.content}}</p>
-        </ion-label>
-        
       </ion-item>
     </ion-list>
   </div>
