@@ -19,17 +19,21 @@ export class StorageService {
 
 
   isAuthenticated(): boolean {
-    console.log(this.storage.get('key'));
+    this.storage.get('idUser').then((result)=>{
+      console.log(result);
+    }).catch()
     //return (this.storage.get != null)
-    return (this.storage.get('key') != null);
+    return (this.storage.get('idUser') != null);
   }
 
   logout(): void {
     // TODO: cerrar todos los dialogos
     // this._dialog.closeAll();
     this.auth.signOut();
-    this.storage.remove('key');
-    this.router.navigate(['/login']);
+    this.storage.remove('idUser').then(() => {
+      this.router.navigate(['/login']);
+    });
+    
   }
 
 }

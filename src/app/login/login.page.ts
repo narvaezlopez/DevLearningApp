@@ -88,7 +88,7 @@ export class LoginPage implements OnInit {
   logout() {
 
     this.auth.signOut();
-    this.storage.remove(TOKEN_KEY).then(() => {
+    this.storage.remove("idUser").then(() => {
       this.authenticationState.next(false);
     });
   }
