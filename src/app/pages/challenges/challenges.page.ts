@@ -9,6 +9,7 @@ import { auth } from 'firebase/app';
 import { ChallengesUserService } from 'src/app/services/challenges-user.service';
 import { ChallengesService } from 'src/app/services/challenges.service';
 import { Storage } from '@ionic/storage';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-challenges',
@@ -19,6 +20,7 @@ export class ChallengesPage implements OnInit {
 
   challenges: any[]=[];
   
+  state:boolean=false;
   section:string;
 
   //option my challenges
@@ -41,7 +43,7 @@ export class ChallengesPage implements OnInit {
   constructor(private consoleService:ConsoleService,private alert:AlertController, 
               private toast:ToastController, private firestore: AngularFirestore,
               public auth:AngularFireAuth, private challengesUserService:ChallengesUserService, 
-              private challengesService:ChallengesService, private localstorage: Storage) { }
+              private challengesService:ChallengesService, private localstorage: Storage,private router:Router) { }
 
   ngOnInit() {
         //My challenges ionic g services services/advancesUser
@@ -61,17 +63,38 @@ export class ChallengesPage implements OnInit {
               });
         });
          //Community challenges
-         this.firestore.collection('challenge').valueChanges()
+         /*this.firestore.collection('challenge').valueChanges()
          .subscribe((challenges)=>{
            this.challenges=<any[]>challenges;
-         });
+           console.log(this.challenges);
+         });*/
+         this.challengesService.getChallenges()
+         .subscribe((challenges)=>{
+          this.challenges=<any[]>challenges;
+          console.log(this.challenges);
+         })
 
          //Challenge console
-         this.firestore.collection('challenge').doc('XvKwVArIL4belNfz0CQ4').valueChanges()
-         .subscribe((currentchallenge)=>{
-          this.currentchallenge=<any>currentchallenge;
-          console.log(this.currentchallenge);
+         this.localstorage.get('currentchallenge')
+         .then((id)=>{
+              this.firestore.collection('challenge').doc(id).valueChanges()
+            .subscribe((currentchallenge)=>{
+              this.currentchallenge=<any>currentchallenge;
+              console.log(this.currentchallenge);
+            })
          })
+         .catch(()=>{
+            this.currentchallenge={objective:";D",
+            content:":)",
+            expectoutput:":D",
+            icon:"https://vignette.wikia.nocookie.net/metalslug/images/e/e4/Fbig.gif/revision/latest/top-crop/width/220/height/220?cb=20110521014514&path-prefix=es",
+            language:"",
+            id:"",
+            level:"",
+            task:"",
+            title:"Select a challenge in your my challenge list!"};
+         })
+         
   }
   ionViewWillEnter(){
     this.section="CommunityChallenges";
@@ -133,4 +156,16 @@ export class ChallengesPage implements OnInit {
     console.log($event.target.value);
   }
 
+  gotochallenge(id:string){
+    this.state=true;
+    this.firestore.collection('challenge').doc(id).valueChanges()
+    .subscribe((currentchallenge)=>{
+      this.currentchallenge=<any>currentchallenge;
+      console.log(this.currentchallenge);
+    })
+    this.section="Console";
+    this.localstorage.set('currentchallenge',id);
+    console.log(id);
+    
+  }
 }
