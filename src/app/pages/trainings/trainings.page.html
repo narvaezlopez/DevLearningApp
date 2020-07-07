@@ -1,0 +1,59 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-item id="main">
+      <ion-avatar slot="start">
+        <img src="https://image.flaticon.com/icons/svg/1693/1693487.svg">
+      </ion-avatar>
+      <ion-label id="main-title">
+        Trainings
+      </ion-label>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+<ion-progress-bar [value]="1">
+</ion-progress-bar>
+<ion-segment [(ngModel)]="section">
+    <ion-segment-button value="CSharp">
+      <ion-item>
+        <ion-avatar slot="start">
+          <img src="https://www.flaticon.com/premium-icon/icons/svg/2369/2369399.svg">
+        </ion-avatar>
+        <ion-label>C#</ion-label>
+      </ion-item>
+    </ion-segment-button>
+    <ion-segment-button value="Java">
+      <ion-item>
+        <ion-avatar slot="start">
+          <img src="https://www.flaticon.com/premium-icon/icons/svg/2369/2369399.svg">
+        </ion-avatar>
+        <ion-label>JAVA</ion-label>
+      </ion-item>
+    </ion-segment-button>
+    <ion-segment-button value="Php">
+      <ion-item>
+        <ion-avatar slot="start">
+          <img src="https://image.flaticon.com/icons/svg/2646/2646775.svg">
+        </ion-avatar>
+        <ion-label>PHP</ion-label>  
+      </ion-item>
+    </ion-segment-button>
+</ion-segment>
+<ion-content>
+
+  <div *ngIf="section=='CSharp'">
+
+  </div>
+  <div *ngIf="section=='Java'">
+
+  </div>
+  <div *ngIf="section=='Php'">
+    
+  </div>
+
+
+ 
+
+</ion-content>

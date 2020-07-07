@@ -1,0 +1,154 @@
+
+ion-header{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background: linear-gradient(to right, #77003c, var(--ion-color-dark));
+    border-bottom: solid 2px;
+    border-bottom-color: #fbe47b;
+    div#img1{  
+        margin: auto;
+        text-align: center;
+        width: 300px;
+        height: 120px;
+        background-color:#fbe47b;
+        border-radius: 5%;
+        img{
+          width: 350px;
+          margin: auto;
+          padding:0px ;
+        }
+    }
+
+    ion-button{
+        text-align: left;
+        --background: #fbe47b;
+        color: #77003c;
+    }
+      
+    ion-img#logo{
+        height: 70px;
+        width: 70px;
+        margin:auto;
+    }
+
+}
+
+
+
+ion-content#center{
+    --background: #fff url('../../../../resources/login2.jpg') no-repeat center center / cover;
+
+        h4{
+            color:white;
+            font-family: 'Russo One', sans-serif;
+            text-align: center;
+        }
+        div#main-title{
+            color:white;
+            font-family: 'Russo One', sans-serif;
+            text-align: center;
+            padding-top: 10px;
+            ion-title#login{
+                font-size: 30px;
+                padding-bottom: 20px;
+            }
+         .img_session{
+        
+                height: 140px;
+                width: 140px;
+                border: 2px solid #fbe47b;
+                border-color: #fbe47b;
+                border-radius: 30%;
+                box-shadow: 0 0 10px #000000;
+                background-color: #77003c;
+                margin: auto;
+                padding-top: 10px;
+                }
+        }
+        div#center{
+
+            ion-item#hello{
+                padding-top: 30px;
+                margin: auto;
+                width: 1000px;
+                text-align: center;
+                --background:linear-gradient(to right, #fbe47b, white);
+                ion-label#welcome{
+                    color: #77003c;
+                    font-family: 'Russo One', sans-serif;
+                }
+                ion-button{
+                    font-family: 'Russo One', sans-serif;
+                    --background:#77003c;
+                    color: #fbe47b;
+                }
+            }
+            div#Google-EP{
+                padding-top: 10px;
+                text-align: center;
+                ion-button{
+                    font-family: 'Russo One', sans-serif;
+                    --background:#77003c;
+                    color: #fbe47b;
+                    ion-avatar{
+                        padding-right: 10px;
+                        img{
+                            height: 50px;
+                            width: 50px;
+                        }
+                    }
+                }
+            }
+            form{
+                padding-top: 10px;
+                ion-list#center{
+                    margin: auto;
+                    width: 400px;
+                    background-color:var(--ion-color-dark);
+                    ion-item{
+                        ion-label{
+                            font-family: 'Russo One', sans-serif;
+                            color: #fbe47b;
+                        }
+                        font-family: 'Russo One', sans-serif;
+                        --background:#77003c;
+                        color: #fbe47b;
+                        width: 400px;
+                    }
+                
+                }
+            }
+
+            div#login{
+                padding-top: 5px;
+                text-align: center;
+                ion-button{
+                    font-family: 'Russo One', sans-serif;
+                    --background:#77003c;
+                    color: #fbe47b;
+                }
+            }
+        }
+   
+}
+div#footer{
+    background: var(--ion-color-dark);
+    color: #fff;
+    border-top: 2px solid ;
+    border-color: #fbe47b;
+    h2{
+        color: rgba(155, 13, 168, 0.808);
+        font-family: 'Russo One', sans-serif;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+

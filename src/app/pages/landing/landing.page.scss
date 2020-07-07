@@ -1,0 +1,220 @@
+@media only screen and (min-width: 601px) {
+
+      ion-header{
+        background:rgb(41, 39, 39);
+        border-bottom: solid 2px;
+        border-bottom-color: #f8b607;
+        div#buttons{
+          text-align: right;
+          padding-right: 20px;
+          ion-button{
+            font-family: 'Russo One', sans-serif;
+            --background:#77003c;
+            padding-right: 10px;
+            color: #fbe47b;
+          }
+        }
+      }
+
+      ion-content#devlearning{
+        
+        --background: #fff url('https://gamespot1.cbsistatic.com/uploads/original/1591/15918215/3595265-cod%20modern%20warfare%20deal.jpg') no-repeat center center / cover;
+          background-color: #cccccc;
+          div#container {
+            
+            padding-bottom: 20px;
+            div#img1{
+              text-align: center;
+              img{
+                width: 700px;
+                margin: auto;
+                padding:0px ;
+              }
+            }
+              
+              div#welcome{
+                font-family: 'Russo One', sans-serif;   
+                color: white;
+                text-align: center;      
+                ion-text{
+                  font-size:2vw !important;
+                }
+              }
+              div#description{
+                padding-top: 20px;
+                ion-item#wel{
+                  width: 500px;
+                  margin-left:900px;
+                  --background: #77003c;
+                  ion-label{
+                    font-size:1vw !important;
+                    h1{
+                      color: #fbe47b;
+                      font-family: 'Russo One', sans-serif;   
+                    }
+
+                  }
+                }
+              }
+              div#languages{
+                ion-item#another{
+                  padding-left: 100px;;
+                  width: 580px;
+                  --background: var(--ion-color-dark);
+                  .album1{
+                    padding-top: 5px;
+                    position: relative;
+                    width: 250px;
+                  }
+                  .album2 {
+                    position: relative;
+                    width: 80px;
+                  }
+                  .album3{
+                    position: relative;
+                    width: 90px;
+                    padding-top: 25px;
+                  }
+                  .album4{
+                    position: relative;
+                    width: 150px;
+                    padding-bottom: 12px;
+                  }
+
+                }
+                ion-item{
+                  padding-left: 100px;;
+                  width: 530px;
+                  padding-bottom:5px;
+                  --background: #77003c;
+                  ion-label{
+                    font-size:1vw !important;
+                    h1{
+                      color: #fbe47b;
+                      font-family: 'Russo One', sans-serif;   
+                    }
+                  }
+                }
+                
+              }
+          }
+
+
+
+      }
+      .slide {
+        height:100vh;
+        display:flex;
+      }
+}
+@media only screen and (max-width: 600px){
+
+  ion-header{
+    background:rgb(41, 39, 39);
+    border-bottom: solid 2px;
+    border-bottom-color: #f8b607;
+    div#buttons{
+      text-align: right;
+      padding-right: 20px;
+      ion-button{
+        font-family: 'Russo One', sans-serif;
+        --background:rgba(155, 13, 168, 0.808);
+        padding-right: 10px;
+      }
+    }
+  }
+
+  ion-content#devlearning{
+    
+    --background: #fff url('https://gamespot1.cbsistatic.com/uploads/original/1591/15918215/3595265-cod%20modern%20warfare%20deal.jpg') no-repeat center center / cover;
+      background-color: #cccccc;
+      div#container {
+        
+        padding-bottom: 20px;
+        div#img1{
+          text-align: center;
+          img{
+            width: 750px;
+            margin: auto;
+            padding:0px ;
+          }
+        }
+          
+          div#welcome{
+            font-family: 'Russo One', sans-serif;   
+            color: white;
+            text-align: center;      
+            ion-text{
+              font-size:2.5vh !important;
+            }
+          }
+          div#description{
+            padding-top: 20px;
+            margin: auto;
+            ion-item#wel{
+              margin: auto;
+              width: 300px;
+              --background: #77003c;
+              text-align: center;
+              ion-label{
+                
+                h1{
+                  font-size:4.5vw;
+                  color: #fbe47b;
+                  font-family: 'Russo One', sans-serif;   
+                }
+
+              }
+            }
+          }
+          div#languages{
+            ion-item#another{
+              margin: auto;
+              --background: var(--ion-color-dark);
+              .album1{
+                padding-top: 5px;
+                position: relative;
+                width: 250px;
+              }
+              .album2 {
+                position: relative;
+                width: 80px;
+              }
+              .album3{
+                position: relative;
+                width: 90px;
+                padding-top: 25px;
+              }
+              .album4{
+                position: relative;
+                width: 150px;
+                padding-bottom: 12px;
+              }
+
+            }
+            ion-item{
+              margin: auto;
+              width: 300px;
+              padding-bottom:5px;
+              --background: #77003c;
+              ion-label{
+                font-size:1vw !important;
+                h1{
+                  font-size:4.5vw;
+                  color: #fbe47b;
+                  font-family: 'Russo One', sans-serif;   
+                }
+              }
+            }
+            
+          }
+      }
+
+
+
+  }
+  .slide {
+    height:100vh;
+    display:flex;
+  }
+}

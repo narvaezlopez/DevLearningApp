@@ -1,0 +1,94 @@
+  <ion-header>
+    <ion-grid>
+      <ion-row>
+        <ion-button (click)="Landing()">
+          <ion-icon name="arrow-undo-circle-outline"></ion-icon>
+        </ion-button>
+        <div id="img1">
+          <img src="../../../assets/img/Logo-Code1.png" alt="Album1">
+        </div>
+        <ion-button (click)="Menu()">
+          <ion-icon name="play-circle-outline"></ion-icon>
+        </ion-button>
+      </ion-row>
+    </ion-grid>
+  </ion-header>
+  <ion-content id ="center">
+    
+      <div id="main-title">
+        <ion-title id="login">LOGIN</ion-title>
+        <div>
+          <ion-img class="img_session" src="https://image.flaticon.com/icons/png/512/2922/2922518.png"></ion-img>
+        </div>
+      </div>
+      
+      <div id="center">
+        
+        <div id="show" *ngIf="auth.user | async as user; else showLogin">
+          <ion-item id="hello">
+            <ion-label id="welcome">
+              <h1>Hello {{ user.displayName }}!</h1>
+              <ion-button (click)="logout()" >Logout</ion-button>
+            </ion-label>
+          </ion-item>
+        </div>
+        <ng-template #showLogin>
+          <h4>Please Login! :D</h4>
+          <div id="Google-EP">
+            <ion-button (click)="loginGoogle()">
+              <ion-avatar slot="start">
+                <img src="https://image.flaticon.com/icons/svg/2702/2702602.svg">
+              </ion-avatar>
+              Login with Google
+            </ion-button>
+            <ion-button (click)="loginMetod(true)">
+              <ion-avatar slot="start">
+                <img src="https://image.flaticon.com/icons/svg/1693/1693470.svg">
+              </ion-avatar>
+              Login with Email
+            </ion-button>
+          </div>
+          
+          <div *ngIf="EP==true; then thenBlock else elseBlock">
+            
+          </div>
+          <ng-template #thenBlock>
+            <form #formulario="ngForm" (ngSubmit)="onSubmit()">
+              <ion-list id="center">
+                <ion-item>
+                  <ion-label id="email" position="floating">Email</ion-label>
+                  &nbsp;
+                  <ion-input [(ngModel)]="user.email" name="email" 
+                  pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" type="email" required></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label id="password" position="floating">Password</ion-label>
+                  &nbsp;
+                  <ion-input [(ngModel)]="user.password" name="password" type="Password" required></ion-input>
+                </ion-item>
+              </ion-list>
+              <div id="login">
+                <ion-button type="submit">LOGIN</ion-button>
+              </div>
+            </form>
+          </ng-template>
+        </ng-template>
+      </div>
+  </ion-content>
+  <div id ="footer">
+    <ion-label>
+      <h2>DEVLEARNING CO</h2>
+      <h4>Privacy Policy Legal Info Contact Us</h4>
+      <p>Copyright © 2020 DEVLEARNING Corporation</p>
+    </ion-label>
+    
+  </div>
+  
+  
+  
+
+
+
+
+
+

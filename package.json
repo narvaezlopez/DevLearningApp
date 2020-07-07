@@ -30,7 +30,7 @@
     "@ionic/storage": "^2.2.0",
     "angular-jwt": "^0.1.11",
     "cordova-sqlite-storage": "^5.0.0",
-    "firebase": "^7.15.1",
+    "firebase": "^7.15.5",
     "gsap": "^3.3.4",
     "in-view": "^0.6.1",
     "ionic-angular": "^3.9.10",

@@ -1,0 +1,115 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-item id="main">
+      <ion-avatar slot="start">
+        <img src="https://image.flaticon.com/icons/svg/2328/2328666.svg">
+      </ion-avatar>
+      <ion-label id="main-title">
+        Account
+      </ion-label>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-progress-bar [value]="percent/100">
+  </ion-progress-bar>
+  <div *ngIf="percent==100;then def else upload"></div>
+  <ng-template #def>
+    <ion-item>
+      <ion-icon name="checkbox" color="success"></ion-icon>
+    </ion-item>
+  </ng-template>
+  <ng-template #upload>
+    <div *ngIf="percent!=null;then uploading else nothing"></div>
+    <ng-template #uploading>
+      <ion-item>
+        <ion-icon name="cloud-upload" color="warning"></ion-icon>
+      </ion-item>
+    </ng-template>
+    <ng-template #nothing>
+    </ng-template>
+  </ng-template>
+  
+  <div *ngIf="url;then Foto else default"></div>
+  <ng-template #default>
+    <div id="photo">
+      <img src="https://image.flaticon.com/icons/svg/3094/3094215.svg" id ="foto" alt="foto_cargada">
+
+      <ion-item>
+        <ion-button (click)="inputFile.change()">
+          <ion-icon name="camera"></ion-icon>
+        </ion-button>
+        <ion-input #inputFile type="file" (change)="uploadFile($event)"></ion-input>
+      </ion-item>
+    </div>
+  </ng-template>
+  <ng-template #Foto>
+    <div id="photo">
+      <img [src]="url" alt="foto_cargada" id="foto">
+      <ion-item>
+        <ion-button (click)="inputFile.change()">
+          <ion-icon name="camera"></ion-icon>
+        </ion-button>
+        <ion-input #inputFile type="file" (change)="uploadFile($event)"></ion-input>
+      </ion-item>
+    </div>
+  </ng-template>
+     
+  <!--<div>{{uploadPercent | async}}</div> <a [href]="downloadURL | async">{{ downloadURL | async }} <img [src]="downloadURL | async" alt="imagen_cargada"></a>-->
+    <!--<h1>{{currentUser}}</h1>-->
+  <ion-list>
+    <ion-item>
+      <ion-label>
+        <h1> Name: {{user.name}}</h1>
+        <h3> Id: {{user.id}}</h3>
+        <h3> Email: {{user.email}}</h3>
+        <h3> Phone Number: {{user.phoneNumber}}</h3>
+        <h3> Favorite Language: </h3>
+        <h3> Number of Advances:</h3>
+        <h3> Number of Badges:</h3>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  
+  <!--<ion-list>
+    <ion-item *ngFor="let file of uploadFiles">
+      <ion-label>
+        <h1>creado el: {{file.created_at.toDate() | date: 'dd MMM hh:mm' }}</h1>
+        <img [src]="file.file" alt="Archivo">
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  
+  <ion-list>
+    <ion-item *ngFor="let user of users" (click)="userSelected(user)">
+      <ion-label>
+        <h1>{{user.name}}</h1>
+        <h3>{{user.id}}</h3>
+        <p>{{user.email}}</p>
+        <p>{{user.phoneNumber}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+
+  <ion-button (click)="mostrarHoja()">Mostrar hoja</ion-button>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-label>
+        users
+      </ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-select placeholder="Elige un usuario">
+        <ion-select-option *ngFor="let user of users" value="user.title">
+          {{user.title}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>-->
+</ion-content>
+  

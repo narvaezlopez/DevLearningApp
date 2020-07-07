@@ -1,20 +1,28 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './login/auth.guard';
+import { AuthGuard } from './pages/login/auth.guard';
 
 const routes: Routes = [
   {
     path: 'menu',
     canActivate: [AuthGuard],
-    loadChildren: () => import('./menu/menu.module').then( m => m.MenuPageModule)
+    loadChildren: () => import('../app/pages/menu/menu.module').then( m => m.MenuPageModule)
   },
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('../app/pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
     path: '',
+<<<<<<< HEAD
     loadChildren: () => import('./landing/landing.module').then( m => m.LandingPageModule)
+=======
+    loadChildren: () => import('../app/pages/landing/landing.module').then( m => m.LandingPageModule)
+  },
+  {
+    path: 'signup',
+    loadChildren: () => import('../app/pages/signup/signup.module').then( m => m.SignupPageModule)
+>>>>>>> f10830f4dbd4d87839e5e4c21be3e762e0c19d99
   }
 
 ];

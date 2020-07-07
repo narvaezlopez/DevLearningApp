@@ -1,0 +1,52 @@
+ion-label#main-title{
+
+    color:#fbe47b;
+    font-family: 'Russo One', sans-serif;
+    font-size: 20px;
+    
+}
+ion-item#main{
+    --background:var(--ion-color-dark);
+}
+ion-content{
+    --background: var(--ion-color-dark);
+    div#photo{
+        padding-top: 20px;
+        padding-bottom: 10px;
+        text-align: center;
+        img#foto{
+            width: 160px;
+            height: 140px;
+            border: 2px solid #fbe47b;
+            border-color: #77003c;
+            border-radius: 0%;
+            box-shadow: 0 0 10px #000000;
+        }
+        ion-item{
+            margin: auto;
+            width: 65px;
+            height: 40px;
+            --background: var(--ion-color-dark);
+            --color:var(--ion-color-light);
+            ion-button {
+                --background:#77003c;
+                --color:#fbe47b;
+            }
+            
+            ion-input{
+                position: absolute;
+                opacity: 0;
+            }
+        }
+        
+    }
+    ion-list{
+        ion-item{
+            text-align: center;
+            --background: var(--ion-color-dark);
+            --color:var(--ion-color-light);
+        }
+    }
+    
+}
+
