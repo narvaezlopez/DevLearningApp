@@ -18,6 +18,7 @@ const routes: Routes = [
     path: 'signup',
     loadChildren: () => import('../app/pages/signup/signup.module').then( m => m.SignupPageModule)
   }
+
 ];
 
 @NgModule({

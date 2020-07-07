@@ -6,7 +6,7 @@ ion-label#main-title{
     
 }
 ion-item#main{
-    --background:#77003c;
+    --background:var(--ion-color-dark);
 }
 
 ion-segment{
@@ -66,7 +66,7 @@ ion-content{
     div#Dev-content{
         padding-top: 5px;
         padding-bottom:5px ;
-        background:linear-gradient(to top, #1c55a2, var(--ion-color-dark));
+        background:linear-gradient(to top, white, var(--ion-color-dark));
         
         ion-item#Console-Settings{
             --background: #77003c ;
@@ -158,7 +158,7 @@ ion-content{
                 padding-left: 120px;
                 --background: transparent;
                 ion-label{
-                    color:white;
+                    color:var(--ion-color-dark);
                     font-family: 'Russo One', sans-serif;
                 }
             }

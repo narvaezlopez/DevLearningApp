@@ -13,6 +13,8 @@
     </ion-item>
   </ion-toolbar>
 </ion-header>
+<ion-progress-bar [value]="1">
+</ion-progress-bar>
 <ion-segment [(ngModel)]="section">
     <ion-segment-button value="General">
       <ion-item>
@@ -47,7 +49,10 @@
       </ion-item>
     </ion-segment-button>
 </ion-segment>
+
+
 <ion-content>
+
   <div *ngIf="section=='General'">
   </div>
   <div *ngIf="section=='MyChallenges'">
