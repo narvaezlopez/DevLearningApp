@@ -1,12 +1,5 @@
 {
   "targets": {
-    "aspnet-86682": {
-      "hosting": {
-        "app": [
-          "aspnet-86682"
-        ]
-      }
-    },
     "devlearning-2c9c9": {
       "hosting": {
         "app": [

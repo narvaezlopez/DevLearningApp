@@ -166,6 +166,17 @@ export class ChallengesPage implements OnInit {
     this.section="Console";
     this.localstorage.set('currentchallenge',id);
     console.log(id);
+    this.localstorage.get('idUser')
+    .then((user)=>{
+      this.firestore.collection('challenge_user')
+      .add({
+        user: user,
+        challenge: id
+      })
+    })
+    .catch((error)=>{
+      console.log(error);
+    })
     
   }
 }
