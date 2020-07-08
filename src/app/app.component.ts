@@ -27,40 +27,6 @@ import { StorageService } from './services/storage.service';
 })
 export class AppComponent {
   showSplash=true;
-  
-  public selectedIndex = 0;
-  public appPages = [
-    {
-      title: 'Account',
-      url: '/account',
-      icon: 'https://image.flaticon.com/icons/svg/2328/2328666.svg'
-    },
-    {
-      title: 'Challenges ',
-      url: '/challenges',
-      icon: 'https://image.flaticon.com/icons/svg/1693/1693487.svg'
-    },
-    {
-      title: 'Trainings',
-      url: '/trainings',
-      icon: 'https://image.flaticon.com/icons/svg/2646/2646823.svg'
-    },
-    {
-      title: 'Advances',
-      url: '/advances',
-      icon: 'https://image.flaticon.com/icons/svg/2614/2614615.svg'
-    },
-    {
-      title: 'Badges',
-      url: '/badges',
-      icon: 'https://www.flaticon.es/premium-icon/icons/svg/2378/2378384.svg'
-    },
-    {
-      title: 'Team',
-      url: '/folder/Spam',
-      icon: 'https://image.flaticon.com/icons/svg/2614/2614724.svg'
-    }
-  ];
 
   bool:string;
 
@@ -85,10 +51,6 @@ export class AppComponent {
     
   }
   ngOnInit() {
-    const path = window.location.pathname.split('/')[1];
-    if (path !== undefined) {
-      this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
-    }
   }
 
 }
