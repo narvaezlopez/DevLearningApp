@@ -36,17 +36,9 @@ ion-content{
     // --background: var(--ion-color-dark);
     ion-item{
         --background: var(--ion-color-dark);
-        // margin-left: 9px;
-        // ion-avatar{
-        //     --border-radius: 0;
-        //     img{
-        //       width: 60px;
-        //       height: 60px;
-        //     }
-        // }
         p#title{
             color:#fbe47b;
-            font-size: 18px;
+            font-size: 14px;
             font-family: sans-serif;
         }
         h3, p{
@@ -61,6 +53,9 @@ ion-content{
     }
 
 }
+
+
+// -- console --
 //   ion-content{
 //       --background: var(--ion-color-dark);
 //       ion-avatar{

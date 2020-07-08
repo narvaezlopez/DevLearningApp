@@ -19,9 +19,9 @@ export class TrainingsService {
     return this.http.get(this.url);
   }
 
-  // getTrainingsById(id:string){
-  //   return this.http.get(this.url+'/'+id);
-  // }
+  getTrainingsById(id:string){
+    return this.http.get(this.url+'/'+id);
+  }
 
   getTrainingsByLanguage(id:string){
     return this.http.get(this.url+'/language/'+id);

@@ -16,6 +16,14 @@
 <ion-progress-bar [value]="1">
 </ion-progress-bar>
 <ion-segment [(ngModel)]="section">
+  <ion-segment-button value="Mytrainings">
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="https://www.flaticon.com/premium-icon/icons/svg/2369/2369399.svg">
+      </ion-avatar>
+      <ion-label>My Trainings</ion-label>
+    </ion-item>
+  </ion-segment-button>
     <ion-segment-button value="CSharp">
       <ion-item>
         <ion-avatar slot="start">
@@ -45,15 +53,14 @@
 
 <ion-content>
 
-  <!-- <div *ngIf="section=='CSharp'">
+  <div id="MyTrainings" *ngIf="section=='Mytrainings'">
     <ion-list>
-      <ion-item *ngFor="let training of trainings ">| async  para observable
+      <ion-item *ngFor="let training of mytrainings"><!--| async  para observable-->
         <ion-avatar slot="start">
           <img [src]="training.icon">
         </ion-avatar>
         <ion-label>
-          <h3>{{training.language}}</h3>
-          <h4 id="title">{{training.title}}</h4>
+          <p id="title">{{training.title}}</p>
           <p>{{training.desc}}</p>
           <h4>Sintax: {{training.sintax}}</h4>
           <ion-button>
@@ -63,7 +70,7 @@
         
       </ion-item>
     </ion-list>
-  </div> -->
+  </div>
 
 
   <div *ngIf="section=='CSharp'">
@@ -73,7 +80,6 @@
           <img [src]="training.icon">
         </ion-avatar>
         <ion-label>
-          <h4>// {{training.language}}</h4>
           <p id="title">{{training.title}}</p>
           <p>{{training.desc}}</p>
           <h4>Sintax: {{training.sintax}}</h4>
@@ -94,7 +100,7 @@
         </ion-avatar>
         <ion-label>
           <h3>{{training.language}}</h3>
-          <h4 id="title">{{training.title}}</h4>
+          <p id="title">{{training.title}}</p>
           <p>{{training.desc}}</p>
           <h4>Sintax: {{training.sintax}}</h4>
         </ion-label>
@@ -102,8 +108,20 @@
     </ion-list>
   </div>
 
-
   <div *ngIf="section=='Php'">
+    <ion-list>
+      <ion-item *ngFor="let training of languagesPhp"><!--| async  para observable-->
+        <ion-avatar slot="start">
+          <img [src]="training.icon">
+        </ion-avatar>
+        <ion-label>
+          <h3>{{training.language}}</h3>
+          <p id="title">{{training.title}}</p>
+          <p>{{training.desc}}</p>
+          <h4>Sintax: {{training.sintax}}</h4>
+        </ion-label>
+      </ion-item>
+    </ion-list>
   </div>
 
 </ion-content>
