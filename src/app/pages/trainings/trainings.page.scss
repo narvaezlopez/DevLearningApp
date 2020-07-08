@@ -33,9 +33,12 @@ ion-segment{
 
   
 ion-content{
-    // --background: var(--ion-color-dark);
+    --background: var(--ion-color-dark);
     ion-item{
         --background: var(--ion-color-dark);
+        ion-avatar{
+          --border-radius: 0;
+        }
         p#title{
             color:#fbe47b;
             font-size: 14px;

@@ -16,38 +16,39 @@
 <ion-progress-bar [value]="1">
 </ion-progress-bar>
 <ion-segment [(ngModel)]="section">
+
+  <ion-segment-button value="CSharp">
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="../../../assets/img/csharp.png">
+      </ion-avatar>
+      <ion-label>C#</ion-label>
+    </ion-item>
+  </ion-segment-button>
+  <ion-segment-button value="Java">
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="https://image.flaticon.com/icons/svg/2393/2393264.svg">
+      </ion-avatar>
+      <ion-label>JAVA</ion-label>
+    </ion-item>
+  </ion-segment-button>
+  <ion-segment-button value="Php">
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="../../../assets/img/php.png">
+      </ion-avatar>
+      <ion-label>PHP</ion-label>
+    </ion-item>
+  </ion-segment-button>
   <ion-segment-button value="Mytrainings">
     <ion-item>
       <ion-avatar slot="start">
-        <img src="https://www.flaticon.com/premium-icon/icons/svg/2369/2369399.svg">
+        <img src="../../../assets/img/programmer.png">
       </ion-avatar>
       <ion-label>My Trainings</ion-label>
     </ion-item>
   </ion-segment-button>
-    <ion-segment-button value="CSharp">
-      <ion-item>
-        <ion-avatar slot="start">
-          <img src="https://www.flaticon.com/premium-icon/icons/svg/2369/2369399.svg">
-        </ion-avatar>
-        <ion-label>C#</ion-label>
-      </ion-item>
-    </ion-segment-button>
-    <ion-segment-button value="Java">
-      <ion-item>
-        <ion-avatar slot="start">
-          <img src="https://www.flaticon.com/premium-icon/icons/svg/2369/2369399.svg">
-        </ion-avatar>
-        <ion-label>JAVA</ion-label>
-      </ion-item>
-    </ion-segment-button>
-    <ion-segment-button value="Php">
-      <ion-item>
-        <ion-avatar slot="start">
-          <img src="https://image.flaticon.com/icons/svg/2646/2646775.svg">
-        </ion-avatar>
-        <ion-label>PHP</ion-label>  
-      </ion-item>
-    </ion-segment-button>
 </ion-segment>
 
 
@@ -55,19 +56,21 @@
 
   <div id="MyTrainings" *ngIf="section=='Mytrainings'">
     <ion-list>
-      <ion-item *ngFor="let training of mytrainings"><!--| async  para observable-->
+      <ion-item *ngFor="let training of mytrainings">
+        <!--| async  para observable-->
         <ion-avatar slot="start">
           <img [src]="training.icon">
         </ion-avatar>
         <ion-label>
+          <h4>{{training.language}}</h4>
           <p id="title">{{training.title}}</p>
           <p>{{training.desc}}</p>
           <h4>Sintax: {{training.sintax}}</h4>
           <ion-button>
-            Try {{training.title}}
+            Review {{training.title}}
           </ion-button>
         </ion-label>
-        
+
       </ion-item>
     </ion-list>
   </div>
@@ -75,7 +78,8 @@
 
   <div *ngIf="section=='CSharp'">
     <ion-list>
-      <ion-item *ngFor="let training of languagesCsharp"><!--| async  para observable-->
+      <ion-item *ngFor="let training of languagesCsharp">
+        <!--| async  para observable-->
         <ion-avatar slot="start">
           <img [src]="training.icon">
         </ion-avatar>
@@ -87,14 +91,15 @@
             Try {{training.title}}
           </ion-button>
         </ion-label>
-        
+
       </ion-item>
     </ion-list>
   </div>
 
   <div *ngIf="section=='Java'">
     <ion-list>
-      <ion-item *ngFor="let training of languagesJava"><!--| async  para observable-->
+      <ion-item *ngFor="let training of languagesJava">
+        <!--| async  para observable-->
         <ion-avatar slot="start">
           <img [src]="training.icon">
         </ion-avatar>
@@ -103,6 +108,9 @@
           <p id="title">{{training.title}}</p>
           <p>{{training.desc}}</p>
           <h4>Sintax: {{training.sintax}}</h4>
+          <ion-button>
+            Try {{training.title}}
+          </ion-button>
         </ion-label>
       </ion-item>
     </ion-list>
@@ -110,7 +118,8 @@
 
   <div *ngIf="section=='Php'">
     <ion-list>
-      <ion-item *ngFor="let training of languagesPhp"><!--| async  para observable-->
+      <ion-item *ngFor="let training of languagesPhp">
+        <!--| async  para observable-->
         <ion-avatar slot="start">
           <img [src]="training.icon">
         </ion-avatar>
@@ -119,6 +128,9 @@
           <p id="title">{{training.title}}</p>
           <p>{{training.desc}}</p>
           <h4>Sintax: {{training.sintax}}</h4>
+          <ion-button>
+            Try {{training.title}}
+          </ion-button>
         </ion-label>
       </ion-item>
     </ion-list>

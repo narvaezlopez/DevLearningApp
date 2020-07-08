@@ -32,14 +32,17 @@
     <ng-template #nothing>
     </ng-template>
   </ng-template>
+  <ion-item>
+
+  </ion-item>
   <ion-grid>
     <ion-row id="photo">
-      <ion-col size="8">
+        <ion-col id="photo" size="2">
         <div *ngIf="url;then Foto else default"></div>
         <ng-template #default>
           <div id="photo">
             <img src="https://image.flaticon.com/icons/svg/3094/3094215.svg" id ="foto" alt="foto_cargada">
-      
+
             <ion-item>
               <ion-button (click)="inputFile.change()">
                 <ion-icon name="camera"></ion-icon>
@@ -51,48 +54,53 @@
         <ng-template #Foto>
           <div id="photo">
             <img [src]="url" alt="foto_cargada" id="foto">
-            <ion-item>
+            <ion-item id="camera">
               <ion-button (click)="inputFile.change()">
                 <ion-icon name="camera"></ion-icon>
               </ion-button>
               <ion-input #inputFile type="file" (change)="uploadFile($event)"></ion-input>
             </ion-item>
+            <ion-item id="Share">
+              <ion-label>
+                <h2>
+                  Share my profile:
+                </h2>
+              </ion-label>
+            </ion-item>
+            <img src="https://image.flaticon.com/icons/svg/1051/1051258.svg" width="20px" height="20px">
+            &nbsp;
+            <img src="https://image.flaticon.com/icons/svg/1312/1312142.svg" width="20px" height="20px">
+            &nbsp;
+            <img src="https://image.flaticon.com/icons/svg/1384/1384874.svg"width="20px" height="20px">
           </div>
         </ng-template>      
-      </ion-col>
+        </ion-col>
+        <ion-col id="data" size="4">
+        <h4>Name:</h4>
+        <h2>{{user.name}}</h2>
+        <h4>Id:</h4>
+        <h2>{{user.id}}</h2>
+        <h4>Nacionality:</h4>
+        <h2>{{user.nacionality}}</h2>
+        <h4>Email:</h4>
+        <h2>{{user.email}}</h2>
+        <h4>Phone Number: </h4>
+        <h2>{{user.phoneNumber}}</h2>
+        </ion-col>     
+        <ion-col id="data" size="4">
+        <h4> Favorite Language:</h4>
+        <h2>{{user.favoritelanguage}}</h2>
+        <h4> Number of Advances:</h4>
+        <h2>{{user.numberadvances}}</h2>
+        <h4>Number of Badges:</h4>   
+        <h2>{{user.numberbadges}}</h2>       
+        <h4>Experience points:</h4>  
+        <h2> + {{user.experiencepoints}}</h2>
+        <h4>Acquired Skills:</h4>  
+        <h2>{{user.acquiredskills}}</h2>
+        </ion-col>
     </ion-row>
     <ion-row id="data">
-      <ion-col size="8">
-          <ion-item>
-            <ion-label>
-              <h4>Name:</h4>
-              &nbsp;
-              <h2>{{user.name}}</h2>
-              &nbsp;
-              <h4>Id:</h4>
-              &nbsp;
-              <h2>{{user.id}}</h2>
-              &nbsp;
-              <h4>Nacionality:</h4>
-              &nbsp;
-              <h2>{{user.nacionality}}</h2>
-              &nbsp;
-              <h4>Email:</h4>
-              &nbsp;
-              <h2>{{user.email}}</h2>
-              &nbsp;
-              <h4>Phone Number: </h4>
-              &nbsp;
-              <h2>{{user.phoneNumber}}</h2>
-              &nbsp;
-              <h4> Favorite Language: </h4>
-              &nbsp;
-              <h4> Number of Advances:</h4>
-              &nbsp;
-              <h4> Number of Badges:</h4>
-            </ion-label>
-          </ion-item>
-      </ion-col>
     </ion-row>
   </ion-grid>
   
