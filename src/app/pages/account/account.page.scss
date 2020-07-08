@@ -16,8 +16,8 @@ ion-content{
     ion-grid{
         --background: var(--ion-color-dark);
         ion-row#photo{
-            
-            ion-col{
+
+            ion-col#photo{
                
                 div#photo{
                     padding-top: 20px;
@@ -31,7 +31,7 @@ ion-content{
                         border-radius: 0%;
                         box-shadow: 0 0 10px #000000;
                     }
-                    ion-item{
+                    ion-item#camera{
                         margin: auto;
                         width: 65px;
                         height: 40px;
@@ -47,30 +47,42 @@ ion-content{
                             opacity: 0;
                         }
                     }
+                    ion-item#Share{
+                        padding-left: 10px;
+                        ion-label{
+                            h2{
+                                font-family: 'Russo One', sans-serif;
+                                color:var(--ion-color-light);
+                                font-size: 15px;
+                            }
+                        }
+
+                    }
                     
                 }
             }
+            ion-col#data{
+                width: 500px;
+                margin: auto;
+                --background: var(--ion-color-dark);
+                font-family: 'Russo One', sans-serif;
+                border: #fbe47b 2px solid;
+                h2{
+                    padding-left: 10px;
+                    color:var(--ion-color-light);
+                    font-size: 20px;
+                }
+                h4{
+                    padding-left: 10px;
+                    color:#fbe47b;
+                    font-size: 15px;
+                }
+            }
+
         }
         ion-row#data{     
             background: var(--ion-color-dark);
-            ion-col{
-                ion-item{
-                    width: 500px;
-                    margin: auto;
-                    --background: var(--ion-color-dark);
 
-                    ion-label{
-                        font-family: 'Russo One', sans-serif;
-                        h2{
-                            color:var(--ion-color-light);
-                        }
-                        h4{
-                            color:#fbe47b;
-                        }
-                        
-                    }
-                }
-            }
         }
     }
 }

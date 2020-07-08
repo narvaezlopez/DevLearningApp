@@ -36,7 +36,7 @@ export class TrainingsPage implements OnInit {
               private trainingsService: TrainingsService, private localstorage: Storage,private router:Router) { }
 
   ngOnInit() {
-    // get trainings // useless
+      // get trainings // useless
     this.firestore.collection('training').valueChanges()
     .subscribe((trainings)=>{
       this.trainings=<any[]>trainings;
@@ -46,20 +46,20 @@ export class TrainingsPage implements OnInit {
     .subscribe((trainings)=>{
       this.languagesCsharp=<any[]>trainings;
     }) 
-    // -- get trainings by language -- Java --
+              // -- get trainings by language -- Java --
     this.trainingsService.getTrainingsByLanguage('Java')
     .subscribe((trainings)=>{
       this.languagesJava=<any[]>trainings;
     }) 
-    // -- get trainings by language -- Php --
+              // -- get trainings by language -- Php --
     this.trainingsService.getTrainingsByLanguage('Php')
     .subscribe((trainings)=>{
       this.languagesPhp=<any[]>trainings;
     }) 
 
-    //My challenges ionic g services services/advancesUser
+              //My challenges ionic g services services/advancesUser
     this.localstorage.get('idUser').then((res) => {
-      this.trainingsUserService.getTrainingUserByIdUser(res)
+      this.trainingsUserService.getTrainingsUserByIdUser(res)
       .subscribe((trainings_users) => {
         this.trainings_users = <any[]>trainings_users;
         console.log(trainings_users);
@@ -72,7 +72,7 @@ export class TrainingsPage implements OnInit {
 
         });
       });
-});
+    });
   }
 
 

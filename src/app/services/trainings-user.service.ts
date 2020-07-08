@@ -12,7 +12,7 @@ export class TrainingsUserService {
 
   constructor(private http:HttpClient) { }
 
-  getTrainingUserByIdUser(id:string){
+  getTrainingsUserByIdUser(id:string){
     return this.http.get(this.url+'/user/'+id);
   }
 }
