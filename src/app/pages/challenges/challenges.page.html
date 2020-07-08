@@ -24,14 +24,6 @@
         <ion-label>General</ion-label>
       </ion-item>
     </ion-segment-button>
-    <ion-segment-button value="MyChallenges">
-      <ion-item>
-        <ion-avatar slot="start">
-          <img src="https://www.flaticon.com/premium-icon/icons/svg/2369/2369399.svg">
-        </ion-avatar>
-        <ion-label>My Challenges</ion-label>
-      </ion-item>
-    </ion-segment-button>
     <ion-segment-button value="CommunityChallenges">
       <ion-item>
         <ion-avatar slot="start">
@@ -40,6 +32,14 @@
         <ion-label>Community Challenges</ion-label>  
       </ion-item>
       </ion-segment-button>
+    <ion-segment-button value="MyChallenges">
+      <ion-item>
+        <ion-avatar slot="start">
+          <img src="https://www.flaticon.com/premium-icon/icons/svg/2369/2369399.svg">
+        </ion-avatar>
+        <ion-label>My Challenges</ion-label>
+      </ion-item>
+    </ion-segment-button>
     <ion-segment-button value="Console">
       <ion-item>
         <ion-avatar slot="start">
@@ -49,81 +49,138 @@
       </ion-item>
     </ion-segment-button>
 </ion-segment>
+
+
 <ion-content>
 
-  <div *ngIf="section=='General'">
+  <div id="General" *ngIf="section=='General'">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="9">
+          <ion-item>
+            <ion-label>
+              Ranking Best Developers
+            </ion-label>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
-  <div *ngIf="section=='MyChallenges'">
-    <ion-list id="challenges-list">
-      <ion-item *ngFor="let challenge of mychallenges "><!--| async  para observable-->
-        <ion-avatar slot="start">
-          <img [src]="challenge.icon">
-        </ion-avatar>
-        <ion-label>
-          <h3>{{challenge.language}}</h3>
-          <h4>{{challenge.level}}</h4>
-          <h4>{{challenge.title}}</h4>
-          <p>{{challenge.content}}</p>
-        </ion-label>
-      </ion-item>
-    </ion-list>
+  <div id="Community" *ngIf="section=='CommunityChallenges'">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="9">
+          <ion-list>
+            <ion-item *ngFor="let challenge of challenges "><!--| async  para observable-->
+              <ion-avatar slot="start">
+                <img [src]="challenge.icon">
+              </ion-avatar>
+              <ion-label>
+                <h2>{{challenge.language}}</h2>
+                <h3>{{challenge.level}}</h3>
+                <h3>{{challenge.title}}</h3>
+                <h4>{{challenge.content}}</h4>
+              </ion-label>
+              <ion-button (click)="gotochallenge(challenge.id)">
+                Go to challenge
+              </ion-button>
+              <ion-button>
+                Add to my challenge
+              </ion-button>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+        <ion-col>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
-  <div *ngIf="section=='CommunityChallenges'">
-    <ion-list>
-      <ion-item *ngFor="let challenge of challenges "><!--| async  para observable-->
-        <ion-avatar slot="start">
-          <img [src]="challenge.icon">
-        </ion-avatar>
-        <ion-label>
-          <h3>{{challenge.language}}</h3>
-          <h4>{{challenge.level}}</h4>
-          <h4>{{challenge.title}}</h4>
-          <p>{{challenge.content}}</p>
-        </ion-label>
-        
-      </ion-item>
-    </ion-list>
+  <div id="MyChallenges" *ngIf="section=='MyChallenges'">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="9">
+          <ion-list>
+            <ion-item *ngFor="let challenge of mychallenges "><!--| async  para observable-->
+              <ion-avatar slot="start">
+                <img [src]="challenge.icon">
+              </ion-avatar>
+              <ion-label>
+                <h2>{{challenge.language}}</h2>
+                <h3>{{challenge.level}}</h3>
+                <h3>{{challenge.title}}</h3>
+                <h4>{{challenge.content}}</h4>
+              </ion-label>
+              <ion-button (click)="gotochallenge(challenge.id)">
+                Go to challenge
+              </ion-button>
+              <ion-button>
+                <ion-icon name="settings-outline"></ion-icon>
+              </ion-button>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+        <ion-col>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
   <div *ngIf="section=='Console'">
 
-    <div id="ChallengeConsole">
-      <ion-grid>
-        <ion-row id="title" size="12">      
-            <ion-item>
-              <ion-avatar slot="start">
-                <img [src]="currentchallenge.icon" width="25px" height="25px">
-              </ion-avatar>
-              <ion-label>
-                <h1>{{currentchallenge.title}}</h1>
-              </ion-label>
-            </ion-item>
-        </ion-row>
-        <ion-row id="content">
-          <ion-col size="10">
-              <h4>Objective:</h4>
-              <p>{{currentchallenge.objective}}</p>
-              <h4>Task:</h4>
-              <p>{{currentchallenge.task}}</p>
-          </ion-col>
-          <ion-col size="2">
-            <h4> Language: {{currentchallenge.language}}</h4>
-            <h4> Level: {{currentchallenge.level}}</h4>
-            <p>Rate: </p>
-
-                <img src="https://image.flaticon.com/icons/svg/1051/1051258.svg" width="20px" height="20px">
-                &nbsp;
-                <img src="https://image.flaticon.com/icons/svg/1312/1312142.svg" width="20px" height="20px">
-                &nbsp;
-                <img src="https://image.flaticon.com/icons/svg/1384/1384874.svg"width="20px" height="20px">
-
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+    <div *ngIf="state==false">
+      <div id="ChallengeConsole">
+        <ion-grid>
+          <ion-row id="title" size="12">      
+              <ion-item>
+                <ion-avatar slot="start">
+                  <img [src]="currentchallenge.icon" width="25px" height="25px">
+                </ion-avatar>
+                <ion-label>
+                  <h1>{{currentchallenge.title}}</h1>
+                </ion-label>
+              </ion-item>
+          </ion-row>
+        </ion-grid>
+      </div>
     </div>
-    
-    
-    <div id ="Dev-content">
-
+    <div *ngIf="state==true">
+      <div id="ChallengeConsole">
+        <ion-grid>
+          <ion-row id="title" size="12">      
+              <ion-item>
+                <ion-avatar slot="start">
+                  <img [src]="currentchallenge.icon" width="25px" height="25px">
+                </ion-avatar>
+                <ion-label>
+                  <h1>{{currentchallenge.title}}</h1>
+                </ion-label>
+              </ion-item>
+          </ion-row>
+          <ion-row id="content">
+            <ion-col size="10">
+                <h4>Objective:</h4>
+                <p>{{currentchallenge.objective}}</p>
+                <h4>Task:</h4>
+                <p>{{currentchallenge.task}}</p>
+            </ion-col>
+            <ion-col size="2">
+              <h4> Language: {{currentchallenge.language}}</h4>
+              <h4> Level: {{currentchallenge.level}}</h4>
+              <p>Rate: </p>
+  
+                  <img src="https://image.flaticon.com/icons/svg/1051/1051258.svg" width="20px" height="20px">
+                  &nbsp;
+                  <img src="https://image.flaticon.com/icons/svg/1312/1312142.svg" width="20px" height="20px">
+                  &nbsp;
+                  <img src="https://image.flaticon.com/icons/svg/1384/1384874.svg"width="20px" height="20px">
+  
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+      <div id ="Dev-content">
         <ion-item id="Console-Settings">
           <ion-button id="Color-Selector">
             <ion-select id="CS" placeholder="Color Theme" (ionChange)="onChangeColor($event)">
@@ -148,13 +205,11 @@
         </ion-item> 
          <ion-textarea rows="15" cols="20"  spellcheck="false" [(ngModel)]="inputCode" id ="{{color}}">
         </ion-textarea>
-
       <div id="button">
         <ion-button id="Compile-Button" (click)="compile()">&nbsp;Compile
           <ion-icon slot="icon-only" name="star"></ion-icon>
         </ion-button>
       </div>
-
       <div id="output">
         <ion-item>
           <ion-label>
@@ -175,9 +230,8 @@
         </ion-textarea>
       </div>
     </div>
+    </div>
   </div>
- 
-
 </ion-content>
 
 

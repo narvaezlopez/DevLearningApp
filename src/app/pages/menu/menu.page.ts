@@ -79,7 +79,6 @@ export class MenuPage implements OnInit {
 
   }
 
-
   ngOnInit() {
 
     this.storage.get('idUser').then((res) => {
@@ -103,8 +102,10 @@ export class MenuPage implements OnInit {
   }
 
   logout() {
-    this.storageService.logout();
-    console.log('logout');
+    this.auth.signOut();
+    this.storage.remove('access_token');
+    this.storage.remove('idUser')
+    this.router.navigate(['/login']);
   }
 
 }

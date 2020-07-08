@@ -58,7 +58,6 @@ export class LoginPage implements OnInit {
         console.log('token!');
         this.storage.set(TOKEN_KEY, this.token);
         this.user = this.helper.decodeToken(String(this.token));
-        console.log(this.user);
         this.router.navigate(['/menu/start']);
       })
       this.firestore.collection('users').doc(result.user.uid)
@@ -88,8 +87,7 @@ export class LoginPage implements OnInit {
     this.auth.signOut();
     this.storage.remove('access_token');
     this.storage.remove('idUser')
-    this.router.navigate(['/login']);
-    this.storageService.logout();
+  //  this.storageService.logout();
   }
 
   Landing(){

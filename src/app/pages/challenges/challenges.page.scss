@@ -34,9 +34,90 @@ ion-segment{
 
 ion-content{
     --background: var(--ion-color-dark);
-    ion-avatar{
-        --border-radius: 0%;
+    div#General{
+
     }
+    div#Community{
+        ion-grid{
+            ion-row{
+                
+                ion-col{
+
+                    ion-list{
+                        
+                        ion-item{
+                            --background:var(--ion-color-dark);
+                            ion-avatar{
+                                --border-radius: 0%;
+                            }
+                            ion-label{
+                                font-family: 'Russo One', sans-serif;
+                                h2{
+                                    color: #fbe47b;
+                                }
+                                h3{
+                                    color: white;
+                                }
+                                h4{
+                                    color: white;
+                                }
+                                
+                            }
+                            ion-button{
+                                font-family: 'Russo One', sans-serif;
+                                --background: #77003c;
+                                color: #fbe47b;
+                                border: #fbe47b 1px solid;
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+
+    }
+
+    div#MyChallenges{
+        ion-grid{
+            ion-row{
+                
+                ion-col{
+
+                    ion-list{
+                        
+                        ion-item{
+                            --background:var(--ion-color-dark);
+                            ion-avatar{
+                                --border-radius: 0%;
+                            }
+                            ion-label{
+                                font-family: 'Russo One', sans-serif;
+                                h2{
+                                    color: #fbe47b;
+                                }
+                                h3{
+                                    color: white;
+                                }
+                                h4{
+                                    color: white;
+                                }
+                                
+                            }
+                            ion-button{
+                                font-family: 'Russo One', sans-serif;
+                                --background: #77003c;
+                                color: #fbe47b;
+                                border: #fbe47b 1px solid;
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+
     div#ChallengeConsole{
         width: 1100px;
         margin:auto;
@@ -44,6 +125,9 @@ ion-content{
             ion-row#title{
                 ion-item{
                     --background: transparent;
+                    ion-avatar{
+                        --border-radius: 0%;
+                    }
                     ion-label{
                         color:#fbe47b;
                         font-family: 'Russo One', sans-serif;
