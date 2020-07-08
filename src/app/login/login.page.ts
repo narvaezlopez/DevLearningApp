@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../services/auth.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 
@@ -11,7 +11,6 @@ import { BehaviorSubject } from 'rxjs';
 
 import { NavController } from '@ionic/angular';
 import { Router,ActivatedRoute, Params, NavigationExtras } from '@angular/router';
-import { StorageService } from 'src/app/services/storage.service';
 const TOKEN_KEY = 'access_token';
 
 @Component({
@@ -23,8 +22,7 @@ export class LoginPage implements OnInit {
 
   
   constructor(public auth:AngularFireAuth,private firestore: AngularFirestore, private authService:AuthService, 
-              private storage: Storage, private helper: JwtHelperService, private navCtrl:NavController, private router:Router, 
-              private storageService: StorageService) { }
+              private storage: Storage, private helper: JwtHelperService, private navCtrl:NavController, private router:Router) { }
 
   token: any[] = [];
   user = {
@@ -51,15 +49,18 @@ export class LoginPage implements OnInit {
     this.loginMetod(false);
     this.auth.signInWithPopup(new auth.GoogleAuthProvider())
     .then((result) => {
+      console.log(result);
       this.authService.createcustomToken(result.user.uid)
       .subscribe((tokencito)=>{
         this.token=<any[]>tokencito['token'];
         this.storage.set('idUser', result.user.uid);
-        console.log('token!');
+        console.log('tokeeeeeeeeeeeeeen');
+        //console.log(result.user.uid);
+        //console.log(result.user.uid[0]);
         this.storage.set(TOKEN_KEY, this.token);
         this.user = this.helper.decodeToken(String(this.token));
-        console.log(this.user);
-        this.router.navigate(['/menu/start']);
+        this.storage.set('bool', "true");
+        this.router.navigate(['/menu/account']);
       })
       this.firestore.collection('users').doc(result.user.uid)
       .set({
@@ -85,18 +86,11 @@ export class LoginPage implements OnInit {
   }
 
   logout() {
-    this.auth.signOut();
-    this.storage.remove('access_token');
-    this.storage.remove('idUser')
-    this.router.navigate(['/login']);
-    this.storageService.logout();
-  }
 
-  Landing(){
-    this.router.navigate(['']);
-  }
-  Menu(){
-    this.router.navigate(['/menu']);
+    this.auth.signOut();
+    this.storage.remove(TOKEN_KEY).then(() => {
+      this.authenticationState.next(false);
+    });
   }
 
 }
