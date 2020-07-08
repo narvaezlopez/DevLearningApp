@@ -18,70 +18,70 @@ import { Router } from '@angular/router';
 })
 export class TrainingsPage implements OnInit {
 
-  trainings: any[]=[];
-  
-  languagesJava: any[]=[];
-  languagesCsharp: any[]=[];
-  languagesPhp: any[]=[];
+  trainings: any[] = [];
+
+  languagesJava: any[] = [];
+  languagesCsharp: any[] = [];
+  languagesPhp: any[] = [];
 
   // -- option my trainings
   trainings_users: any[] = [];
   mytrainings: any[] = [];
 
-  section:string;
-  
-  constructor(private consoleService:ConsoleService,private alert:AlertController,
-              private toast:ToastController, private firestore: AngularFirestore,
-              public auth:AngularFireAuth, private trainingsUserService:TrainingsUserService, 
-              private trainingsService: TrainingsService, private localstorage: Storage,private router:Router) { }
+  section: string;
+
+  constructor(private consoleService: ConsoleService, private alert: AlertController,
+    private toast: ToastController, private firestore: AngularFirestore,
+    public auth: AngularFireAuth, private trainingsUserService: TrainingsUserService,
+    private trainingsService: TrainingsService, private localstorage: Storage, private router: Router) { }
 
   ngOnInit() {
-      // get trainings // useless
+    // get trainings // useless
     this.firestore.collection('training').valueChanges()
-    .subscribe((trainings)=>{
-      this.trainings=<any[]>trainings;
-    }) 
+      .subscribe((trainings) => {
+        this.trainings = <any[]>trainings;
+      })
     // -- get trainings by language -- CSharp --
     this.trainingsService.getTrainingsByLanguage('CSharp')
-    .subscribe((trainings)=>{
-      this.languagesCsharp=<any[]>trainings;
-    }) 
-              // -- get trainings by language -- Java --
+      .subscribe((trainings) => {
+        this.languagesCsharp = <any[]>trainings;
+      })
+    // -- get trainings by language -- Java --
     this.trainingsService.getTrainingsByLanguage('Java')
-    .subscribe((trainings)=>{
-      this.languagesJava=<any[]>trainings;
-    }) 
-              // -- get trainings by language -- Php --
+      .subscribe((trainings) => {
+        this.languagesJava = <any[]>trainings;
+      })
+    // -- get trainings by language -- Php --
     this.trainingsService.getTrainingsByLanguage('Php')
-    .subscribe((trainings)=>{
-      this.languagesPhp=<any[]>trainings;
-    }) 
+      .subscribe((trainings) => {
+        this.languagesPhp = <any[]>trainings;
+      })
 
-              //My challenges ionic g services services/advancesUser
+    //My challenges ionic g services services/advancesUser
     this.localstorage.get('idUser').then((res) => {
       this.trainingsUserService.getTrainingsUserByIdUser(res)
-      .subscribe((trainings_users) => {
-        this.trainings_users = <any[]>trainings_users;
-        console.log(trainings_users);
+        .subscribe((trainings_users) => {
+          this.trainings_users = <any[]>trainings_users;
+          console.log(trainings_users);
 
-        this.trainings_users.forEach(element => {
-          this.trainingsService.getTrainingsById(element['training']).subscribe((trainings) => {
-            this.mytrainings.push(trainings);
-            console.log(trainings);
+          this.trainings_users.forEach(element => {
+            this.trainingsService.getTrainingsById(element['training']).subscribe((trainings) => {
+              this.mytrainings.push(trainings);
+              console.log(trainings);
+            });
+
           });
-
         });
-      });
     });
   }
 
 
-  ionViewWillEnter(){
-    this.section="CSharp";
+  ionViewWillEnter() {
+    this.section = "CSharp";
   }
 
   segmentChanged($event) {
-    this.section=$event.target.value;
+    this.section = $event.target.value;
   }
 
 }
