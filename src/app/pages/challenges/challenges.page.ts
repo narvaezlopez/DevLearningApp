@@ -179,4 +179,6 @@ export class ChallengesPage implements OnInit {
     })
     
   }
+
+
 }

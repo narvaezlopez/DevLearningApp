@@ -15,8 +15,8 @@
 </ion-header>
 <ion-progress-bar [value]="1">
 </ion-progress-bar>
-<ion-segment [(ngModel)]="section">
 
+<ion-segment [(ngModel)]="section">
   <ion-segment-button value="CSharp">
     <ion-item>
       <ion-avatar slot="start">
@@ -62,19 +62,18 @@
           <img [src]="training.icon">
         </ion-avatar>
         <ion-label>
-          <h4>{{training.language}}</h4>
-          <p id="title">{{training.title}}</p>
+          <h3>{{training.language}}</h3>
+          <p id="title-m">&#10004; &nbsp;{{training.title}}</p>
           <p>{{training.desc}}</p>
-          <h4>Sintax: {{training.sintax}}</h4>
-          <ion-button>
+          <h4>Sintax: <br>{{training.sintax}}</h4>
+          <!-- <ion-button>
             Review {{training.title}}
-          </ion-button>
+          </ion-button> -->
         </ion-label>
 
       </ion-item>
     </ion-list>
   </div>
-
 
   <div *ngIf="section=='CSharp'">
     <ion-list>
@@ -84,14 +83,14 @@
           <img [src]="training.icon">
         </ion-avatar>
         <ion-label>
-          <p id="title">{{training.title}}</p>
+          <h3>C#</h3>
+          <p id="title-c">{{training.title}}</p>
           <p>{{training.desc}}</p>
-          <h4>Sintax: {{training.sintax}}</h4>
+          <h4>Sintax: <br>{{training.sintax}}</h4><br>
           <ion-button>
             Try {{training.title}}
           </ion-button>
         </ion-label>
-
       </ion-item>
     </ion-list>
   </div>
@@ -105,9 +104,9 @@
         </ion-avatar>
         <ion-label>
           <h3>{{training.language}}</h3>
-          <p id="title">{{training.title}}</p>
+          <p id="title-j">{{training.title}}</p>
           <p>{{training.desc}}</p>
-          <h4>Sintax: {{training.sintax}}</h4>
+          <h4>Sintax: <br>{{training.sintax}}</h4>
           <ion-button>
             Try {{training.title}}
           </ion-button>
@@ -125,9 +124,9 @@
         </ion-avatar>
         <ion-label>
           <h3>{{training.language}}</h3>
-          <p id="title">{{training.title}}</p>
+          <p id="title-p">{{training.title}}</p>
           <p>{{training.desc}}</p>
-          <h4>Sintax: {{training.sintax}}</h4>
+          <h4>Sintax: <br>{{training.sintax}}</h4>
           <ion-button>
             Try {{training.title}}
           </ion-button>
