@@ -14,7 +14,7 @@ ion-split-pane{
      border-right: 3px solid var(--ion-color-step-150,#77003c);
         ion-content#Main-Menu{            
             --background: ; 
-            --padding-top: 20px;
+            --padding-top: 10px;
             --padding-bottom: 20px;
             ion-list#inbox-list{
               font-size: 22px;
@@ -23,11 +23,12 @@ ion-split-pane{
               background: transparent !important;
                 div#img1{
           
-                  margin: auto;
-                  text-align: center;
-                  width: 250px;
-                  height: 100px;
-                  background-color:#fbe47b;
+                  // margin: auto;
+                  margin-left: 0em;
+                  // text-align: center;
+                  width: 300px;
+                  height: 120px;
+                  // background-color:#fbe47b;
                   border-radius: 5%;
                   img{
                     width: 300px;
@@ -39,21 +40,23 @@ ion-split-pane{
                   ion-row{
                     ion-col#foto{
                       div#photo{
-                        padding-top: 10px;
+                        // padding-top: 10px;
                         padding-bottom: 10px;
                         text-align: center;
                         img#foto{
-                            width: 90px;
-                            height: 70px;
+                            width: 80px;
+                            height: 80px;
                             border: 3px solid #f8b607;
                             border-color:#000000;
                             box-shadow: 0 0 10px #000000;
+                            border-radius: 50px;
                         }
                       }
                     }
                     ion-col#name{
+                      margin-top: 12px;
                       ion-label#name{
-                        
+                        margin-top: 10px;
                         font-family: 'Russo One', sans-serif;
                         h4{
                           color:#77003c;
