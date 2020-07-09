@@ -37,7 +37,10 @@ ion-split-pane{
                   }
                 }
                 ion-grid{
-                  ion-row{
+                  background: var(--ion-color-dark);
+                  ion-row#row-bar1{
+                    padding: 0;
+                    margin: 0;                    
                     ion-col#foto{
                       div#photo{
                         // padding-top: 10px;
@@ -59,15 +62,43 @@ ion-split-pane{
                         margin-top: 10px;
                         font-family: 'Russo One', sans-serif;
                         h4{
+                          text-align: center;
                           color:#77003c;
-                          font-size: 12px;
+                          font-size: 14px;
                         }
                         h3{
-                          font-size: 12px;
+                          text-align: center;
+                          font-size: 14px;
                         }
                       }
                     }
                   }
+                  ion-row#row-bar2{
+                    padding: 0;
+                    margin-left: 10px;
+                    margin-top: -15px;
+                    ion-item#level-bar{
+                      --background: var(--ion-color-dark);
+                    }
+                    ion-avatar{
+                      margin-top: -9px;
+                      margin-right: 6px;
+                      padding: 0;
+                      width: 25px;
+                      height: 25px;
+                    }
+                    ion-label{
+                      margin-top: -2px;
+                      margin-left: 0;
+                      p#p-level1{
+                        color:  #ffd863;
+                      }
+                      p#p-level2{
+                        color:  #00a745;
+                      }
+                    }
+                  }
+                  
                 }
                 ion-item#itemsmenu{
                   --background: var(--ion-color-dark);
