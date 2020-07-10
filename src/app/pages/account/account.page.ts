@@ -143,9 +143,6 @@ export class AccountPage implements OnInit {
         console.log(error);
       })
   }
-
-
-
   userSelected(user: any) {
     this.localstorage.set('currentUser', user);
     /* const toast = await this.toast.create({

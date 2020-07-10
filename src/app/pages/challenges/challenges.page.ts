@@ -38,6 +38,7 @@ export class ChallengesPage implements OnInit {
   result:string;
   cputime:string;
   memory:string;
+  text:string;
 
 
   constructor(private consoleService:ConsoleService,private alert:AlertController, 
@@ -46,6 +47,12 @@ export class ChallengesPage implements OnInit {
               private challengesService:ChallengesService, private localstorage: Storage,private router:Router) { }
 
   ngOnInit() {
+        this.localstorage.get('state')
+        .then((state)=>{
+          this.state=state;
+        }).catch(()=>{
+          this.state=false;
+        })
         //My challenges ionic g services services/advancesUser
         this.localstorage.get('idUser').then((res) => {
               this.challengesUserService.getChallengeUserByIdUser(res)
@@ -86,7 +93,7 @@ export class ChallengesPage implements OnInit {
          .catch(()=>{
             this.currentchallenge={objective:";D",
             content:":)",
-            expectoutput:":D",
+            expectedoutput:":D",
             icon:"https://vignette.wikia.nocookie.net/metalslug/images/e/e4/Fbig.gif/revision/latest/top-crop/width/220/height/220?cb=20110521014514&path-prefix=es",
             language:"",
             id:"",
@@ -99,11 +106,9 @@ export class ChallengesPage implements OnInit {
   ionViewWillEnter(){
     this.section="CommunityChallenges";
   }
-
   segmentChanged($event) {
     this.section=$event.target.value;
   }
-
   //console
   async compile(){
     if(this.language==null){
@@ -138,8 +143,16 @@ export class ChallengesPage implements OnInit {
           this.result=this.out.output;
           this.memory=this.out.memory;
           this.cputime=this.out.cpuTime;
-          console.log(this.result+this.memory+this.cputime);
+          console.log(this.result);
+          console.log(this.currentchallenge.expectedoutput);
+          if(this.result.replace(/\n/ig, '')==this.currentchallenge.expectedoutput){
+            this.text="WELL DONE! :D";
+          }
+          else{
+            this.text="WRONG ANSWER! XC";
+          }
         });
+
       }
     }
     
@@ -156,8 +169,9 @@ export class ChallengesPage implements OnInit {
     console.log($event.target.value);
   }
 
-  gotochallenge(id:string){
+  async gotochallenge(id:string){
     this.state=true;
+    this.localstorage.set('state',this.state);
     this.firestore.collection('challenge').doc(id).valueChanges()
     .subscribe((currentchallenge)=>{
       this.currentchallenge=<any>currentchallenge;
@@ -165,6 +179,7 @@ export class ChallengesPage implements OnInit {
     })
     this.section="Console";
     this.localstorage.set('currentchallenge',id);
+    this.localstorage.set('state',true);
     console.log(id);
     this.localstorage.get('idUser')
     .then((user)=>{
@@ -177,10 +192,61 @@ export class ChallengesPage implements OnInit {
     .catch((error)=>{
       console.log(error);
     })
+    const toast = await this.toast.create({
+      duration:3000,
+      header:'Challenge Added!',
+      position:'top',
+      message: 'Going hard. :D',
+    });
+    toast.present();
+    
+  }
+  async gotochallengeM(id:string){
+    this.state=true;
+    this.localstorage.set('state',this.state);
+    this.firestore.collection('challenge').doc(id).valueChanges()
+    .subscribe((currentchallenge)=>{
+      this.currentchallenge=<any>currentchallenge;
+      console.log(this.currentchallenge);
+    })
+    this.section="Console";
+    this.localstorage.set('currentchallenge',id);
+    console.log(id);
+    const toast = await this.toast.create({
+      duration:3000,
+      header:'Challenge!',
+      position:'top',
+      message: 'Going hard. :D',
+    });
+    toast.present();
     
   }
 
+  async addchallenge(id:string){
+    this.localstorage.get('idUser')
+    .then((user)=>{
+      this.firestore.collection('challenge_user')
+      .add({
+        user: user,
+        challenge: id
+      })
+    })
+    const toast = await this.toast.create({
+      duration:3000,
+      header:'Challenge Added!',
+      position:'top',
+      message: 'Refresh the page',
+    });
+    toast.present();
+  }
+
   async deleteChallenge(idch:string){
+    const toast = await this.toast.create({
+      duration:3000,
+      header:'Challenge Deleted!',
+      position:'top',
+      message: 'Refresh the page',
+    });
     const alerta = await this.alert.create({
       header: 'Are you sure you want to delete this task?',
       message: 'This action can not be undone.',
@@ -194,6 +260,7 @@ export class ChallengesPage implements OnInit {
                 this.firestore.collection('challenge_user').doc(element.id).delete();
               }
             });
+            toast.present();
           }
         },
         {
@@ -205,7 +272,14 @@ export class ChallengesPage implements OnInit {
       ]
     });
     alerta.present();
+
   }
 
-
+  goOut(){
+    this.localstorage.remove('currentchallenge');
+    this.state=false;
+    this.localstorage.set('state',this.state);
+    this.currentchallenge.title="Select a challenge in your my challenge list!";
+    this.currentchallenge.icon="https://vignette.wikia.nocookie.net/metalslug/images/e/e4/Fbig.gif/revision/latest/top-crop/width/220/height/220?cb=20110521014514&path-prefix=es";
+  }
 }

@@ -96,7 +96,10 @@ export class LoginPage implements OnInit {
   logout() {
     this.auth.signOut();
     this.storage.remove('access_token');
-    this.storage.remove('idUser')
+    this.storage.remove('idUser');
+    this.storage.remove('currentchallenge');
+    this.storage.remove('currenttraining');
+    this.storage.remove('state');
   //  this.storageService.logout();
   }
 

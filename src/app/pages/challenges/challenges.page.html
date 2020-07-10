@@ -86,8 +86,8 @@
               <ion-button (click)="gotochallenge(challenge.id)">
                 Go to challenge
               </ion-button>
-              <ion-button>
-                Add to my challenge
+              <ion-button (click)="addchallenge(challenge.id)">
+                <ion-icon name="add-outline"></ion-icon>
               </ion-button>
             </ion-item>
           </ion-list>
@@ -113,7 +113,7 @@
                 <h3>{{challenge.title}}</h3>
                 <h4>{{challenge.content}}</h4>
               </ion-label>
-              <ion-button (click)="gotochallenge(challenge.id)">
+              <ion-button (click)="gotochallengeM(challenge.id)">
                 Go to challenge
               </ion-button>
               <ion-button>
@@ -159,6 +159,18 @@
                 <ion-label>
                   <h1>{{currentchallenge.title}}</h1>
                 </ion-label>
+                <ion-button (click)="goOut()">
+                  <ion-icon name="exit-outline"></ion-icon>
+                  <ion-label>
+                    Go out!
+                  </ion-label>
+                </ion-button>
+                <ion-button >
+                  <ion-icon name="save-outline"></ion-icon>
+                  <ion-label>
+                    
+                  </ion-label>
+                </ion-button>
               </ion-item>
           </ion-row>
           <ion-row id="content">
@@ -210,8 +222,22 @@
         </ion-textarea>
       <div id="button">
         <ion-button id="Compile-Button" (click)="compile()">&nbsp;Compile
-          <ion-icon slot="icon-only" name="star"></ion-icon>
+          <ion-icon slot="icon-only" name="hammer-outline"></ion-icon>
         </ion-button>
+      </div>
+      <div *ngIf="text=='WELL DONE! :D'">
+        <ion-item id="out">
+          <ion-label color="success">
+            {{text}}
+          </ion-label>
+        </ion-item>
+      </div>
+      <div *ngIf="text=='WRONG ANSWER! XC'">
+        <ion-item id="out">
+          <ion-label color="danger">
+            {{text}}
+          </ion-label>
+        </ion-item>
       </div>
       <div id="output">
         <ion-item>
