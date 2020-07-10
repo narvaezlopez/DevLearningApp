@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/services/users.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Storage } from '@ionic/storage';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-start',
@@ -10,10 +11,12 @@ import { Storage } from '@ionic/storage';
 })
 export class StartPage implements OnInit {
   user: any[] = [];
-
+  advances:any[]=[];
   constructor(private storage: Storage,
               private userService: UsersService,
-              public auth: AngularFireAuth) { }
+              public auth: AngularFireAuth,private firestore: AngularFirestore) { }
+
+ 
 
   ngOnInit() {
     this.storage.get('idUser').then((res) => {
@@ -22,6 +25,10 @@ export class StartPage implements OnInit {
           this.user = <any[]>user['user_database'];
         });
     });
+    this.firestore.collection('advances').valueChanges()
+    .subscribe((advances)=>{
+      this.advances=<any[]>advances;
+    })
   }
 
 }

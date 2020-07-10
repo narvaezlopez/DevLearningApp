@@ -99,7 +99,8 @@ export class ChallengesPage implements OnInit {
             id:"",
             level:"",
             task:"",
-            title:"Select a challenge in your my challenge list!"};
+            title:"Select a challenge in your my challenge list!",
+            exp:''}
          })
          
   }

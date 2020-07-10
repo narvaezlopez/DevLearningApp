@@ -22,5 +22,13 @@
       <h3>{{user.name}}</h3>
     </ion-label>
   </ion-item>
+  <ion-list>
+    <ion-item *ngFor="let advance of advances">
+      <ion-label>
+        <h1>{{advance.titlestart}}</h1>
+        <h4>{{advance.descstart}}</h4>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 
 </ion-content>

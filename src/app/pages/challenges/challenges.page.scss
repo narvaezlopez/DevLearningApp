@@ -60,7 +60,7 @@ ion-content{
                                     color: white;
                                 }
                                 h4{
-                                    color: white;
+                                    color: #00e600;
                                 }
                                 
                             }
@@ -102,7 +102,7 @@ ion-content{
                                     color: white;
                                 }
                                 h4{
-                                    color: white;
+                                    color: #00e600;
                                 }
                                 
                             }
@@ -131,8 +131,13 @@ ion-content{
                         --border-radius: 0%;
                     }
                     ion-label{
-                        color:#fbe47b;
                         font-family: 'Russo One', sans-serif;
+                        h1{
+                            color:#fbe47b;
+                        }
+                        h4{
+                            color:#00e600;
+                        }
                     }
                     ion-button{
                         padding-left: 10px;
@@ -141,8 +146,8 @@ ion-content{
                             color:#fbe47b;
                         }
                         ion-label{
-                            color:#fbe47b;
-                            font-family: 'Russo One', sans-serif;
+                           color:#fbe47b;
+                           font-family: 'Russo One', sans-serif;
                         }
                     }
                 }

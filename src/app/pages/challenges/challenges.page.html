@@ -81,7 +81,7 @@
                 <h2>{{challenge.language}}</h2>
                 <h3>{{challenge.level}}</h3>
                 <h3>{{challenge.title}}</h3>
-                <h4>{{challenge.content}}</h4>
+                <h4>experience: +{{challenge.exp}}</h4>
               </ion-label>
               <ion-button (click)="gotochallenge(challenge.id)">
                 Go to challenge
@@ -111,7 +111,7 @@
                 <h2>{{challenge.language}}</h2>
                 <h3>{{challenge.level}}</h3>
                 <h3>{{challenge.title}}</h3>
-                <h4>{{challenge.content}}</h4>
+                <h4>experience: +{{challenge.exp}}</h4>
               </ion-label>
               <ion-button (click)="gotochallengeM(challenge.id)">
                 Go to challenge
@@ -158,6 +158,7 @@
                 </ion-avatar>
                 <ion-label>
                   <h1>{{currentchallenge.title}}</h1>
+                  <h4>experience: +{{currentchallenge.exp}}</h4>
                 </ion-label>
                 <ion-button (click)="goOut()">
                   <ion-icon name="exit-outline"></ion-icon>

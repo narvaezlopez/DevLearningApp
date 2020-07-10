@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Storage } from '@ionic/storage';
+import { Pipe, PipeTransform} from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+@Pipe({ name: 'safe' })
 
 @Component({
   selector: 'app-currenttraining',
@@ -10,8 +13,11 @@ import { Storage } from '@ionic/storage';
 export class CurrenttrainingPage implements OnInit {
 
   currenttraining:any [] = [];
-  constructor(private firestore: AngularFirestore, private localstorage: Storage) { }
+  constructor(private firestore: AngularFirestore, private localstorage: Storage, private sanitizer: DomSanitizer) { }
 
+  transform(url) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+    }
   ngOnInit() {
     this.localstorage.get('currenttraining')
     .then((id)=>{
