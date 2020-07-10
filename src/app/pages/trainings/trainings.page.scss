@@ -44,6 +44,14 @@ ion-content{
           ion-avatar{
             --border-radius: 0;
           }
+          ion-label{
+            ion-button{
+              font-family: 'Russo One', sans-serif;
+              --background:#77003c;
+              --color:#fbe47b;
+              border:1px solid;
+            }
+          }
           p#title-c{
               color:#ffd863;
               font-size: 17px;
@@ -88,6 +96,14 @@ ion-content{
           border-bottom: #fbe47b solid 2px;
           ion-avatar{
             --border-radius: 0;
+          }
+          ion-label{
+            ion-button{
+              font-family: 'Russo One', sans-serif;
+              --background:#77003c;
+              --color:#fbe47b;
+              border:1px solid;
+            }
           }
           p#title-c{
               color:#ffd863;
@@ -134,6 +150,14 @@ ion-content{
           ion-avatar{
             --border-radius: 0;
           }
+          ion-label{
+            ion-button{
+              font-family: 'Russo One', sans-serif;
+              --background:#77003c;
+              --color:#fbe47b;
+              border:1px solid;
+            }
+          }
           p#title-c{
               color:#ffd863;
               font-size: 17px;
@@ -178,6 +202,14 @@ ion-content{
           border-bottom: #fbe47b solid 2px;
           ion-avatar{
             --border-radius: 0;
+          }
+          ion-label{
+            ion-button{
+              font-family: 'Russo One', sans-serif;
+              --background:#77003c;
+              --color:#fbe47b;
+              border:1px solid;
+            }
           }
           p#title-c{
               color:#ffd863;
