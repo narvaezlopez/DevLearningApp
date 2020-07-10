@@ -34,44 +34,186 @@ ion-segment{
   
 ion-content{
     --background: var(--ion-color-dark);
-    ion-item{
-        --background: var(--ion-color-dark);
-        ion-avatar{
-          --border-radius: 0;
-        }
-        p#title-c{
-            color:#ffd863;
+    
+    div#MyTrainings{
+      ion-list{
+        background: var(--ion-color-dark);
+        ion-item{
+          --background: var(--ion-color-dark);
+          border-bottom: #fbe47b solid 2px;
+          ion-avatar{
+            --border-radius: 0;
+          }
+          p#title-c{
+              color:#ffd863;
+              font-size: 17px;
+              font-family: 'Russo One', sans-serif;
+          }
+          p#title-p{
+            color:#1273eb;
             font-size: 17px;
             font-family: 'Russo One', sans-serif;
-        }
-        p#title-p{
-          color:#1273eb;
-          font-size: 17px;
-          font-family: 'Russo One', sans-serif;
-        }
-        p#title-j{
-          color:#b3404a;
-          font-size: 17px;
-          font-family: 'Russo One', sans-serif;
-        }
-        p#title-m{
-          color:#00a745;
-          font-size: 17px;
-          font-family: 'Russo One', sans-serif;
-        }
-        h3, p{
-          width: 70%;
-          justify-content: left;
-          text-align: left;
-          color: white;
-          font-family: sans-serif;
-        }
-        h4{
-          width: 70%;
-          color: rgb(173, 173, 173);
-          font-family: sans-serif;
-        }
-
+          }
+          p#title-j{
+            color:#b3404a;
+            font-size: 17px;
+            font-family: 'Russo One', sans-serif;
+          }
+          p#title-m{
+            color:#00a745;
+            font-size: 17px;
+            font-family: 'Russo One', sans-serif;
+          }
+          h3, p{
+            width: 70%;
+            justify-content: left;
+            text-align: left;
+            color: white;
+            font-family: sans-serif;
+          }
+          h4{
+            width: 70%;
+            color: rgb(173, 173, 173);
+            font-family: sans-serif;
+          }
+  
+      }
+      }
+    }
+    div#CSharp{
+      ion-list{
+        background: var(--ion-color-dark);
+        ion-item{
+          --background: var(--ion-color-dark);
+          border-bottom: #fbe47b solid 2px;
+          ion-avatar{
+            --border-radius: 0;
+          }
+          p#title-c{
+              color:#ffd863;
+              font-size: 17px;
+              font-family: 'Russo One', sans-serif;
+          }
+          p#title-p{
+            color:#1273eb;
+            font-size: 17px;
+            font-family: 'Russo One', sans-serif;
+          }
+          p#title-j{
+            color:#b3404a;
+            font-size: 17px;
+            font-family: 'Russo One', sans-serif;
+          }
+          p#title-m{
+            color:#00a745;
+            font-size: 17px;
+            font-family: 'Russo One', sans-serif;
+          }
+          h3, p{
+            width: 70%;
+            justify-content: left;
+            text-align: left;
+            color: white;
+            font-family: sans-serif;
+          }
+          h4{
+            width: 70%;
+            color: rgb(173, 173, 173);
+            font-family: sans-serif;
+          }
+  
+      }
+      }
+    }
+    div#Java{
+      ion-list{
+        background: var(--ion-color-dark);
+        ion-item{
+          --background: var(--ion-color-dark);
+          border-bottom: #b3404a solid 2px;
+          ion-avatar{
+            --border-radius: 0;
+          }
+          p#title-c{
+              color:#ffd863;
+              font-size: 17px;
+              font-family: 'Russo One', sans-serif;
+          }
+          p#title-p{
+            color:#1273eb;
+            font-size: 17px;
+            font-family: 'Russo One', sans-serif;
+          }
+          p#title-j{
+            color:#b3404a;
+            font-size: 17px;
+            font-family: 'Russo One', sans-serif;
+          }
+          p#title-m{
+            color:#00a745;
+            font-size: 17px;
+            font-family: 'Russo One', sans-serif;
+          }
+          h3, p{
+            width: 70%;
+            justify-content: left;
+            text-align: left;
+            color: white;
+            font-family: sans-serif;
+          }
+          h4{
+            width: 70%;
+            color: rgb(173, 173, 173);
+            font-family: sans-serif;
+          }
+  
+      }
+      }
+    }
+    div#Php{
+      ion-list{
+        background: var(--ion-color-dark);
+        ion-item{
+          --background: var(--ion-color-dark);
+          border-bottom: #fbe47b solid 2px;
+          ion-avatar{
+            --border-radius: 0;
+          }
+          p#title-c{
+              color:#ffd863;
+              font-size: 17px;
+              font-family: 'Russo One', sans-serif;
+          }
+          p#title-p{
+            color:#1273eb;
+            font-size: 17px;
+            font-family: 'Russo One', sans-serif;
+          }
+          p#title-j{
+            color:#b3404a;
+            font-size: 17px;
+            font-family: 'Russo One', sans-serif;
+          }
+          p#title-m{
+            color:#00a745;
+            font-size: 17px;
+            font-family: 'Russo One', sans-serif;
+          }
+          h3, p{
+            width: 70%;
+            justify-content: left;
+            text-align: left;
+            color: white;
+            font-family: sans-serif;
+          }
+          h4{
+            width: 70%;
+            color: rgb(173, 173, 173);
+            font-family: sans-serif;
+          }
+  
+      }
+      }
     }
 
 }

@@ -105,6 +105,7 @@ export class MenuPage implements OnInit {
     this.auth.signOut();
     this.storage.remove('access_token');
     this.storage.remove('idUser')
+    this.storage.remove('currentchallenge')
     this.router.navigate(['/login']);
   }
 

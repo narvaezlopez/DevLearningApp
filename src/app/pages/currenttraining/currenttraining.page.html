@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-item id="main">
+      <ion-avatar slot="start">
+        <img src="https://image.flaticon.com/icons/svg/1693/1693487.svg">
+      </ion-avatar>
+      <ion-label id="main-title">
+        Trainings
+      </ion-label>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+<ion-progress-bar [value]="1">
+</ion-progress-bar>
+
+<ion-content>
+          <p id="title-c">{{currenttraining.title}}</p>
+          <p>{{currenttraining.desc}}</p>
+          <h4>Syntax: {{currenttraining.sintax}}</h4>
+          <iframe width="1024" height="576" src="https://www.youtube.com/embed/XofVTXrYHaY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+</ion-content>

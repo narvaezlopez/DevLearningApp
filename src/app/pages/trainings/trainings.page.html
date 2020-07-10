@@ -75,7 +75,7 @@
     </ion-list>
   </div>
 
-  <div *ngIf="section=='CSharp'">
+  <div id="CSharp" *ngIf="section=='CSharp'">
     <ion-list>
       <ion-item *ngFor="let training of languagesCsharp">
         <!--| async  para observable-->
@@ -87,7 +87,7 @@
           <p id="title-c">{{training.title}}</p>
           <p>{{training.desc}}</p>
           <h4>Syntax: <br>{{training.sintax}}</h4>
-          <ion-button>
+          <ion-button (click)="gototraining(training.id)">
             Try {{training.title}}
           </ion-button>
         </ion-label>
@@ -95,7 +95,7 @@
     </ion-list>
   </div>
 
-  <div *ngIf="section=='Java'">
+  <div id="Java" *ngIf="section=='Java'">
     <ion-list>
       <ion-item *ngFor="let training of languagesJava">
         <!--| async  para observable-->
@@ -115,7 +115,7 @@
     </ion-list>
   </div>
 
-  <div *ngIf="section=='Php'">
+  <div id="Php" *ngIf="section=='Php'">
     <ion-list>
       <ion-item *ngFor="let training of languagesPhp">
         <!--| async  para observable-->

@@ -5,7 +5,7 @@ import { Storage } from '@ionic/storage';
 import { AngularFireStorage } from '@angular/fire/storage'
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { finalize } from 'rxjs/operators';
+import { finalize, endWith } from 'rxjs/operators';
 
 //Services
 import { UploadsService } from '../../services/uploads.service';
@@ -41,17 +41,43 @@ export class AccountPage implements OnInit {
     upload: any;
     percent: number;
 
+    editvar:boolean=false;
+
   //testing variables
   downloadURL: Observable<any>;
   uploadPercent: Observable<number>;
   currentUser: string = '';
   users: any[] = [];
 
+
+
+  userdata={
+    name:"",
+    nacionality:"",
+    email:"",
+    phone:"",
+    favoritelanguage:"",
+    numberadvances:"",
+    numberbadges:"",
+    exppoints:"",
+    acquiredskills:""
+  }
+
   ngOnInit() {
     this.localstorage.get('idUser').then((res) => {
       this.userService.getUserById(res)
         .subscribe((user) => {
           this.user = <any[]>user['user_database'];
+          this.userdata.name=<any>user['user_database'].name;
+          this.userdata.nacionality=<any>user['user_database'].nacionality;
+          this.userdata.email=<any>user['user_database'].email;
+          this.userdata.phone=<any>user['user_database'].phone;
+          this.userdata.favoritelanguage=<any>user['user_database'].favoritelanguages;
+          this.userdata.numberadvances=<any>user['user_database'].numberadvances;
+          this.userdata.numberbadges=<any>user['user_database'].numberbadges;
+          this.userdata.exppoints=<any>user['user_database'].exppoints;
+          this.userdata.acquiredskills=<any>user['user_database'].acquiredskills;
+          console.log(this.userdata);
         });
 
       this.uploadsUserService.getUploadsUserByIdUser(res)
@@ -89,6 +115,36 @@ export class AccountPage implements OnInit {
           console.log(this.uploadFiles);
         })*/
   }
+
+  editbutton(){
+    this.editvar=true;
+  }
+
+  onSubmit(){
+    this.editvar=false;
+    this.edit(this.userdata.name,this.userdata.nacionality,this.userdata.email,this.userdata.phone,this.userdata.favoritelanguage);
+  }
+
+  edit(name,nacionality,email,phoneNumber,favoritelanguage){
+
+      this.localstorage.get('idUser')
+      .then((res)=>{
+        console.log(res);
+        this.firestore.collection('users').doc(res)
+        .update({
+          name:name,
+          nacionality:nacionality,
+          email:email,
+          phoneNumber:phoneNumber,
+          favoritelanguage:favoritelanguage
+        })
+
+      }).catch((error)=>{
+        console.log(error);
+      })
+  }
+
+
 
   userSelected(user: any) {
     this.localstorage.set('currentUser', user);

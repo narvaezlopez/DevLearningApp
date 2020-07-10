@@ -21,6 +21,7 @@ const routes: Routes = [
     loadChildren: () => import('../app/pages/signup/signup.module').then( m => m.SignupPageModule)
   }
 
+
 ];
 
 @NgModule({

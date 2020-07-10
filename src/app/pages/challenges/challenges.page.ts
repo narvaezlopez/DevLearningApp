@@ -151,7 +151,7 @@ export class ChallengesPage implements OnInit {
     console.log(this.color2);
   }
 
-    SelectLanguage($event){
+  SelectLanguage($event){
     this.language=$event.target.value;
     console.log($event.target.value);
   }
@@ -178,6 +178,33 @@ export class ChallengesPage implements OnInit {
       console.log(error);
     })
     
+  }
+
+  async deleteChallenge(idch:string){
+    const alerta = await this.alert.create({
+      header: 'Are you sure you want to delete this task?',
+      message: 'This action can not be undone.',
+      buttons: [
+        {
+          text: 'yes',
+          handler: () => {
+            this.challenges_users.forEach(element => {
+              console.log(idch,element.challenge);
+              if(idch==element.challenge){
+                this.firestore.collection('challenge_user').doc(element.id).delete();
+              }
+            });
+          }
+        },
+        {
+          text: 'cancel',
+          handler: () => {
+            console.log('The action was canceled');
+          }
+        }
+      ]
+    });
+    alerta.present();
   }
 
 

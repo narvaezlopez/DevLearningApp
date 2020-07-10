@@ -75,6 +75,12 @@ export class TrainingsPage implements OnInit {
     });
   }
 
+  gototraining(id:string){
+    console.log(id);
+    this.localstorage.set('currenttraining',id);
+    this.router.navigate(['/menu/currenttraining/']);
+  }
+
 
   ionViewWillEnter() {
     this.section = "CSharp";

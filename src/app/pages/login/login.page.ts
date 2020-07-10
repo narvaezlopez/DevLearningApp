@@ -51,6 +51,7 @@ export class LoginPage implements OnInit {
     this.loginMetod(false);
     this.auth.signInWithPopup(new auth.GoogleAuthProvider())
     .then((result) => {
+      console.log(result);
       this.authService.createcustomToken(result.user.uid)
       .subscribe((tokencito)=>{
         this.token=<any[]>tokencito['token'];
@@ -58,14 +59,23 @@ export class LoginPage implements OnInit {
         console.log('token!');
         this.storage.set(TOKEN_KEY, this.token);
         this.user = this.helper.decodeToken(String(this.token));
+        if(result.additionalUserInfo.isNewUser==true){
+          this.firestore.collection('users').doc(result.user.uid)
+          .set({
+            name:result.user.displayName,
+            email:result.user.email,
+            phoneNumber:result.user.phoneNumber,
+            nacionality:'',
+            favoritelanguage:'',
+            numberadvances:"",
+            numberbadges:"",
+            exppoints:"",
+            acquiredskills:""
+          })
+        }
         this.router.navigate(['/menu/start']);
       })
-      this.firestore.collection('users').doc(result.user.uid)
-      .set({
-        name:result.user.displayName,
-        email:result.user.email,
-        phoneNumber:result.user.phoneNumber
-      })
+
       console.log(result);
       console.log("Document successfully written!");
     }).catch(function(error) {
