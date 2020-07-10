@@ -1,10 +1,36 @@
-ion-label#main-title{
-
-    color:#fbe47b;
-    font-family: 'Russo One', sans-serif;
-    font-size: 20px;
-    
-}
 ion-item#main{
     --background:var(--ion-color-dark);
+    ion-avatar{
+        --border-radious: 0;
+    }
+    ion-label#main-title{
+        color:#fbe47b;
+        font-family: 'Russo One', sans-serif;
+        font-size: 20px;  
+    }
+}
+
+ion-content{
+    p#title-c{
+        width: 80%;
+        font-size: 50px;
+        font-weight: bold;
+        color: #ffd863;
+    }
+    p{
+        width: 80%;
+        margin-left: 80px;
+        font-size: 20px;
+    }
+    h4{
+        width: 80%;
+        margin-left: 80px;
+        font-size: 20px;
+    }
+    iframe{
+        margin-top: 20px;
+        margin-left: 80px;
+        border: 10px solid #ffd863;
+        ;
+    }
 }
