@@ -68,7 +68,6 @@
                 <h3>{{training.language}}</h3>
                 <p id="title-m">&#10004; &nbsp;{{training.title}}</p>
                 <p>{{training.desc}}</p>
-                <h4>Syntax: <br>{{training.sintax}}</h4>
                 <!-- <ion-button>
                   Review {{training.title}}
                 </ion-button> -->
@@ -96,10 +95,8 @@
                 <img [src]="training.icon">
               </ion-avatar>
               <ion-label>
-                <h3>C#</h3>
                 <p id="title-c">{{training.title}}</p>
                 <p>{{training.desc}}</p>
-                <h4>Syntax: <br>{{training.sintax}}</h4>
                 <ion-button (click)="gototraining(training.id)">
                   Try
                 </ion-button>
@@ -126,11 +123,9 @@
                 <img [src]="training.icon">
               </ion-avatar>
               <ion-label>
-                <h3>{{training.language}}</h3>
                 <p id="title-j">{{training.title}}</p>
                 <p>{{training.desc}}</p>
-                <h4>Syntax: <br>{{training.sintax}}</h4>
-                <ion-button>
+                <ion-button (click)="gototraining(training.id)">
                   Try 
                 </ion-button>
               </ion-label>
@@ -156,11 +151,9 @@
                 <img [src]="training.icon">
               </ion-avatar>
               <ion-label>
-                <h3>{{training.language}}</h3>
                 <p id="title-p">{{training.title}}</p>
                 <p>{{training.desc}}</p>
-                <h4>Syntax: <br>{{training.sintax}}</h4>
-                <ion-button>
+                <ion-button (click)="gototraining(training.id)">
                   Try
                 </ion-button>
               </ion-label>

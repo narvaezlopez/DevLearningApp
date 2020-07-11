@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Storage } from '@ionic/storage';
 import { Pipe, PipeTransform} from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 @Pipe({ name: 'safe' })
 
 @Component({
@@ -13,7 +14,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class CurrenttrainingPage implements OnInit {
 
   currenttraining:any [] = [];
-  constructor(private firestore: AngularFirestore, private localstorage: Storage, private sanitizer: DomSanitizer) { }
+  constructor(private firestore: AngularFirestore, private localstorage: Storage, private sanitizer: DomSanitizer,private router:Router) { }
 
   transform(url) {
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
@@ -30,6 +31,9 @@ export class CurrenttrainingPage implements OnInit {
       console.log(error);
     })
     
+  }
+  trainings(){
+    this.router.navigate(['/menu/trainings']);
   }
 
 }

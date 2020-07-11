@@ -8,7 +8,7 @@ ion-menu ion-item {
 
 ion-split-pane{ 
     --border: none !important;
-    --side-max-width:300px;
+    --side-max-width:350px;
     ion-menu{
      --background: var(--ion-color-dark) !important; 
      border-right: 3px solid var(--ion-color-step-150,#77003c);
@@ -91,10 +91,14 @@ ion-split-pane{
                       margin-top: -2px;
                       margin-left: 0;
                       p#p-level1{
-                        color:  #ffd863;
+                        color:  #ed9d0a;
+                        font-size: 10px;
+                        font-family: 'Russo One', sans-serif;
                       }
                       p#p-level2{
                         color:  #00a745;
+                        font-size: 10px;
+                        font-family: 'Russo One', sans-serif;
                       }
                     }
                   }
@@ -120,9 +124,7 @@ ion-split-pane{
                 }
             }
             div#button{
-              padding-top: 10px;
-              padding-right: 150px;
-              text-align:right;
+              padding-left: 20px;
               ion-button#lo{
                   font-family: 'Russo One', sans-serif;
                   --background:#77003c;

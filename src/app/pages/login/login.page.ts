@@ -107,7 +107,7 @@ export class LoginPage implements OnInit {
     this.router.navigate(['']);
   }
   Menu(){
-    this.router.navigate(['/menu']);
+    this.router.navigate(['/menu/start']);
   }
 
 }

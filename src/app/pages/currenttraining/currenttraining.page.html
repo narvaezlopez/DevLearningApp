@@ -10,6 +10,9 @@
       <ion-label id="main-title">
         Trainings
       </ion-label>
+      <ion-button (click)="trainings()">
+        <ion-icon name="arrow-undo-circle-outline"></ion-icon>
+      </ion-button>
     </ion-item>
   </ion-toolbar>
 </ion-header>
@@ -17,10 +20,9 @@
 </ion-progress-bar>
 
 <ion-content>
-          <p id="title-c">{{currenttraining.title}}</p>
-          <p>{{currenttraining.desc}}</p>
-          <h4>Example syntax:</h4>
-          <h4>{{currenttraining.sintax}}</h4>
-          <iframe width="512" height="288" [src]="transform(currenttraining.url)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+  <p id="title-c">{{currenttraining.title}}</p>
+  <p>{{currenttraining.desc}}</p>
+  <h4>Example syntax:</h4>
+  <h3>{{currenttraining.sintax}}</h3>
+  <iframe width="512" height="288" [src]="transform(currenttraining.url)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </ion-content>

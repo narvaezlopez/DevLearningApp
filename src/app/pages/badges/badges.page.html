@@ -16,14 +16,27 @@
 <ion-content>
   <ion-progress-bar [value]="1">
   </ion-progress-bar>
-  <ion-list>
-    <ion-item *ngFor="let badge of badges">
-      <ion-label>
-        <h1>{{badge.name}}</h1>
-        <h3>{{badge.description}}</h3>
-        <img [src]="badge.image">
-        
-      </ion-label>
-    </ion-item>
-  </ion-list>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="5">
+        <ion-item id="sub">
+          <ion-label id="name">
+            <h3>Badges unblocked:</h3>
+          </ion-label>
+        </ion-item>
+        <ion-list>
+          <ion-item id="advances" *ngFor="let badge of badges">
+            <ion-avatar slot="start">
+              <img [src]="badge.image" width="25px" height="25px">
+            </ion-avatar>
+            <ion-label>
+              <h1>{{badge.name}}</h1>
+              <h4>{{badge.description}}</h4>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
 </ion-content>

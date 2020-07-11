@@ -15,13 +15,29 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item *ngFor="let advance of advances "> 
-      <ion-label>
-        <h3>{{advance.title}}</h3>
-        <h4>{{advance.desc}}</h4>
-        <p>expirence points obtained: + {{advance.exppoints}}</p>
-      </ion-label>
-    </ion-item>
-  </ion-list>
+  <ion-progress-bar [value]="1">
+  </ion-progress-bar>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="5">
+        <ion-item id="sub">
+          <ion-label id="name">
+            <h3>Badges unblocked:</h3>
+          </ion-label>
+        </ion-item>
+        <ion-list>
+          <ion-item id="advances" *ngFor="let advance of advances">
+            <ion-avatar slot="start">
+              <img [src]="advance.icon" width="25px" height="25px">
+            </ion-avatar>
+            <ion-label>
+                <h3>{{advance.title}}</h3>
+                <h4>{{advance.desc}}</h4>
+                <p>expirence points obtained: + {{advance.exppoints}}</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

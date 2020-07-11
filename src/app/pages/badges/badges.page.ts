@@ -32,18 +32,13 @@ export class BadgesPage implements OnInit {
           this.badges_users.forEach(element => {
             this.badgeService.getBadgesById(element['badge']).subscribe((badges) => {
               this.badges.push(badges);
-              console.log(badges);
+              console.log(this.badges);
             });
           });
-        });
+      });
 
     });
 
-
-    /*
-       this.firestore.collection('badge_user').valueChanges().subscribe((badges)=>{
-         this.badges = <any[]>badges;
-       });*/
   }
 
 }

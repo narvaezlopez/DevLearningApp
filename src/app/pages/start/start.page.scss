@@ -11,7 +11,7 @@ ion-item#main{
 
 ion-content{
     --background:var(--ion-color-dark);
-    ion-item{
+    ion-item#name{
         --background:var(--ion-color-dark);
         --color:var(--ion-color-light);
         ion-label#name{
@@ -25,4 +25,44 @@ ion-content{
             }
         }
     }
+    ion-grid{
+        padding-left: 30px;
+        ion-row{
+            ion-col{
+                border: #fbe47b solid 2px;
+               
+                ion-item#sub{
+                    --background:var(--ion-color-dark);
+                    --color:var(--ion-color-light);
+                    ion-label#name{
+                        h3{
+                            font-size: 18px;
+                            font-family: 'Russo One', sans-serif;
+                        }
+                    }
+                }
+                ion-list{
+                    background:var(--ion-color-dark);
+                    ion-item#advances{
+                        --background:var(--ion-color-dark);
+                        --color:var(--ion-color-light);
+
+                            ion-label#name{
+                                h4{
+                                    font-size: 30px;
+                                    font-family: 'Russo One', sans-serif;
+                                }
+                                h3{
+                                    font-size: 30px;
+                                    font-family: 'Russo One', sans-serif;
+                                }
+                            }
+                        
+                        
+                    }
+                }
+            }
+        }
+    }
+   
 }

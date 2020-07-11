@@ -11,26 +11,39 @@ ion-item#main{
 }
 
 ion-content{
+    --background: var(--ion-color-dark);
     p#title-c{
         width: 80%;
         font-size: 50px;
         font-weight: bold;
         color: #ffd863;
+        font-family: 'Russo One', sans-serif;
     }
     p{
         width: 80%;
         margin-left: 80px;
         font-size: 20px;
+        color: white;
+        font-family: 'Russo One', sans-serif;
     }
     h4{
         width: 80%;
         margin-left: 80px;
         font-size: 20px;
+        color: #06bcf9;
+        font-family: 'Russo One', sans-serif;
+    }
+    h3{
+        width: 80%;
+        margin-left: 80px;
+        font-size: 20px;
+        color: white;
+        font-family: 'Russo One', sans-serif;
     }
     iframe{
         margin-top: 20px;
-        margin-left: 80px;
+        margin-left: 250px;
         border: 10px solid #ffd863;
-        ;
+        
     }
 }
