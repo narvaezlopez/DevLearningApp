@@ -15,113 +15,155 @@
 </ion-header>
 <ion-progress-bar [value]="1">
 </ion-progress-bar>
+
 <ion-segment [(ngModel)]="section">
+  <ion-segment-button value="CSharp">
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="../../../assets/img/csharp.png">
+      </ion-avatar>
+      <ion-label>C#</ion-label>
+    </ion-item>
+  </ion-segment-button>
+  <ion-segment-button value="Java">
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="https://image.flaticon.com/icons/svg/2393/2393264.svg">
+      </ion-avatar>
+      <ion-label>JAVA</ion-label>
+    </ion-item>
+  </ion-segment-button>
+  <ion-segment-button value="Php">
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="../../../assets/img/php.png">
+      </ion-avatar>
+      <ion-label>PHP</ion-label>
+    </ion-item>
+  </ion-segment-button>
   <ion-segment-button value="Mytrainings">
     <ion-item>
       <ion-avatar slot="start">
-        <img src="https://www.flaticon.com/premium-icon/icons/svg/2369/2369399.svg">
+        <img src="../../../assets/img/programmer.png">
       </ion-avatar>
       <ion-label>My Trainings</ion-label>
     </ion-item>
   </ion-segment-button>
-    <ion-segment-button value="CSharp">
-      <ion-item>
-        <ion-avatar slot="start">
-          <img src="https://www.flaticon.com/premium-icon/icons/svg/2369/2369399.svg">
-        </ion-avatar>
-        <ion-label>C#</ion-label>
-      </ion-item>
-    </ion-segment-button>
-    <ion-segment-button value="Java">
-      <ion-item>
-        <ion-avatar slot="start">
-          <img src="https://www.flaticon.com/premium-icon/icons/svg/2369/2369399.svg">
-        </ion-avatar>
-        <ion-label>JAVA</ion-label>
-      </ion-item>
-    </ion-segment-button>
-    <ion-segment-button value="Php">
-      <ion-item>
-        <ion-avatar slot="start">
-          <img src="https://image.flaticon.com/icons/svg/2646/2646775.svg">
-        </ion-avatar>
-        <ion-label>PHP</ion-label>  
-      </ion-item>
-    </ion-segment-button>
 </ion-segment>
 
 
 <ion-content>
 
   <div id="MyTrainings" *ngIf="section=='Mytrainings'">
-    <ion-list>
-      <ion-item *ngFor="let training of mytrainings"><!--| async  para observable-->
-        <ion-avatar slot="start">
-          <img [src]="training.icon">
-        </ion-avatar>
-        <ion-label>
-          <p id="title">{{training.title}}</p>
-          <p>{{training.desc}}</p>
-          <h4>Sintax: {{training.sintax}}</h4>
-          <ion-button>
-            Try {{training.title}}
-          </ion-button>
-        </ion-label>
-        
-      </ion-item>
-    </ion-list>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="9">
+          <ion-list>
+            <ion-item *ngFor="let training of mytrainings">
+              <!--| async  para observable-->
+              <ion-avatar slot="start">
+                <img [src]="training.icon">
+              </ion-avatar>
+              <ion-label>
+                <h3>{{training.language}}</h3>
+                <p id="title-m">&#10004; &nbsp;{{training.title}}</p>
+                <p>{{training.desc}}</p>
+                <!-- <ion-button>
+                  Review {{training.title}}
+                </ion-button> -->
+              </ion-label>
+      
+            </ion-item>
+          </ion-list>
+        </ion-col>
+        <ion-col>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    
   </div>
 
+  <div id="CSharp" *ngIf="section=='CSharp'">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="9">
+          <ion-list>
+            <ion-item *ngFor="let training of languagesCsharp">
+              <!--| async  para observable-->
+              <ion-avatar slot="start">
+                <img [src]="training.icon">
+              </ion-avatar>
+              <ion-label>
+                <p id="title-c">{{training.title}}</p>
+                <p>{{training.desc}}</p>
+                <ion-button (click)="gototraining(training.id)">
+                  Try
+                </ion-button>
+              </ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+        <ion-col>
 
-  <div *ngIf="section=='CSharp'">
-    <ion-list>
-      <ion-item *ngFor="let training of languagesCsharp"><!--| async  para observable-->
-        <ion-avatar slot="start">
-          <img [src]="training.icon">
-        </ion-avatar>
-        <ion-label>
-          <p id="title">{{training.title}}</p>
-          <p>{{training.desc}}</p>
-          <h4>Sintax: {{training.sintax}}</h4>
-          <ion-button>
-            Try {{training.title}}
-          </ion-button>
-        </ion-label>
-        
-      </ion-item>
-    </ion-list>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    
   </div>
 
-  <div *ngIf="section=='Java'">
-    <ion-list>
-      <ion-item *ngFor="let training of languagesJava"><!--| async  para observable-->
-        <ion-avatar slot="start">
-          <img [src]="training.icon">
-        </ion-avatar>
-        <ion-label>
-          <h3>{{training.language}}</h3>
-          <p id="title">{{training.title}}</p>
-          <p>{{training.desc}}</p>
-          <h4>Sintax: {{training.sintax}}</h4>
-        </ion-label>
-      </ion-item>
-    </ion-list>
+  <div id="Java" *ngIf="section=='Java'">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="9">
+          <ion-list>
+            <ion-item *ngFor="let training of languagesJava">
+              <!--| async  para observable-->
+              <ion-avatar slot="start">
+                <img [src]="training.icon">
+              </ion-avatar>
+              <ion-label>
+                <p id="title-j">{{training.title}}</p>
+                <p>{{training.desc}}</p>
+                <ion-button (click)="gototraining(training.id)">
+                  Try 
+                </ion-button>
+              </ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+        <ion-col>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    
   </div>
 
-  <div *ngIf="section=='Php'">
-    <ion-list>
-      <ion-item *ngFor="let training of languagesPhp"><!--| async  para observable-->
-        <ion-avatar slot="start">
-          <img [src]="training.icon">
-        </ion-avatar>
-        <ion-label>
-          <h3>{{training.language}}</h3>
-          <p id="title">{{training.title}}</p>
-          <p>{{training.desc}}</p>
-          <h4>Sintax: {{training.sintax}}</h4>
-        </ion-label>
-      </ion-item>
-    </ion-list>
+  <div id="Php" *ngIf="section=='Php'">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="9">
+          <ion-list>
+            <ion-item *ngFor="let training of languagesPhp">
+              <!--| async  para observable-->
+              <ion-avatar slot="start">
+                <img [src]="training.icon">
+              </ion-avatar>
+              <ion-label>
+                <p id="title-p">{{training.title}}</p>
+                <p>{{training.desc}}</p>
+                <ion-button (click)="gototraining(training.id)">
+                  Try
+                </ion-button>
+              </ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+        <ion-col>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
 
 </ion-content>

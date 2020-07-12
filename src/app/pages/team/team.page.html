@@ -16,4 +16,26 @@
 <ion-content>
   <ion-progress-bar [value]="1">
   </ion-progress-bar>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="5">
+        <ion-item id="sub">
+          <ion-label id="name">
+            <h3>Your team developers:</h3>
+          </ion-label>
+        </ion-item>
+        <ion-list>
+          <ion-item id="advances" *ngFor="let user of users">
+            <ion-avatar slot="start">
+              <img [src]="user.icon" width="25px" height="25px">
+            </ion-avatar>
+            <ion-label>
+              <h1>{{user.name}}</h1>
+              <h4>{{user.email}}</h4>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

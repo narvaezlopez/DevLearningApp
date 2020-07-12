@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-item id="main">
+      <ion-avatar slot="start">
+        <img src="https://image.flaticon.com/icons/svg/1693/1693487.svg">
+      </ion-avatar>
+      <ion-label id="main-title">
+        Trainings
+      </ion-label>
+      <ion-button (click)="trainings()">
+        <ion-icon name="arrow-undo-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+<ion-progress-bar [value]="1">
+</ion-progress-bar>
+
+<ion-content>
+  <p id="title-c">{{currenttraining.title}}</p>
+  <p>{{currenttraining.desc}}</p>
+  <h4>Example syntax:</h4>
+  <h3>{{currenttraining.sintax}}</h3>
+  <iframe width="512" height="288" [src]="transform(currenttraining.url)" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</ion-content>
