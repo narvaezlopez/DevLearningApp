@@ -8,3 +8,99 @@ ion-label#main-title{
 ion-item#main{
     --background:var(--ion-color-dark);
 }
+h1{
+    text-align: center;
+}
+h1, h3{
+    color: white;
+}
+.badges{
+    
+    margin: 5%;
+    border: 1px double white;
+    display: inline-block;
+}
+.contenedorBadges{
+    width: 25%;
+    display: inline-block;
+    text-align: center;
+}
+ion-content{
+    --background: var(--ion-color-dark);
+    ion-item{
+        --background: var(--ion-color-dark);
+    }
+    ion-grid{
+        --background: var(--ion-color-dark);
+        ion-row#photo{
+
+            ion-col#photo{
+               
+                div#photo{
+                    padding-top: 20px;
+                    padding-bottom: 10px;
+                    text-align: center;
+                    img#foto{
+                        width: 160px;
+                        height: 140px;
+                        border: 2px solid #fbe47b;
+                        border-color: #77003c;
+                        border-radius: 0%;
+                        box-shadow: 0 0 10px #000000;
+                    }
+                    ion-item#camera{
+                        margin: auto;
+                        width: 65px;
+                        height: 40px;
+                        --background: var(--ion-color-dark);
+                        --color:var(--ion-color-light);
+                        ion-button {
+                            --background:#77003c;
+                            --color:#fbe47b;
+                        }
+                        
+                        ion-input{
+                            position: absolute;
+                            opacity: 0;
+                        }
+                    }
+                    ion-item#Share{
+                        padding-left: 10px;
+                        ion-label{
+                            h2{
+                                font-family: 'Russo One', sans-serif;
+                                color:var(--ion-color-light);
+                                font-size: 15px;
+                            }
+                        }
+
+                    }
+                    
+                }
+            }
+            ion-col#data{
+                width: 500px;
+                margin: auto;
+                --background: var(--ion-color-dark);
+                font-family: 'Russo One', sans-serif;
+                border: #fbe47b 2px solid;
+                h2{
+                    padding-left: 10px;
+                    color:var(--ion-color-light);
+                    font-size: 20px;
+                }
+                h4{
+                    padding-left: 10px;
+                    color:#fbe47b;
+                    font-size: 15px;
+                }
+            }
+
+        }
+        ion-row#data{     
+            background: var(--ion-color-dark);
+
+        }
+    }
+}
+

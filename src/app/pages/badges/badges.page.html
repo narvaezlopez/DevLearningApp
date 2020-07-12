@@ -16,14 +16,24 @@
 <ion-content>
   <ion-progress-bar [value]="1">
   </ion-progress-bar>
-  <ion-list>
+  <!--<ion-list>
     <ion-item *ngFor="let badge of badges">
       <ion-label>
         <h1>{{badge.name}}</h1>
-        <h3>{{badge.description}}</h3>
-        <img [src]="badge.image">
-        
+          <h3>{{badge.description}}</h3>
+          <img [src]="badge.image">
       </ion-label>
     </ion-item>
-  </ion-list>
+  </ion-list>-->
+
+  <div size="12" size-sm *ngFor="let badge of badges" class="contenedorBadges">
+    <div class="badges">
+      <h1>{{badge.name}}</h1>
+      <h3>{{badge.description}}</h3>
+      <img [src]="badge.image">
+    </div>
+  </div>
+
+
+
 </ion-content>
