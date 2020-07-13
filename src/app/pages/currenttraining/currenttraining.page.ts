@@ -4,7 +4,6 @@ import { Storage } from '@ionic/storage';
 import { Pipe, PipeTransform} from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-@Pipe({ name: 'safe' })
 
 @Component({
   selector: 'app-currenttraining',
@@ -13,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class CurrenttrainingPage implements OnInit {
 
-  currenttraining:any [] = [];
+  currenttraining:any ='';
   constructor(private firestore: AngularFirestore, private localstorage: Storage, private sanitizer: DomSanitizer,private router:Router) { }
 
   transform(url) {
@@ -24,7 +23,7 @@ export class CurrenttrainingPage implements OnInit {
     .then((id)=>{
       this.firestore.collection('training').doc(id).valueChanges()
       .subscribe((data)=>{
-        this.currenttraining=<any[]>data;
+        this.currenttraining=<any>data;
       })
     })
     .catch((error)=>{

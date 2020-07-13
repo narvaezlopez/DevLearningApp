@@ -10,7 +10,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
   styleUrls: ['./start.page.scss'],
 })
 export class StartPage implements OnInit {
-  user: any[] = [];
+  user_name: any='';
   advances:any[]=[];
   constructor(private storage: Storage,
               private userService: UsersService,
@@ -20,10 +20,11 @@ export class StartPage implements OnInit {
 
   ngOnInit() {
     this.storage.get('idUser').then((res) => {
-      this.userService.getUserById(res)
-        .subscribe((user) => {
-          this.user = <any[]>user['user_database'];
-        });
+      this.firestore.collection('users').doc(res).valueChanges()
+      .subscribe((data)=>{
+        this.user_name=<any>data;
+        console.log(this.user_name.name);
+      })
     });
     this.firestore.collection('advances').valueChanges()
     .subscribe((advances)=>{

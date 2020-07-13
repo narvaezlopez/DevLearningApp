@@ -34,7 +34,7 @@ export class AccountPage implements OnInit {
 
 
     //session variables
-    user: any[] = [];
+    user: any='';
     uploads_user: any[] = [];
     idparam: string;
     url: string;
@@ -65,20 +65,24 @@ export class AccountPage implements OnInit {
 
   ngOnInit() {
     this.localstorage.get('idUser').then((res) => {
-      this.userService.getUserById(res)
-        .subscribe((user) => {
-          this.user = <any[]>user['user_database'];
-          this.userdata.name=<any>user['user_database'].name;
-          this.userdata.nacionality=<any>user['user_database'].nacionality;
-          this.userdata.email=<any>user['user_database'].email;
-          this.userdata.phone=<any>user['user_database'].phone;
-          this.userdata.favoritelanguage=<any>user['user_database'].favoritelanguages;
-          this.userdata.numberadvances=<any>user['user_database'].numberadvances;
-          this.userdata.numberbadges=<any>user['user_database'].numberbadges;
-          this.userdata.exppoints=<any>user['user_database'].exppoints;
-          this.userdata.acquiredskills=<any>user['user_database'].acquiredskills;
-          console.log(this.userdata);
-        });
+      this.firestore.collection('users').doc(res).valueChanges()
+      .subscribe((data)=>{
+        this.user=<any>data;
+        
+        this.userdata.name=this.user.name;
+        this.userdata.nacionality=this.user.nacionality;
+        this.userdata.email=this.user.email;
+        this.userdata.phone=this.user.phone;
+        this.userdata.favoritelanguage=this.user.favoritelanguages;
+        this.userdata.numberadvances=this.user.numberadvances;
+        this.userdata.numberbadges=this.user.numberbadges;
+        this.userdata.exppoints=this.user.exppoints;
+        this.userdata.acquiredskills=this.user.acquiredskills;
+
+        console.log(this.userdata)
+        
+      })
+
 
       this.uploadsUserService.getUploadsUserByIdUser(res)
         .subscribe((info) => {

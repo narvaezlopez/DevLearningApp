@@ -44,7 +44,7 @@
             <img src="https://image.flaticon.com/icons/svg/3094/3094215.svg" id ="foto" alt="foto_cargada">
 
             <ion-item>
-              <ion-button (click)="inputFile.change()">
+              <ion-button >
                 <ion-icon name="camera"></ion-icon>
               </ion-button>
               <ion-input #inputFile type="file" (change)="uploadFile($event)"></ion-input>
@@ -55,7 +55,7 @@
           <div id="photo">
             <img [src]="url" alt="foto_cargada" id="foto">
             <ion-item id="camera">
-              <ion-button (click)="inputFile.change()">
+              <ion-button>
                 <ion-icon name="camera"></ion-icon>
               </ion-button>
               <ion-input #inputFile type="file" (change)="uploadFile($event)"></ion-input>

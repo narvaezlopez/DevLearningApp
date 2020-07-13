@@ -61,7 +61,7 @@ export class MenuPage implements OnInit {
 
   ];
 
-  user: any[] = [];
+  user: any='';
   uploads_user: any[] = [];
   idparam: string;
   url: string;
@@ -75,6 +75,7 @@ export class MenuPage implements OnInit {
     public auth: AngularFireAuth,
     private storageService: StorageService,
     private router:Router,
+    private firestore: AngularFirestore
   ) {
 
   }
@@ -82,10 +83,10 @@ export class MenuPage implements OnInit {
   ngOnInit() {
 
     this.storage.get('idUser').then((res) => {
-      this.userService.getUserById(res)
-        .subscribe((user) => {
-          this.user = <any[]>user['user_database'];
-        });
+      this.firestore.collection('users').doc(res).valueChanges()
+      .subscribe((data)=>{
+        this.user=<any>data;
+      })
 
       this.uploadsUserService.getUploadsUserByIdUser(res)
         .subscribe((info) => {

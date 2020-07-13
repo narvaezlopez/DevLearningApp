@@ -21,10 +21,14 @@
         --background: #fff url('https://gamespot1.cbsistatic.com/uploads/original/1591/15918215/3595265-cod%20modern%20warfare%20deal.jpg') no-repeat center center / cover;
           background-color: #cccccc;
           div#container {
-            
+            padding-top: 20px;
             padding-bottom: 20px;
             div#img1{
               text-align: center;
+              background: var(--ion-color-dark);
+              width: 800px;
+              margin: auto;
+              border: #fbe47b solid 2px;
               img{
                 width: 700px;
                 margin: auto;
@@ -34,7 +38,8 @@
               
               div#welcome{
                 font-family: 'Russo One', sans-serif;   
-                color: white;
+                margin-top: 10px;
+                color: black;
                 text-align: center;      
                 ion-text{
                   font-size:2vw !important;
