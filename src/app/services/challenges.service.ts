@@ -10,7 +10,7 @@ export class ChallengesService {
 
   constructor(private http:HttpClient) { }
   
-  public url:string = 'http://localhost:3000/challenge';
+  public url:string = 'https://devlearningapp.herokuapp.com/challenge';
 
   getChallengesO():Observable<Challenge[]>{
     return this.http.get<Challenge[]>(this.url);

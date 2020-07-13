@@ -16,7 +16,7 @@ const TOKEN_KEY = 'access_token';
 export class AuthService {
 
   
-  public url:string = 'http://localhost:3000/users/token';
+  public url:string = 'https://devlearningapp.herokuapp.com/users/token';
   user = null;
   authenticationState = new BehaviorSubject(false);
 

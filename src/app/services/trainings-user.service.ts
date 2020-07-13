@@ -8,7 +8,7 @@ import { TrainingUser } from '../models/training-user';
 })
 export class TrainingsUserService {
 
-  public url:string = 'http://localhost:3000/training_user';
+  public url:string = 'https://devlearningapp.herokuapp.com/training_user';
 
   constructor(private http:HttpClient) { }
 

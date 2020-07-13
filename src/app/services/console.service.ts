@@ -8,7 +8,7 @@ import { Output } from '../models/output';
 })
 export class ConsoleService {
 
-  public url:string = 'http://localhost:3000/console';
+  public url:string = 'https://devlearningapp.herokuapp.com/console';
   constructor(private http:HttpClient) { }
 
   postExecute(){

@@ -10,7 +10,7 @@ export class UsersService {
 
   constructor(private http:HttpClient) { }
 
-  public url:string = 'http://localhost:3000/Users';
+  public url:string = 'https://devlearningapp.herokuapp.com/Users';
 
     
   getUsersR():Observable<Users[]>{

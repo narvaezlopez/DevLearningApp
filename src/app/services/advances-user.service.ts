@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AdvancesUserService {
 
-  public url:String='http://localhost:3000/advance_user'; 
+  public url:String='https://devlearningapp.herokuapp.com/advance_user'; 
   
   constructor(private http:HttpClient) { }
 

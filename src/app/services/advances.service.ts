@@ -9,7 +9,7 @@ export class AdvancesService {
   
   constructor(private http:HttpClient) { }
 
-  public url:string='http://localhost:3000/advance';
+  public url:string='https://devlearningapp.herokuapp.com/advance';
   getAdvancesById(id:string){
     return this.http.get(this.url+'/'+id);
   }

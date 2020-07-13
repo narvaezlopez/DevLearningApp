@@ -10,7 +10,7 @@ export class TrainingsService {
 
   constructor(private http:HttpClient) { }
 
-  public url:string = 'http://localhost:3000/training';
+  public url:string = 'https://devlearningapp.herokuapp.com/training';
 
   getTrainigsO():Observable<Training[]>{
     return this.http.get<Training[]>(this.url);

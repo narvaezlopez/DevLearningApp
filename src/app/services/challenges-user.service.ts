@@ -7,7 +7,7 @@ import { ChallengeUser } from '../models/challenge-user';
 })
 export class ChallengesUserService {
 
-  public url:string = 'http://localhost:3000/challenge_user';
+  public url:string = 'https://devlearningapp.herokuapp.com/challenge_user';
 
   constructor(private http:HttpClient) { }
 

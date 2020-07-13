@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UploadsService {
 
-  public url:string = 'http://localhost:3000/upload';
+  public url:string = 'https://devlearningapp.herokuapp.com/upload';
 
   constructor(private http:HttpClient) { }
   

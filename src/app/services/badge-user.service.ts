@@ -10,7 +10,7 @@ export class BadgeUserService {
 
   constructor(private http:HttpClient) { }
 
-  public url:string = 'http://localhost:3000/badge_user';
+  public url:string = 'https://devlearningapp.herokuapp.com/badge_user';
 
     
   getBadgesUsersO():Observable<BadgeUser[]>{
